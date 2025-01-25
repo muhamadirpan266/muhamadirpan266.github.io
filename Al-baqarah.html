@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surah Al-Fatihah</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1E1E2E;
+            color: #FFFFFF;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 100%;
+            background-color: #29293D;
+            padding: 20px;
+            display: none;
+        }
+
+        .sidebar.active {
+            display: block;
+        }
+
+        .sidebar h1 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .sidebar .search {
+            margin-bottom: 20px;
+        }
+
+        .sidebar .search input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            background-color: #2F2F47;
+            color: white;
+        }
+
+        .sidebar .surah-list {
+        list-style-type: none;
+        padding: 0;
+        max-height: 600px;
+        width: 300px;
+        overflow-y: auto;
+    }
+
+    .sidebar .surah-list::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .sidebar .surah-list::-webkit-scrollbar-thumb {
+        background-color: #3A3A57;
+        border-radius: 5px;
+    }
+
+    .sidebar .surah-list::-webkit-scrollbar-thumb:hover {
+        background-color: #4B4B6A;
+    }
+
+        .sidebar .surah-list li {
+            padding: 10px;
+            background-color: #2F2F47;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .sidebar .surah-list li:hover {
+            background-color: #3A3A57;
+        }
+
+        .content {
+            flex-grow: 1;
+            background-color: #1E1E2E;
+            padding: 20px;
+        }
+
+        .content .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .content .header h1 {
+            font-size: 28px;
+        }
+
+        .content .ayah {
+            background-color: #29293D;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .content .ayah .arabic {
+            font-size: 24px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .content .ayah .translation {
+            font-size: 16px;
+            color: #B0B0C0;
+        }
+
+        .toggle-button {
+            display: block;
+            background-color: #3A3A57;
+            color: white;
+            border: none;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        span{
+            color:#0dd7de;
+        }
+
+        .a1{
+            text-decoration: none;
+            color: inherit;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .sidebar {
+                width: 20%;
+                display: block;
+            }
+
+            .toggle-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="toggle-button" onclick="toggleSidebar()">Menu</button>
+        <div class="sidebar">
+            <h1><span>XII</span>TKJ 1</h1>
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="Cari Surah..." oninput="filterSurahs()">
+            </div>
+            <ul class="surah-list" id="surahList">
+                <li><a href="alfatihah.html" class="a1">1. Al-Fatihah</a></li>
+                <li><a href="Al-baqarah.html" class="a1">2. Al-Baqarah</a></li>
+                <li>3. Ali 'Imran</li>
+                <li>4. An-Nisa'</li>
+                <li>5. Al-Ma'idah</li>
+                <li>6. Al-An'am</li>
+                <li>7. Al-A'raf</li>
+                <li>8. Al-Anfal</li>
+                <li>9. At-Tawbah</li>
+                <li>10. Yunus</li>
+                <li>11. Hud</li>
+                <li>12. Yusuf</li>
+                <li>13. Ar-Ra'd</li>
+                <li>14. Ibrahim</li>
+                <li>15. Al-Hijr</li>
+                <li>16. An-Nahl</li>
+                <li>17. Al-Isra'</li>
+                <li>18. Al-Kahf</li>
+                <li>19. Maryam</li>
+                <li>20. Ta-Ha</li>
+                <li>21. Al-Anbiya'</li>
+                <li>22. Al-Hajj</li>
+                <li>23. Al-Mu'minun</li>
+                <li>24. An-Nur</li>
+                <li>25. Al-Furqan</li>
+                <li>26. Ash-Shu'ara'</li>
+                <li>27. An-Naml</li>
+                <li>28. Al-Qasas</li>
+                <li>29. Al-Ankabut</li>
+                <li>30. Ar-Rum</li>
+                <li>31. Luqman</li>
+                <li>32. As-Sajdah</li>
+                <li>33. Al-Ahzab</li>
+                <li>34. Saba'</li>
+                <li>35. Fatir</li>
+                <li>36. Ya-Sin</li>
+                <li>37. As-Saffat</li>
+                <li>38. Sad</li>
+                <li>39. Az-Zumar</li>
+                <li>40. Ghafir</li>
+                <li>41. Fussilat</li>
+                <li>42. Ash-Shura</li>
+                <li>43. Az-Zukhruf</li>
+                <li>44. Ad-Dukhan</li>
+                <li>45. Al-Jathiya</li>
+                <li>46. Al-Ahqaf</li>
+                <li>47. Muhammad</li>
+                <li>48. Al-Fath</li>
+                <li>49. Al-Hujurat</li>
+                <li>50. Qaf</li>
+                <li>51. Adh-Dhariyat</li>
+                <li>52. At-Tur</li>
+                <li>53. An-Najm</li>
+                <li>54. Al-Qamar</li>
+                <li>55. Ar-Rahman</li>
+                <li>56. Al-Waqi'ah</li>
+                <li>57. Al-Hadid</li>
+                <li>58. Al-Mujadila</li>
+                <li>59. Al-Hashr</li>
+                <li>60. Al-Mumtahanah</li>
+                <li>61. As-Saff</li>
+                <li>62. Al-Jumu'ah</li>
+                <li>63. Al-Munafiqun</li>
+                <li>64. At-Taghabun</li>
+                <li>65. At-Talaq</li>
+                <li>66. At-Tahrim</li>
+                <li>67. Al-Mulk</li>
+                <li>68. Al-Qalam</li>
+                <li>69. Al-Haqqah</li>
+                <li>70. Al-Ma'arij</li>
+                <li>71. Nuh</li>
+                <li>72. Al-Jinn</li>
+                <li>73. Al-Muzzammil</li>
+                <li>74. Al-Muddaththir</li>
+                <li>75. Al-Qiyamah</li>
+                <li>76. Al-Insan</li>
+                <li>77. Al-Mursalat</li>
+                <li>78. An-Naba'</li>
+                <li>79. An-Nazi'at</li>
+                <li>80. Abasa</li>
+                <li>81. At-Takwir</li>
+                <li>82. Al-Infitar</li>
+                <li>83. Al-Mutaffifin</li>
+                <li>84. Al-Inshiqaq</li>
+                <li>85. Al-Buruj</li>
+                <li>86. At-Tariq</li>
+                <li>87. Al-A'la</li>
+                <li>88. Al-Ghashiyah</li>
+                <li>89. Al-Fajr</li>
+                <li>90. Al-Balad</li>
+                <li>91. Ash-Shams</li>
+                <li>92. Al-Lail</li>
+                <li>93. Ad-Duha</li>
+                <li>94. Ash-Sharh</li>
+                <li>95. At-Tin</li>
+                <li>96. Al-Alaq</li>
+                <li>97. Al-Qadr</li>
+                <li>98. Al-Bayyina</li>
+                <li>99. Az-Zalzalah</li>
+                <li>100. Al-Adiyat</li>
+                <li>101. Al-Qari'ah</li>
+                <li>102. At-Takathur</li>
+                <li>103. Al-Asr</li>
+                <li>104. Al-Humazah</li>
+                <li>105. Al-Fil</li>
+                <li>106. Quraysh</li>
+                <li>107. Al-Ma'un</li>
+                <li>108. Al-Kawthar</li>
+                <li>109. Al-Kafirun</li>
+                <li>110. An-Nasr</li>
+                <li>111. Al-Masad</li>
+                <li>112. Al-Ikhlas</li>
+                <li>113. Al-Falaq</li>
+                <li>114. An-Nas</li>                
+            </ul>
+        </div>
+        <div class="content">
+            <div class="header">
+                <h1>Surah Al-Fatihah</h1>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١. الم</div>
+                <div class="translation">1. Alif Lam Mim.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٢. ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِلْمُتَّقِينَ</div>
+                <div class="translation">2. Kitab (Al-Qur'an) ini tidak ada keraguan padanya; petunjuk bagi mereka yang bertakwa,</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٣. الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُقِيمُونَ الصَّلَاةَ وَمِمَّا رَزَقْنَاهُمْ يُنفِقُونَ</div>
+                <div class="translation">3. (yaitu) mereka yang beriman kepada yang ghaib, yang mendirikan salat, dan menafkahkan sebagian rezeki yang Kami anugerahkan kepada mereka.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٤. وَالَّذِينَ يُؤْمِنُونَ بِمَا أُنزِلَ إِلَيْكَ وَمَا أُنزِلَ مِن قَبْلِكَ وَبِالْآخِرَةِ هُمْ يُوقِنُونَ</div>
+                <div class="translation">4. Dan mereka yang beriman kepada Kitab (Al-Qur'an) yang telah diturunkan kepadamu dan kitab-kitab yang telah diturunkan sebelum kamu, serta mereka yakin akan adanya (kehidupan) akhirat.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٥. أُو۟لَـٰٓئِكَ عَلَىٰ هُدًۭى مِّن رَّبِّهِمْ ۖ وَأُو۟لَـٰٓئِكَ هُمُ ٱلْمُفْلِحُونَ</div>
+                <div class="translation">5. Mereka itulah yang tetap mendapat petunjuk dari Tuhan mereka, dan merekalah orang-orang yang beruntung.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٦. إِنَّ ٱلَّذِينَ كَفَرُوا۟ سَوَآءٌ عَلَيْهِمْ ءَأَنذَرْتَهُمْ أَمْ لَمْ تُنذِرْهُمْ لَا يُؤْمِنُونَ</div>
+                <div class="translation">6. Sesungguhnya orang-orang yang kafir, sama saja bagi mereka apakah kamu beri peringatan atau tidak kamu beri peringatan, mereka tidak akan beriman.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٧. خَتَمَ ٱللَّهُ عَلَىٰ قُلُوبِهِمْ وَعَلَىٰ سَمْعِهِمْ ۖ وَعَلَىٰٓ أَبْصَـٰرِهِمْ غِشَـٰوَةٌۭ ۖ وَلَهُمْ عَذَابٌ عَظِيمٌ</div>
+                <div class="translation">7. Allah telah mengunci mati hati dan pendengaran mereka, dan penglihatan mereka ditutup. Dan bagi mereka siksa yang amat berat.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٨. وَمِنَ ٱلنَّاسِ مَن يَقُولُ ءَامَنَّا بِٱللَّهِ وَبِٱلْيَوْمِ ٱلْءَاخِرِ وَمَا هُم بِمُؤْمِنِينَ</div>
+                <div class="translation">8. Di antara manusia ada yang mengatakan: "Kami beriman kepada Allah dan Hari Kemudian," padahal mereka itu sesungguhnya bukan orang-orang yang beriman.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٩. يُخَـٰدِعُونَ ٱللَّهَ وَٱلَّذِينَ ءَامَنُوا۟ وَمَا يَخْدَعُونَ إِلَّآ أَنفُسَهُمْ وَمَا يَشْعُرُونَ</div>
+                <div class="translation">9. Mereka hendak menipu Allah dan orang-orang yang beriman, padahal mereka hanya menipu dirinya sendiri sedang mereka tidak sadar.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٠. فِى قُلُوبِهِم مَّرَضٌۭ فَزَادَهُمُ ٱللَّهُ مَرَضًۭا ۖ وَلَهُمْ عَذَابٌ أَلِيمٌۢ بِمَا كَانُوا۟ يَكْذِبُونَ</div>
+                <div class="translation">10. Dalam hati mereka ada penyakit, lalu ditambah Allah penyakitnya; dan bagi mereka siksa yang pedih, disebabkan mereka berdusta.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١١. وَإِذَا قِيلَ لَهُمْ لَا تُفْسِدُوا۟ فِى ٱلْأَرْضِ قَالُوٓا۟ إِنَّمَا نَحْنُ مُصْلِحُونَ</div>
+                <div class="translation">11. Dan bila dikatakan kepada mereka: "Janganlah kamu membuat kerusakan di muka bumi." Mereka menjawab: "Sesungguhnya kami orang-orang yang mengadakan perbaikan."</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٢. أَلَآ إِنَّهُمْ هُمُ ٱلْمُفْسِدُونَ وَلَـٰكِن لَّا يَشْعُرُونَ</div>
+                <div class="translation">12. Ingatlah, sesungguhnya mereka itulah orang-orang yang membuat kerusakan, tetapi mereka tidak sadar.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٣. وَإِذَا قِيلَ لَهُمْ ءَامِنُوا۟ كَمَآ ءَامَنَ ٱلنَّاسُ قَالُوٓا۟ أَنُؤْمِنُ كَمَآ ءَامَنَ ٱلسُّفَهَآءُ ۗ أَلَآ إِنَّهُمْ هُمُ ٱلسُّفَهَآءُ وَلَـٰكِن لَّا يَعْلَمُونَ</div>
+                <div class="translation">13. Dan bila dikatakan kepada mereka: "Berimanlah kamu, sebagaimana orang-orang lain telah beriman." Mereka menjawab: "Akan berimankah kami sebagaimana orang-orang yang bodoh itu telah beriman?" Ingatlah, sesungguhnya merekalah orang-orang yang bodoh; tetapi mereka tidak tahu.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٤. وَإِذَا لَقُوا۟ ٱلَّذِينَ ءَامَنُوا۟ قَالُوٓا۟ ءَامَنَّا وَإِذَا خَلَوْا۟ إِلَىٰ شَيَـٰطِينِهِمْ قَالُوٓا۟ إِنَّا مَعَكُمْ إِنَّمَا نَحْنُ مُسْتَهْزِءُونَ</div>
+                <div class="translation">14. Dan bila mereka berjumpa dengan orang-orang yang beriman, mereka mengatakan: "Kami telah beriman." Tetapi bila mereka berada sesama mereka saja, lalu mereka mengatakan: "Sesungguhnya kami sependirian dengan kamu, kami hanyalah berolok-olok."</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٥. ٱللَّهُ يَسْتَهْزِئُ بِهِمْ وَيَمُدُّهُمْ فِى طُغْيَـٰنِهِمْ يَعْمَهُونَ</div>
+                <div class="translation">15. Allah akan (membalas) olok-olokan mereka dan membiarkan mereka terombang-ambing dalam kesesatan mereka.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٦. أُو۟لَـٰٓئِكَ ٱلَّذِينَ ٱشْتَرَوُا۟ ٱلضَّلَـٰلَةَ بِٱلْهُدَىٰ فَمَا رَبِحَت تِّجَـٰرَتُهُمْ وَمَا كَانُوا۟ مُهْتَدِينَ</div>
+                <div class="translation">16. Mereka itulah orang yang membeli kesesatan dengan petunjuk, maka tidaklah beruntung perniagaan mereka dan tidaklah mereka mendapat petunjuk.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٧. مَثَلُهُمْ كَمَثَلِ ٱلَّذِى ٱسْتَوْقَدَ نَارًۭا فَلَمَّآ أَضَآءَتْ مَا حَوْلَهُۥ ذَهَبَ ٱللَّهُ بِنُورِهِمْ وَتَرَكَهُمْ فِى ظُلُمَـٰتٍۢ لَّا يُبْصِرُونَ</div>
+                <div class="translation">17. Perumpamaan mereka adalah seperti orang yang menyalakan api, maka setelah api itu menerangi sekelilingnya Allah hilangkan cahaya (yang menyinari) mereka, dan membiarkan mereka dalam kegelapan, tidak dapat melihat.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٨. صُمُّۢ بُكْمٌ عُمْىٌۭ فَهُمْ لَا يَرْجِعُونَ</div>
+                <div class="translation">18. Mereka tuli, bisu dan buta, maka (oleh sebab itu) mereka tidaklah akan kembali (ke jalan yang benar).</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٩. أَوْ كَصَيِّبٍۢ مِّنَ ٱلسَّمَآءِ فِيهِ ظُلُمَـٰتٌۭ وَرَعْدٌۭ وَبَرْقٌۭ يَجْعَلُونَ أَصَـٰبِعَهُمْ فِىٓ ءَاذَانِهِم مِّنَ ٱلصَّوَٟعِقِ حَذَرَ ٱلْمَوْتِ ۚ وَٱللَّهُ مُحِيطٌۢ بِٱلْكَـٰفِرِينَ</div>
+                <div class="translation">19. Atau seperti (orang-orang yang ditimpa) hujan lebat dari langit disertai gelap gulita, guruh dan kilat; mereka menyumbat telinganya dengan anak jarinya, karena (takut) akan suara petir, sebab khawatir akan mati. Dan Allah meliputi orang-orang yang kafir.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٢٠. يَكَادُ الْبَرْقُ يَخْطَفُ أَبْصَارَهُمْ كُلَّمَا أَضَاءَ لَهُم مَّشَوْا فِيهِ وَإِذَا أَظْلَمَ عَلَيْهِمْ قَامُوا وَلَوْ شَاءَ اللَّهُ لَذَهَبَ بِسَمْعِهِمْ وَأَبْصَارِهِمْ إِنَّ اللَّهَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ</div>
+                <div class="translation">20. Hampir-hampir kilat itu menyambar penglihatan mereka. Setiap kali kilat itu menyinari mereka, mereka berjalan di bawahnya, dan apabila gelap menimpa mereka, mereka berhenti. Sekiranya Allah menghendaki, Dia pasti menghilangkan pendengaran dan penglihatan mereka. Sungguh, Allah Maha Kuasa atas segala sesuatu.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢١. يَا أَيُّهَا النَّاسُ اعْبُدُوا رَبَّكُمُ الَّذِي خَلَقَكُمْ وَالَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ</div>
+                <div class="translation">21. Wahai manusia! Sembahlah Tuhanmu yang telah menciptakan kamu dan orang-orang sebelum kamu, agar kamu bertakwa,</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٢. الَّذِي جَعَلَ لَكُمُ الْأَرْضَ فِرَاشًا وَالسَّمَاءَ بِنَاءً وَأَنزَلَ مِنَ السَّمَاءِ مَاءً فَأَخْرَجَ بِهِ مِنَ الثَّمَرَاتِ رِزْقًا لَّكُمْ فَلَا تَجْعَلُوا لِلَّهِ أَندَادًا وَأَنتُمْ تَعْلَمُونَ</div>
+                <div class="translation">22. Dialah yang menjadikan bumi sebagai hamparan bagimu dan langit sebagai atap, dan Dia menurunkan air (hujan) dari langit, lalu Dia menghasilkan dengan (hujan) itu segala buah-buahan sebagai rezeki untukmu; karena itu janganlah kamu mengadakan tandingan-tandingan bagi Allah, padahal kamu mengetahui.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٣. وَإِن كُنتُمْ فِي رَيْبٍ مِمَّا نَزَّلْنَا عَلَىٰ عَبْدِنَا فَأْتُوا بِسُورَةٍ مِّن مِّثْلِهِ وَادْعُوا شُهَدَاءَكُم مِّن دُونِ اللَّهِ إِن كُنتُمْ صَادِقِينَ</div>
+                <div class="translation">23. Dan jika kamu meragukan (Al-Qur'an) yang Kami turunkan kepada hamba Kami (Muhammad), maka buatlah satu surah yang semisal dengannya dan ajaklah penolong-penolongmu selain Allah, jika kamu orang-orang yang benar.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٤. فَإِن لَّمْ تَفْعَلُوا وَلَن تَفْعَلُوا فَاتَّقُوا النَّارَ الَّتِي وَقُودُهَا النَّاسُ وَالْحِجَارَةُ أُعِدَّتْ لِلْكَافِرِينَ</div>
+                <div class="translation">24. Maka jika kamu tidak dapat membuat (nya) - dan pasti kamu tidak akan dapat membuat (nya) - maka takutlah kamu akan neraka, yang bahan bakarnya adalah manusia dan batu, yang disediakan bagi orang-orang kafir.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٥. وَبَشِّرِ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ أَنَّ لَهُمْ جَنَّاتٍ تَجْرِي مِن تَحْتِهَا الْأَنْهَارُ كُلَّمَا رُزِقُوا مِنْهَا مِن ثَمَرَةٍ رِّزْقًا قَالُوا هَٰذَا الَّذِي رُزِقْنَا مِن قَبْلُ وَأُتُوا بِهِ مُتَشَابِهًا وَلَهُمْ فِيهَا أَزْوَاجٌ مُّطَهَّرَةٌ وَهُمْ فِيهَا خَالِدُونَ</div>
+                <div class="translation">25. Dan sampaikanlah berita gembira kepada orang-orang yang beriman dan berbuat baik, bahwa bagi mereka disediakan surga-surga yang mengalir di bawahnya sungai-sungai. Setiap kali mereka diberi rezeki buah-buahan dari surga-surga itu, mereka berkata, "Inilah yang pernah diberikan kepada kami dahulu." Mereka diberi buah-buahan yang serupa (dalam bentuk dan warnanya, tetapi berbeda rasa). Di sana mereka memperoleh pasangan-pasangan yang suci dan mereka kekal di dalamnya.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٦. إِنَّ اللَّهَ لَا يَسْتَحْيِي أَن يَضْرِبَ مَثَلًا مَّا بَعُوضَةً فَمَا فَوْقَهَا فَأَمَّا الَّذِينَ آمَنُوا فَيَعْلَمُونَ أَنَّهُ الْحَقُّ مِن رَّبِّهِمْ وَأَمَّا الَّذِينَ كَفَرُوا فَيَقُولُونَ مَاذَا أَرَادَ اللَّهُ بِهَٰذَا مَثَلًا يُضِلُّ بِهِ كَثِيرًا وَيَهْدِي بِهِ كَثِيرًا وَمَا يُضِلُّ بِهِ إِلَّا الْفَاسِقِينَ</div>
+                <div class="translation">26. Sungguh, Allah tidak segan membuat perumpamaan berupa nyamuk atau yang lebih kecil dari itu. Adapun orang-orang yang beriman, mereka yakin bahwa itu kebenaran dari Tuhan mereka. Tetapi mereka yang kafir berkata, "Apa maksud Allah menjadikan ini sebagai perumpamaan?" Dengan perumpamaan itu banyak orang yang disesatkan Allah, dan dengan itu (pula) banyak orang yang diberi-Nya petunjuk. Tetapi tidak ada yang disesatkan Allah kecuali orang-orang fasik,</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٧. الَّذِينَ يَنقُضُونَ عَهْدَ اللَّهِ مِن بَعْدِ مِيثَاقِهِ وَيَقْطَعُونَ مَا أَمَرَ اللَّهُ بِهِ أَن يُوصَلَ وَيُفْسِدُونَ فِي الْأَرْضِ أُو۟لَٰٓئِكَ هُمُ ٱلْخَٰسِرُونَ</div>
+                <div class="translation">27. (yaitu) orang-orang yang melanggar perjanjian Allah setelah perjanjian itu diteguhkan dan memutuskan apa yang Allah perintahkan supaya dihubungkan, dan mereka berbuat kerusakan di bumi. Mereka itulah orang-orang yang rugi.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٨. كَيْفَ تَكْفُرُونَ بِاللَّهِ وَكُنتُمْ أَمْوَاتًا فَأَحْيَاكُمْ ثُمَّ يُمِيتُكُمْ ثُمَّ يُحْيِيكُمْ ثُمَّ إِلَيْهِ تُرْجَعُونَ</div>
+                <div class="translation">28. Mengapa kamu kafir kepada Allah, padahal kamu tadinya mati, lalu Dia menghidupkan kamu, kemudian Dia mematikan kamu, lalu Dia menghidupkan kamu kembali, kemudian kepada-Nya-lah kamu dikembalikan?</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٩. هُوَ ٱلَّذِى خَلَقَ لَكُم مَّا فِى ٱلْأَرْضِ جَمِيعًا ثُمَّ ٱسْتَوَىٰٓ إِلَى ٱلسَّمَآءِ فَسَوَّىٰهُنَّ سَبْعَ سَمَٰوَٰتٍۢ وَهُوَ بِكُلِّ شَىْءٍ عَلِيمٌ</div>
+                <div class="translation">29. Dialah (Allah) yang menciptakan segala yang ada di bumi untukmu, kemudian Dia menuju ke langit, lalu Dia menyempurnakannya menjadi tujuh langit. Dan Dia Maha Mengetahui segala sesuatu.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٣٠. وَإِذْ قَالَ رَبُّكَ لِلْمَلَٰٓئِكَةِ إِنِّى جَاعِلٌۭ فِى ٱلْأَرْضِ خَلِيفَةًۭ قَالُوٓا۟ أَتَجْعَلُ فِيهَا مَن يُفْسِدُ فِيهَا وَيَسْفِكُ ٱلدِّمَآءَ وَنَحْنُ نُسَبِّحُ بِحَمْدِكَ وَنُقَدِّسُ لَكَ قَالَ إِنِّىٓ أَعْلَمُ مَا لَا تَعْلَمُونَ</div>
+                <div class="translation">30. Ingatlah ketika Tuhanmu berfirman kepada para malaikat, "Aku hendak menjadikan khalifah di bumi." Mereka berkata, "Apakah Engkau hendak menjadikan orang yang merusak dan menumpahkan darah di sana, sementara kami bertasbih memuji-Mu dan menyucikan nama-Mu?" Dia berfirman, "Sungguh, Aku mengetahui apa yang tidak kamu ketahui."</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٣١. وَعَلَّمَ آدَمَ ٱلْأَسْمَآءَ كُلَّهَا ثُمَّ عَرَضَهُمْ عَلَى ٱلْمَلَٰٓئِكَةِ فَقَالَ أَنبِـُٔونِى بِأَسْمَآءِ هَٰٓؤُلَآءِ إِن كُنتُمْ صَٰدِقِينَ</div>
+                <div class="translation">31. Dan Dia mengajarkan kepada Adam nama-nama (benda-benda) seluruhnya, kemudian Dia mengemukakannya kepada para malaikat lalu berfirman, "Sebutkanlah kepada-Ku nama benda-benda itu jika kamu memang benar orang-orang yang benar!"</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٣٢. قَالُوا۟ سُبْحَٰنَكَ لَا عِلْمَ لَنَآ إِلَّا مَا عَلَّمْتَنَآ إِنَّكَ أَنتَ ٱلْعَلِيمُ ٱلْحَكِيمُ</div>
+                <div class="translation">32. Mereka menjawab, "Mahasuci Engkau, tidak ada yang kami ketahui selain dari apa yang telah Engkau ajarkan kepada kami. Sungguh, Engkaulah yang Maha Mengetahui, Maha Bijaksana."</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٣٣. قَالَ يَٰٓـَٔادَمُ أَنبِئْهُم بِأَسْمَآئِهِمْ فَلَمَّآ أَنبَأَهُم بِأَسْمَآئِهِمْ قَالَ أَلَمْ أَقُل لَّكُمْ إِنِّىٓ أَعْلَمُ غَيْبَ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ وَأَعْلَمُ مَا تُبْدُونَ وَمَا كُنتُمْ تَكْتُمُونَ</div>
+                <div class="translation">33. Dia (Allah) berfirman, "Wahai Adam! Beritahukanlah kepada mereka nama-nama benda itu." Maka setelah dia memberitahukan kepada mereka nama-namanya, Allah berfirman, "Bukankah sudah Kukatakan kepadamu, bahwa Aku mengetahui rahasia langit dan bumi dan mengetahui apa yang kamu nyatakan dan apa yang kamu sembunyikan?"</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٣٤. وَإِذْ قُلْنَا لِلْمَلَٰٓئِكَةِ ٱسْجُدُوا۟ لِءَادَمَ فَسَجَدُوٓا۟ إِلَّآ إِبْلِيسَ أَبَىٰ وَٱسْتَكْبَرَ وَكَانَ مِنَ ٱلْكَٰفِرِينَ</div>
+                <div class="translation">34. Dan (ingatlah) ketika Kami berfirman kepada para malaikat, "Sujudlah kamu kepada Adam!" Maka mereka pun sujud kecuali Iblis. Ia menolak dan menyombongkan diri, dan ia termasuk golongan yang kafir.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٣٥. وَقُلْنَا يَٰٓـَٔادَمُ ٱسْكُنْ أَنتَ وَزَوْجُكَ ٱلْجَنَّةَ وَكُلَا مِنْهَا رَغَدًا حَيْثُ شِئْتُمَا وَلَا تَقْرَبَا هَٰذِهِ ٱلشَّجَرَةَ فَتَكُونَا مِنَ ٱلظَّٰلِمِينَ</div>
+                <div class="translation">35. Kami berfirman, "Wahai Adam! Tinggallah engkau bersama istrimu di surga dan makanlah dengan nikmat (aneka makanan) yang ada di sana sesukamu, tetapi janganlah kamu dekati pohon ini, yang menyebabkan kamu termasuk orang-orang yang zalim."</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٣٦. فَأَزَلَّهُمَا ٱلشَّيْطَٰنُ عَنْهَا فَأَخْرَجَهُمَا مِمَّا كَانَا فِيهِ وَقُلْنَا ٱهْبِطُوا۟ بَعْضُكُمْ لِبَعْضٍ عَدُوٌّۭ وَلَكُمْ فِى ٱلْأَرْضِ مُسْتَقَرٌّۭ وَمَتَٰعٌ إِلَىٰ حِينٍۢ</div>
+                <div class="translation">36. Kemudian setan membuat keduanya tergelincir dari surga sehingga keduanya dikeluarkan dari (kebahagiaan) yang mereka sedang jalani, dan Kami berfirman, "Turunlah kamu! Sebagian kamu menjadi musuh bagi yang lain, dan bagi kamu ada tempat tinggal dan kesenangan di bumi sampai waktu yang telah ditentukan."</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٣٧. فَتَلَقَّىٰٓ ءَادَمُ مِن رَّبِّهِۦ كَلِمَـٰتٍ فَتَابَ عَلَيْهِۖ إِنَّهُۥ هُوَ ٱلتَّوَّابُ ٱلرَّحِيمُ</div>
+                <div class="translation">37. Kemudian Adam menerima beberapa kalimat dari Tuhannya, lalu Dia menerima taubatnya. Sungguh, Dialah Yang Maha Penerima Taubat, Maha Penyayang.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٣٨. قُلْنَا ٱهْبِطُوا۟ مِنْهَا جَمِيعًۭاۖ فَإِمَّا يَأْتِيَنَّكُم مِّنِّى هُدًۭى فَمَن تَبِعَ هُدَاىَ فَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ</div>
+                <div class="translation">38. Kami berfirman, "Turunlah kamu semua dari surga itu! Kemudian jika datang petunjuk-Ku kepadamu, maka barang siapa mengikuti petunjuk-Ku, niscaya tidak ada rasa takut pada mereka, dan mereka tidak bersedih hati."</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٣٩. وَٱلَّذِينَ كَفَرُوا۟ وَكَذَّبُوا۟ بِـَٔايَـٰتِنَآ أُو۟لَـٰٓئِكَ أَصْحَـٰبُ ٱلنَّارِۖ هُمْ فِيهَا خَـٰلِدُونَ</div>
+                <div class="translation">39. Adapun orang-orang yang kafir dan mendustakan ayat-ayat Kami, mereka itulah penghuni neraka; mereka kekal di dalamnya.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٤٠. يَـٰبَنِىٓ إِسْرَٰٓءِيلَ ٱذْكُرُوا۟ نِعْمَتِىَ ٱلَّتِىٓ أَنْعَمْتُ عَلَيْكُمْ وَأَوْفُوا۟ بِعَهْدِىٓ أُوفِ بِعَهْدِكُمْ وَإِيَّٰىَ فَٱرْهَبُونِ</div>
+                <div class="translation">40. Wahai Bani Israil! Ingatlah nikmat-Ku yang telah Aku anugerahkan kepadamu, dan penuhilah janji-Ku, niscaya Aku penuhi janji kamu, dan hanya kepada-Ku lah kamu harus takut.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٤١. وَءَامِنُوا۟ بِمَآ أَنزَلْتُ مُصَدِّقًۭا لِّمَا مَعَكُمْ وَلَا تَكُونُوٓا۟ أَوَّلَ كَافِرٍۢ بِهِۦ وَلَا تَشْتَرُوا۟ بِـَٔايَـٰتِى ثَمَنًۭا قَلِيلًۭا وَإِيَّٰىَ فَٱتَّقُونِ</div>
+                <div class="translation">41. Dan berimanlah kepada apa yang telah Aku turunkan yang membenarkan kitab yang ada padamu, dan janganlah kamu menjadi orang yang pertama kafir terhadapnya, dan janganlah kamu menjual ayat-ayat-Ku dengan harga murah, dan hanya kepada-Kulah kamu harus bertakwa.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٤٢. وَلَا تَلْبِسُوا۟ ٱلْحَقَّ بِٱلْبَـٰطِلِ وَتَكْتُمُوا۟ ٱلْحَقَّ وَأَنتُمْ تَعْلَمُونَ</div>
+                <div class="translation">42. Dan janganlah kamu campur adukkan yang hak dengan yang batil dan janganlah kamu sembunyikan yang hak itu, sedang kamu mengetahui.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٤٣. وَأَقِيمُوا۟ ٱلصَّلَوٰةَ وَءَاتُوا۟ ٱلزَّكَوٰةَ وَٱرْكَعُوا۟ مَعَ ٱلرَّـٰكِعِينَ</div>
+                <div class="translation">43. Dan laksanakanlah salat, tunaikanlah zakat, dan rukuklah bersama orang-orang yang rukuk.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٤٤. أَتَأْمُرُونَ ٱلنَّاسَ بِٱلْبِرِّ وَتَنسَوْنَ أَنفُسَكُمْ وَأَنتُمْ تَتْلُونَ ٱلْكِتَـٰبَۚ أَفَلَا تَعْقِلُونَ</div>
+                <div class="translation">44. Mengapa kamu menyuruh orang lain (mengerjakan) kebajikan, sedang kamu melupakan dirimu sendiri, padahal kamu membaca Kitab (Taurat)? Tidakkah kamu berpikir?</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٤٥. وَٱسْتَعِينُوا۟ بِٱلصَّبْرِ وَٱلصَّلَوٰةِۚ وَإِنَّهَا لَكَبِيرَةٌ إِلَّا عَلَى ٱلْخَـٰشِعِينَ</div>
+                <div class="translation">45. Jadikanlah sabar dan salat sebagai penolongmu. Dan sesungguhnya yang demikian itu sungguh berat, kecuali bagi orang-orang yang khusyuk,</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٤٦. ٱلَّذِينَ يَظُنُّونَ أَنَّهُم مُّلَـٰقُوا۟ رَبِّهِمْ وَأَنَّهُمْ إِلَيْهِ رَـٰجِعُونَ</div>
+                <div class="translation">46. (yaitu) orang-orang yang meyakini bahwa mereka akan menemui Tuhannya dan bahwa mereka akan kembali kepada-Nya.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٤٧. يَـٰبَنِىٓ إِسْرَٰٓءِيلَ ٱذْكُرُوا۟ نِعْمَتِىَ ٱلَّتِىٓ أَنْعَمْتُ عَلَيْكُمْ وَأَنِّى فَضَّلْتُكُمْ عَلَى ٱلْعَـٰلَمِينَ</div>
+                <div class="translation">47. Wahai Bani Israil! Ingatlah nikmat-Ku yang telah Aku anugerahkan kepadamu dan bahwa Aku telah melebihkan kamu atas segala umat (pada masa itu).</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٤٨. وَٱتَّقُوا۟ يَوْمًۭا لَّا تَجْزِى نَفْسٌ عَن نَّفْسٍۭ شَيْـًۭٔا وَلَا يُقْبَلُ مِنْهَا شَفَـٰعَةٌۭ وَلَا يُؤْخَذُ مِنْهَا عَدْلٌۭ وَلَا هُمْ يُنصَرُونَ</div>
+                <div class="translation">48. Dan takutlah kamu pada suatu hari ketika seseorang tidak dapat menggantikan orang lain sedikit pun, dan tidak diterima tebusan darinya, dan tidak bermanfaat syafaat baginya, dan mereka tidak akan ditolong.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٤٩. وَإِذْ نَجَّيْنَـٰكُم مِّنْ ءَالِ فِرْعَوْنَ يَسُومُونَكُمْ سُوٓءَ ٱلْعَذَابِ يُذَبِّحُونَ أَبْنَآءَكُمْ وَيَسْتَحْيُونَ نِسَآءَكُمْۚ وَفِى ذَٰلِكُم بَلَآءٌۭ مِّن رَّبِّكُمْ عَظِيمٌۭ</div>
+                <div class="translation">49. Dan (ingatlah) ketika Kami menyelamatkan kamu dari (Fir’aun) dan pengikut-pengikutnya. Mereka menimpakan siksaan yang sangat berat kepadamu; mereka menyembelih anak-anak lelakimu dan membiarkan hidup anak-anak perempuanmu. Dan pada yang demikian itu terdapat cobaan yang besar dari Tuhanmu.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٥٠. وَإِذْ فَرَقْنَا بِكُمُ ٱلْبَحْرَ فَأَنجَيْنَـٰكُمْ وَأَغْرَقْنَآ ءَالَ فِرْعَوْنَ وَأَنتُمْ تَنظُرُونَ</div>
+                <div class="translation">50. Dan (ingatlah) ketika Kami membelah laut untukmu, lalu Kami menyelamatkan kamu dan Kami tenggelamkan (Fir’aun) dan pengikut-pengikutnya, sedangkan kamu menyaksikan.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٥١. وَإِذْ وَٰعَدْنَا مُوسَىٰٓ أَرْبَعِينَ لَيْلَةًۭ ثُمَّ ٱتَّخَذْتُمُ ٱلْعِجْلَ مِنۢ بَعْدِهِۦ وَأَنتُمْ ظَـٰلِمُونَ</div>
+                <div class="translation">51. Dan (ingatlah) ketika Kami menjanjikan kepada Musa (untuk memberikan Taurat) selama empat puluh malam, lalu kamu (Bani Israil) menjadikan anak sapi (sebagai sembahan) setelah itu, dan kamu adalah orang-orang yang zalim.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٥٢. ثُمَّ عَفَوْنَا عَنكُم مِّنۢ بَعْدِ ذَٰلِكَ لَعَلَّكُمْ تَشْكُرُونَ</div>
+                <div class="translation">52. Kemudian Kami memaafkan kamu setelah itu, agar kamu bersyukur.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٥٣. وَإِذْ ءَاتَيْنَا مُوسَى ٱلْكِتَـٰبَ وَٱلْفُرْقَانَ لَعَلَّكُمْ تَهْتَدُونَ</div>
+                <div class="translation">53. Dan (ingatlah) ketika Kami memberikan kepada Musa Kitab (Taurat) dan Furqan (pembeda antara yang benar dan yang salah), agar kamu mendapat petunjuk.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٥٤. وَإِذْ قَالَ مُوسَىٰ لِقَوْمِهِۦ يَـٰقَوْمِ إِنَّكُمْ ظَلَمْتُمْ أَنفُسَكُم بِٱتِّخَاذِكُمُ ٱلْعِجْلَ فَتُوبُوٓا۟ إِلَىٰ بَارِئِكُمْ فَٱقْتُلُوٓا۟ أَنفُسَكُمْۖ ذَٰلِكُمْ خَيْرٌۭ لَّكُمْ عِندَ بَارِئِكُمْ فَتَابَ عَلَيْكُمْۚ إِنَّهُۥ هُوَ ٱلتَّوَّابُ ٱلرَّحِيمُ</div>
+                <div class="translation">54. Dan (ingatlah) ketika Musa berkata kepada kaumnya, “Wahai kaumku! Sesungguhnya kamu telah menzalimi dirimu sendiri karena menjadikan anak sapi (sebagai sembahan), maka bertobatlah kepada Penciptamu dan bunuhlah dirimu. Itu lebih baik bagimu di sisi Penciptamu.” Maka Dia menerima tobatmu. Sungguh, Dialah Yang Maha Penerima Tobat, Maha Penyayang.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٥٥. وَإِذْ قُلْتُمْ يَـٰمُوسَىٰ لَن نُّؤْمِنَ لَكَ حَتَّىٰ نَرَى ٱللَّهَ جَهْرَةًۭ فَأَخَذَتْكُمُ ٱلصَّـٰعِقَةُ وَأَنتُمْ تَنظُرُونَ</div>
+                <div class="translation">55. Dan (ingatlah) ketika kamu berkata, “Wahai Musa! Kami tidak akan beriman kepadamu sebelum kami melihat Allah dengan jelas,” maka halilintar menyambar kamu, sedang kamu menyaksikan.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٥٦. ثُمَّ بَعَثْنَـٰكُم مِّنۢ بَعْدِ مَوْتِكُمْ لَعَلَّكُمْ تَشْكُرُونَ</div>
+                <div class="translation">56. Kemudian Kami membangkitkan kamu setelah kamu mati, agar kamu bersyukur.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٥٧. وَظَلَّلْنَا عَلَيْكُمُ ٱلْغَمَامَ وَأَنزَلْنَا عَلَيْكُمُ ٱلْمَنَّ وَٱلسَّلْوَىٰۖ كُلُوا۟ مِن طَيِّبَـٰتِ مَا رَزَقْنَـٰكُمْۚ وَمَا ظَلَمُونَا وَلَـٰكِن كَانُوٓا۟ أَنفُسَهُمْ يَظْلِمُونَ</div>
+                <div class="translation">57. Dan Kami menaungi kamu dengan awan, dan Kami turunkan kepadamu manna dan salwa, (seraya Kami berfirman), “Makanlah dari rezeki yang baik-baik yang telah Kami berikan kepadamu.” Mereka tidak menzalimi Kami, tetapi merekalah yang menzalimi diri mereka sendiri.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٥٨. وَإِذْ قُلْنَا ٱدْخُلُوا۟ هَـٰذِهِ ٱلْقَرْيَةَ فَكُلُوا۟ مِنْهَا حَيْثُ شِئْتُمْ رَغَدًۭا وَٱدْخُلُوا۟ ٱلْبَابَ سُجَّدًۭا وَقُولُوا۟ حِطَّةٌۭ نَّغْفِرْ لَكُمْ خَطَـٰيَـٰكُمْۚ وَسَنَزِيدُ ٱلْمُحْسِنِينَ</div>
+                <div class="translation">58. Dan (ingatlah) ketika Kami berfirman, “Masuklah kamu ke negeri ini (Baitulmaqdis), dan makanlah dengan nikmat (berbagai makanan) di mana saja yang kamu sukai. Masuklah ke pintu gerbangnya dengan bersujud, dan katakanlah, ‘Bebaskanlah kami dari dosa,’ niscaya Kami ampuni kesalahan-kesalahanmu, dan akan Kami tambahkan (pahala) kepada orang-orang yang berbuat kebaikan.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٥٩. فَبَدَّلَ ٱلَّذِينَ ظَلَمُوا۟ قَوْلًا غَيْرَ ٱلَّذِى قِيلَ لَهُمْ فَأَنزَلْنَا عَلَى ٱلَّذِينَ ظَلَمُوا۟ رِجْزًۭا مِّنَ ٱلسَّمَآءِ بِمَا كَانُوا۟ يَفْسُقُونَ</div>
+                <div class="translation">59. Lalu orang-orang yang zalim mengganti (perintah) dengan (perkataan) yang tidak diperintahkan kepada mereka, sehingga Kami turunkan azab dari langit kepada orang-orang yang zalim itu, karena mereka berbuat fasik.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٦٠. وَإِذِ ٱسْتَسْقَىٰ مُوسَىٰ لِقَوْمِهِۦ فَقُلْنَا ٱضْرِب بِّعَصَاكَ ٱلْحَجَرَۖ فَٱنفَجَرَتْ مِنْهُ ٱثْنَتَا عَشْرَةَ عَيْنًۭاۖ قَدْ عَلِمَ كُلُّ أُنَاسٍۢ مَّشْرَبَهُمْۖ كُلُوا۟ وَٱشْرَبُوا۟ مِن رِّزْقِ ٱللَّهِ وَلَا تَعْثَوْا۟ فِى ٱلْأَرْضِ مُفْسِدِينَ</div>
+                <div class="translation">60. Dan (ingatlah) ketika Musa memohon air untuk kaumnya, lalu Kami berfirman, “Pukullah batu itu dengan tongkatmu!” Lalu memancarlah dari batu itu dua belas mata air. Sungguh, setiap suku telah mengetahui tempat minumnya (masing-masing). (Kami berfirman), “Makan dan minumlah dari rezeki Allah, dan janganlah kamu berkeliaran di muka bumi dengan berbuat kerusakan.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٦١. وَإِذْ قُلْتُمْ يَـٰمُوسَىٰ لَن نَّصْبِرَ عَلَىٰ طَعَامٍۢ وَٰحِدٍۢ فَٱدْعُ لَنَا رَبَّكَ يُخْرِجْ لَنَا مِمَّا تُنبِتُ ٱلْأَرْضُ مِنۢ بَقْلِهَا وَقِثَّآئِهَا وَفُومِهَا وَعَدَسِهَا وَبَصَلِهَاۖ قَالَ أَتَسْتَبْدِلُونَ ٱلَّذِى هُوَ أَدْنَىٰ بِٱلَّذِى هُوَ خَيْرٌۭۚ ٱهْبِطُوا۟ مِصْرًۭا فَإِنَّ لَكُم مَّا سَأَلْتُمْۗ وَضُرِبَتْ عَلَيْهِمُ ٱلذِّلَّةُ وَٱلْمَسْكَنَةُ وَبَآءُو بِغَضَبٍۢ مِّنَ ٱللَّهِۗ ذَٰلِكَ بِأَنَّهُمْ كَانُوا۟ يَكْفُرُونَ بِـَٔايَـٰتِ ٱللَّهِ وَيَقْتُلُونَ ٱلنَّبِيِّـۧنَ بِغَيْرِ ٱلْحَقِّۗ ذَٰلِكَ بِمَا عَصَوا۟ وَّكَانُوا۟ يَعْتَدُونَ</div>
+                <div class="translation">61. Dan (ingatlah) ketika kamu berkata, “Wahai Musa! Kami tidak bisa sabar (tahan) dengan hanya satu jenis makanan saja. Mohonkanlah kepada Tuhanmu agar Dia memberikan kepada kami apa yang ditumbuhkan oleh bumi, yaitu sayur-mayur, mentimun, bawang putih, kacang adas, dan bawang merah.” Musa menjawab, “Apakah kamu ingin mengganti sesuatu yang lebih baik dengan sesuatu yang lebih rendah? Pergilah ke suatu kota, pasti kamu memperoleh apa yang kamu minta.” Lalu ditimpakanlah kepada mereka kenistaan dan kehinaan, serta mereka mendapat kemurkaan dari Allah. Hal itu karena mereka selalu mengingkari ayat-ayat Allah dan membunuh para nabi tanpa alasan yang benar. Hal itu karena mereka durhaka dan selalu melampaui batas.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٦٢. إِنَّ ٱلَّذِينَ ءَامَنُوا۟ وَٱلَّذِينَ هَادُوا۟ وَٱلنَّصَـٰرَىٰ وَٱلصَّـٰبِـِٔينَ مَنْ ءَامَنَ بِٱللَّهِ وَٱلْيَوْمِ ٱلْـَٔاخِرِ وَعَمِلَ صَـٰلِحًۭا فَلَهُمْ أَجْرُهُمْ عِندَ رَبِّهِمْ وَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ</div>
+                <div class="translation">62. Sesungguhnya orang-orang yang beriman, orang-orang Yahudi, orang-orang Nasrani, dan orang-orang Shabi'in, siapa saja di antara mereka yang benar-benar beriman kepada Allah dan hari akhir serta beramal saleh, mereka akan menerima pahala dari Tuhan mereka, tidak ada rasa takut pada mereka, dan mereka tidak bersedih hati.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٦٣. وَإِذْ أَخَذْنَا مِيثَـٰقَكُمْ وَرَفَعْنَا فَوْقَكُمُ ٱلطُّورَ خُذُوا۟ مَآ ءَاتَيْنَـٰكُم بِقُوَّةٍۢ وَٱذْكُرُوا۟ مَا فِيهِ لَعَلَّكُمْ تَتَّقُونَ</div>
+                <div class="translation">63. Dan (ingatlah) ketika Kami mengambil janji dari kamu dan Kami angkat (gunung) Thur di atasmu (seraya Kami berfirman), “Pegang teguhlah apa yang telah Kami berikan kepadamu dan ingatlah selalu apa yang ada di dalamnya, agar kamu bertakwa.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٦٤. ثُمَّ تَوَلَّيْتُم مِّنۢ بَعْدِ ذَٰلِكَۖ فَلَوْلَا فَضْلُ ٱللَّهِ عَلَيْكُمْ وَرَحْمَتُهُۥ لَكُنتُم مِّنَ ٱلْخَـٰسِرِينَ</div>
+                <div class="translation">64. Kemudian kamu berpaling setelah itu. Maka kalau bukan karena karunia Allah dan rahmat-Nya kepadamu, niscaya kamu termasuk orang-orang yang rugi.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٦٥. وَلَقَدْ عَلِمْتُمُ ٱلَّذِينَ ٱعْتَدَوْا۟ مِنكُمْ فِى ٱلسَّبْتِ فَقُلْنَا لَهُمْ كُونُوا۟ قِرَدَةً خَـٰسِـِٔينَ</div>
+                <div class="translation">65. Dan sungguh, kamu telah mengetahui orang-orang yang melampaui batas di antaramu pada hari Sabat, lalu Kami katakan kepada mereka, “Jadilah kamu kera yang hina!”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٦٦. فَجَعَلْنَـٰهَا نَكَـٰلًۭا لِّمَا بَيْنَ يَدَيْهَا وَمَا خَلْفَهَا وَمَوْعِظَةًۭ لِّلْمُتَّقِينَ</div>
+                <div class="translation">66. Maka Kami jadikan itu sebagai peringatan bagi orang-orang yang ada pada masa itu, dan bagi mereka yang datang kemudian, serta sebagai pelajaran bagi orang-orang yang bertakwa.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٦٧. وَإِذْ قَالَ مُوسَىٰ لِقَوْمِهِۦٓ إِنَّ ٱللَّهَ يَأْمُرُكُمْ أَن تَذْبَحُوا۟ بَقَرَةًۭۖ قَالُوٓا۟ أَتَتَّخِذُنَا هُزُوًاۭۖ قَالَ أَعُوذُ بِٱللَّهِ أَنْ أَكُونَ مِنَ ٱلْجَـٰهِلِينَ</div>
+                <div class="translation">67. Dan (ingatlah) ketika Musa berkata kepada kaumnya, “Sesungguhnya Allah menyuruh kamu menyembelih seekor sapi betina.” Mereka berkata, “Apakah kamu hendak menjadikan kami bahan ejekan?” Musa menjawab, “Aku berlindung kepada Allah agar tidak termasuk orang-orang yang bodoh.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٦٨. قَالُوا۟ ٱدْعُ لَنَا رَبَّكَ يُبَيِّن لَّنَا مَا هِىَۚ قَالَ إِنَّهُۥ يَقُولُ إِنَّهَا بَقَرَةٌۭ لَّا فَارِضٌۭ وَلَا بِكْرٌ عَوَانٌۭ بَيْنَ ذَٰلِكَۖ فَٱفْعَلُوا۟ مَا تُؤْمَرُونَ</div>
+                <div class="translation">68. Mereka berkata, “Mohonkanlah kepada Tuhanmu untuk kami, agar Dia menjelaskan kepada kami sapi betina seperti apa itu.” Musa menjawab, “Dia berfirman bahwa sapi betina itu bukan sapi tua dan bukan pula sapi muda, tetapi pertengahan antara itu; maka kerjakanlah apa yang diperintahkan kepadamu.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٦٩. قَالُوا۟ ٱدْعُ لَنَا رَبَّكَ يُبَيِّن لَّنَا مَا لَوْنُهَاۚ قَالَ إِنَّهُۥ يَقُولُ إِنَّهَا بَقَرَةٌۭ صَفْرَآءُ فَاقِعٌۭ لَّوْنُهَا تَسُرُّ ٱلنَّـٰظِرِينَ</div>
+                <div class="translation">69. Mereka berkata, “Mohonkanlah kepada Tuhanmu untuk kami, agar Dia menjelaskan kepada kami warnanya.” Musa menjawab, “Dia berfirman bahwa sapi betina itu adalah sapi yang kuning tua, yang warnanya menyenangkan orang-orang yang memandangnya.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٧٠. قَالُوا۟ ٱدْعُ لَنَا رَبَّكَ يُبَيِّن لَّنَا مَا هِىَ إِنَّ ٱلْبَقَرَ تَشَـٰبَهَ عَلَيْنَا وَإِنَّآ إِن شَآءَ ٱللَّهُ لَمُهْتَدُونَ</div>
+                <div class="translation">70. Mereka berkata, “Mohonkanlah kepada Tuhanmu untuk kami, agar Dia menjelaskan kepada kami seperti apa sapi itu; karena sesungguhnya sapi itu masih samar bagi kami dan sesungguhnya kami, jika Allah menghendaki, pasti akan mendapat petunjuk.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٧١. قَالَ إِنَّهُۥ يَقُولُ إِنَّهَا بَقَرَةٌۭ لَّا ذَلُولٌۭ تُثِيرُ ٱلْأَرْضَ وَلَا تَسْقِى ٱلْحَرْثَ مُسَلَّمَةٌۭ لَّا شِيَةَ فِيهَاۚ قَالُوا۟ ٱلْـَٔـٰنَ جِئْتَ بِٱلْحَقِّ فَذَبَحُوهَا وَمَا كَادُوا۟ يَفْعَلُونَ</div>
+                <div class="translation">71. Musa berkata, “Dia berfirman bahwa sapi betina itu adalah sapi yang tidak pernah dipakai untuk membajak tanah dan tidak pula untuk menyiram tanaman, sehat, tidak ada cacatnya.” Mereka berkata, “Sekarang barulah kamu menjelaskan hal yang sebenarnya.” Lalu mereka menyembelihnya, dan hampir saja mereka tidak melaksanakannya.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٧٢. وَإِذْ قَتَلْتُمْ نَفْسًۭا فَٱدَّٰرَْٰٔتُمْ فِيهَاۖ وَٱللَّهُ مُخْرِجٌۭ مَّا كُنتُمْ تَكْتُمُونَ</div>
+                <div class="translation">72. Dan (ingatlah) ketika kamu membunuh seseorang, lalu kamu saling tuduh-menuduh tentang itu. Tetapi Allah menyingkap apa yang kamu sembunyikan.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٧٣. فَقُلْنَا ٱضْرِبُوهُ بِبَعْضِهَاۚ كَذَٰلِكَ يُحْىِ ٱللَّهُ ٱلْمَوْتَىٰ وَيُرِيكُمْ ءَايَـٰتِهِۦ لَعَلَّكُمْ تَعْقِلُونَ</div>
+                <div class="translation">73. Lalu Kami berfirman, “Pukullah (mayat) itu dengan sebagian (anggota tubuh) sapi itu!” Demikianlah Allah menghidupkan kembali orang-orang yang telah mati dan Dia memperlihatkan tanda-tanda (kekuasaan-Nya) kepadamu agar kamu mengerti.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٧٤. ثُمَّ قَسَتْ قُلُوبُكُم مِّنۢ بَعْدِ ذَٰلِكَ فَهِىَ كَٱلْحِجَارَةِ أَوْ أَشَدُّ قَسْوَةًۭۚ وَإِنَّ مِنَ ٱلْحِجَارَةِ لَمَا يَتَفَجَّرُ مِنْهُ ٱلْأَنْهَـٰرُۚ وَإِنَّ مِنْهَا لَمَا يَشَّقَّقُ فَيَخْرُجُ مِنْهُ ٱلْمَآءُۚ وَإِنَّ مِنْهَا لَمَا يَهْبِطُ مِنْ خَشْيَةِ ٱللَّهِۗ وَمَا ٱللَّهُ بِغَـٰفِلٍ عَمَّا تَعْمَلُونَ</div>
+                <div class="translation">74. Kemudian setelah itu hatimu menjadi keras seperti batu, bahkan lebih keras lagi. Padahal di antara batu-batu itu ada yang memancarkan sungai-sungai, dan di antaranya ada yang terbelah lalu keluarlah mata air darinya, dan ada pula yang jatuh ke bawah karena takut kepada Allah. Dan Allah tidak lengah terhadap apa yang kamu kerjakan.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٧٥. أَفَتَطْمَعُونَ أَن يُؤْمِنُوا۟ لَكُمْ وَقَدْ كَانَ فَرِيقٌۭ مِّنْهُمْ يَسْمَعُونَ كَلَـٰمَ ٱللَّهِ ثُمَّ يُحَرِّفُونَهُۥ مِنۢ بَعْدِ مَا عَقَلُوهُ وَهُمْ يَعْلَمُونَ</div>
+                <div class="translation">75. Apakah kamu masih mengharapkan mereka akan percaya kepadamu, padahal segolongan dari mereka mendengar firman Allah, lalu mereka mengubahnya setelah memahaminya, sedang mereka mengetahui?</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٧٦. وَإِذَا لَقُوا۟ ٱلَّذِينَ ءَامَنُوا۟ قَالُوٓا۟ ءَامَنَّا وَإِذَا خَلَا بَعْضُهُمْ إِلَىٰ بَعْضٍۢ قَالُوٓا۟ أَتُحَدِّثُونَهُم بِمَا فَتَحَ ٱللَّهُ عَلَيْكُمْ لِيُحَآجُّوكُم بِهِۦ عِندَ رَبِّكُمْۚ أَفَلَا تَعْقِلُونَ</div>
+                <div class="translation">76. Dan apabila mereka berjumpa dengan orang-orang yang beriman, mereka berkata, “Kami telah beriman.” Tetapi apabila mereka kembali kepada sesama mereka, mereka berkata, “Apakah kamu menceritakan kepada mereka apa yang telah diterangkan Allah kepadamu, sehingga mereka dapat berargumentasi dengan itu di hadapan Tuhanmu? Tidakkah kamu mengerti?”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٧٧. أَوَلَا يَعْلَمُونَ أَنَّ ٱللَّهَ يَعْلَمُ مَا يُسِرُّونَ وَمَا يُعْلِنُونَ</div>
+                <div class="translation">77. Tidakkah mereka mengetahui bahwa Allah mengetahui apa yang mereka sembunyikan dan apa yang mereka nyatakan?</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٧٨. وَمِنْهُمْ أُمِّيُّونَ لَا يَعْلَمُونَ ٱلْكِتَـٰبَ إِلَّآ أَمَانِىَّ وَإِنْ هُمْ إِلَّا يَظُنُّونَ</div>
+                <div class="translation">78. Dan di antara mereka ada yang buta huruf, tidak mengetahui Kitab (Taurat), kecuali angan-angan belaka, dan mereka hanya menduga-duga.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٧٩. فَوَيْلٌۭ لِّلَّذِينَ يَكْتُبُونَ ٱلْكِتَـٰبَ بِأَيْدِيهِمْ ثُمَّ يَقُولُونَ هَـٰذَا مِنْ عِندِ ٱللَّهِ لِيَشْتَرُوا۟ بِهِۦ ثَمَنًۭا قَلِيلًۭاۖ فَوَيْلٌۭ لَّهُم مِّمَّا كَتَبَتْ أَيْدِيهِمْ وَوَيْلٌۭ لَّهُم مِّمَّا يَكْسِبُونَ</div>
+                <div class="translation">79. Maka celakalah orang-orang yang menulis Kitab dengan tangan mereka sendiri, lalu berkata, “Ini dari Allah,” untuk memperoleh keuntungan yang sedikit. Maka celakalah mereka akibat tulisan tangan mereka, dan celakalah mereka akibat apa yang mereka perbuat.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٨٠. وَقَالُوا۟ لَن تَمَسَّنَا ٱلنَّارُ إِلَّآ أَيَّامًۭا مَّعْدُودَةًۭۚ قُلْ أَتَّخَذْتُمْ عِندَ ٱللَّهِ عَهْدًۭا فَلَنْ يُخْلِفَ ٱللَّهُ عَهْدَهُۥٓۖ أَمْ تَقُولُونَ عَلَى ٱللَّهِ مَا لَا تَعْلَمُونَ</div>
+                <div class="translation">80. Dan mereka berkata, “Neraka tidak akan menyentuh kami kecuali beberapa hari saja.” Katakanlah, “Sudahkah kamu menerima janji dari Allah sehingga Allah tidak akan menyalahi janji-Nya? Ataukah kamu hanya mengatakan tentang Allah sesuatu yang tidak kamu ketahui?”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٨١. بَلَىٰ مَنْ كَسَبَ سَيِّئَةًۭ وَأَحَـٰطَتْ بِهِۦ خَطِيٓـَٔتُهُۥ فَأُو۟لَـٰٓئِكَ أَصْحَـٰبُ ٱلنَّارِۖ هُمْ فِيهَا خَـٰلِدُونَ</div>
+                <div class="translation">81. Tidak demikian, barang siapa berbuat dosa dan dosanya telah meliputi dirinya, maka mereka itu penghuni neraka; mereka kekal di dalamnya.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٨٢. وَٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّـٰلِحَـٰتِ أُو۟لَـٰٓئِكَ أَصْحَـٰبُ ٱلْجَنَّةِۖ هُمْ فِيهَا خَـٰلِدُونَ</div>
+                <div class="translation">82. Tetapi orang-orang yang beriman dan mengerjakan kebajikan, mereka itu penghuni surga; mereka kekal di dalamnya.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٨٣. وَإِذْ أَخَذْنَا مِيثَـٰقَ بَنِىٓ إِسْرَٰٓءِيلَ لَا تَعْبُدُونَ إِلَّا ٱللَّهَ وَبِٱلْوَٰلِدَيْنِ إِحْسَـٰنًۭا وَذِى ٱلْقُرْبَىٰ وَٱلْيَتَـٰمَىٰ وَٱلْمَسَـٰكِينِ وَقُولُوا۟ لِلنَّاسِ حُسْنًۭا وَأَقِيمُوا۟ ٱلصَّلَوٰةَ وَءَاتُوا۟ ٱلزَّكَوٰةَ ثُمَّ تَوَلَّيْتُمْ إِلَّا قَلِيلًۭا مِّنكُمْ وَأَنتُم مُّعْرِضُونَ</div>
+                <div class="translation">83. Dan (ingatlah) ketika Kami mengambil perjanjian dari Bani Israil, “Janganlah kamu menyembah selain Allah, dan berbuat baiklah kepada kedua orang tua, kerabat, anak-anak yatim, dan orang-orang miskin. Dan bertuturlah yang baik kepada manusia, laksanakanlah salat dan tunaikanlah zakat.” Tetapi kemudian kamu berpaling, kecuali sebagian kecil dari kamu, dan kamu masih menjadi pembangkang.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٨٤. وَإِذْ أَخَذْنَا مِيثَـٰقَكُمْ لَا تَسْفِكُونَ دِمَآءَكُمْ وَلَا تُخْرِجُونَ أَنفُسَكُم مِّن دِيَـٰرِكُمْ ثُمَّ أَقْرَرْتُمْ وَأَنتُمْ تَشْهَدُونَ</div>
+                <div class="translation">84. Dan (ingatlah) ketika Kami mengambil perjanjianmu, “Janganlah kamu menumpahkan darahmu (membunuh sesama), dan janganlah kamu mengusir dirimu sendiri dari negerimu.” Kemudian kamu berjanji (akan menepatinya) sedang kamu mempersaksikannya.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٨٥. ثُمَّ أَنتُمْ هَـٰٓؤُلَآءِ تَقْتُلُونَ أَنفُسَكُمْ وَتُخْرِجُونَ فَرِيقًۭا مِّنكُم مِّن دِيَـٰرِهِمْ تَظَـٰهَرُونَ عَلَيْهِم بِٱلْإِثْمِ وَٱلْعُدْوَٰنِ وَإِن يَأْتُوكُمْ أُسَـٰرَىٰ تُفَـٰدُوهُمْ وَهُوَ مُحَرَّمٌ عَلَيْكُمْ إِخْرَاجُهُمْۚ أَفَتُؤْمِنُونَ بِبَعْضِ ٱلْكِتَـٰبِ وَتَكْفُرُونَ بِبَعْضٍۭۚ فَمَا جَزَآءُ مَن يَفْعَلُ ذَٰلِكَ مِنكُمْ إِلَّا خِزْىٌۭ فِى ٱلْحَيَوٰةِ ٱلدُّنْيَاۖ وَيَوْمَ ٱلْقِيَـٰمَةِ يُرَدُّونَ إِلَىٰٓ أَشَدِّ ٱلْعَذَابِۗ وَمَا ٱللَّهُ بِغَـٰفِلٍ عَمَّا تَعْمَلُونَ</div>
+                <div class="translation">85. Kemudian kamu ini (Bani Israil) membunuh sesamamu dan mengusir segolongan dari kamu dari kampung halaman mereka, saling bantu-membantu dalam perbuatan dosa dan permusuhan. Tetapi apabila mereka datang kepadamu sebagai tawanan, kamu tebus mereka, padahal mengusir mereka itu terlarang bagimu. Apakah kamu beriman kepada sebagian isi Kitab dan ingkar terhadap sebagian yang lain? Maka tidak ada balasan bagi orang yang berbuat demikian di antaramu, selain kenistaan dalam kehidupan dunia, dan pada hari kiamat mereka dikembalikan kepada azab yang sangat berat. Allah tidak lengah terhadap apa yang kamu perbuat.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٨٦. أُو۟لَـٰٓئِكَ ٱلَّذِينَ ٱشْتَرَوُا۟ ٱلْحَيَوٰةَ ٱلدُّنْيَا بِٱلْـَٔاخِرَةِۖ فَلَا يُخَفَّفُ عَنْهُمُ ٱلْعَذَابُ وَلَا هُمْ يُنصَرُونَ</div>
+                <div class="translation">86. Itulah orang-orang yang membeli kehidupan dunia dengan (kehidupan) akhirat, maka tidak akan diringankan azabnya dan mereka tidak akan ditolong.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٨٧. وَلَقَدْ ءَاتَيْنَا مُوسَى ٱلْكِتَـٰبَ وَقَفَّيْنَا مِنۢ بَعْدِهِۦ بِٱلرُّسُلِۖ وَءَاتَيْنَا عِيسَى ٱبْنَ مَرْيَمَ ٱلْبَيِّنَـٰتِ وَأَيَّدْنَـٰهُ بِرُوحِ ٱلْقُدُسِۗ أَفَكُلَّمَا جَآءَكُمْ رَسُولٌۭ بِمَا لَا تَهْوَىٰٓ أَنفُسُكُمُ ٱسْتَكْبَرْتُمْ فَفَرِيقًۭا كَذَّبْتُمْ وَفَرِيقًۭا تَقْتُلُونَ</div>
+                <div class="translation">87. Dan sungguh, Kami telah memberikan Kitab kepada Musa, kemudian Kami susulkan setelahnya beberapa rasul, dan Kami berikan kepada Isa putra Maryam bukti-bukti kebenaran dan Kami perkuat dia dengan Ruhul Qudus. Apakah setiap datang kepadamu seorang rasul dengan membawa sesuatu (ajaran) yang tidak sesuai dengan keinginanmu, kamu menyombongkan diri; lalu beberapa orang (di antara mereka) kamu dustakan, dan beberapa orang (yang lain) kamu bunuh?</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٨٨. وَقَالُوا۟ قُلُوبُنَا غُلْفُۢۚ بَل لَّعَنَهُمُ ٱللَّهُ بِكُفْرِهِمْ فَقَلِيلًۭا مَّا يُؤْمِنُونَ</div>
+                <div class="translation">88. Dan mereka berkata, “Hati kami tertutup.” Tetapi sebenarnya Allah telah melaknat mereka karena keingkaran mereka; maka sedikit sekali mereka yang beriman.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٨٩. وَلَمَّا جَآءَهُمُ كِتَـٰبٌۭ مِّنْ عِندِ ٱللَّهِ مُصَدِّقٌۭ لِّمَا مَعَهُمْ وَكَانُوا۟ مِن قَبْلُ يَسْتَفْتِحُونَ عَلَى ٱلَّذِينَ كَفَرُوا۟ فَلَمَّا جَآءَهُم مَّا عَرَفُوا۟ كَفَرُوا۟ بِهِۦۚ فَلَعْنَةُ ٱللَّهِ عَلَى ٱلْكَـٰفِرِينَ</div>
+                <div class="translation">89. Dan ketika datang kepada mereka Kitab (Al-Qur’an) dari Allah yang membenarkan apa yang ada pada mereka - padahal sebelumnya mereka biasa memohon (kedatangan Nabi) untuk mendapat kemenangan atas orang-orang kafir - tetapi ketika apa yang telah mereka ketahui itu datang kepada mereka, mereka ingkar kepadanya. Maka laknat Allah-lah atas orang-orang yang ingkar itu.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٩٠. بِئْسَمَا ٱشْتَرَوْا۟ بِهِۦٓ أَنفُسَهُمْ أَن يَكْفُرُوا۟ بِمَآ أَنزَلَ ٱللَّهُ بَغْيًۭا أَن يُنَزِّلَ ٱللَّهُ مِن فَضْلِهِۦ عَلَىٰ مَن يَشَآءُ مِنْ عِبَادِهِۦۖ فَبَآءُو بِغَضَبٍ عَلَىٰ غَضَبٍۢۚ وَلِلْكَـٰفِرِينَ عَذَابٌۭ مُّهِينٌ</div>
+                <div class="translation">90. Alangkah buruknya apa yang mereka perjualbelikan dengan diri mereka sendiri, yaitu mengingkari apa yang telah diturunkan Allah, karena dengki bahwa Allah menurunkan karunia-Nya kepada siapa yang Dia kehendaki di antara hamba-hamba-Nya. Karena itu mereka kembali dengan membawa kemurkaan demi kemurkaan. Dan orang-orang kafir akan mendapat azab yang menghinakan.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٩١. وَإِذَا قِيلَ لَهُمْ ءَامِنُوا۟ بِمَآ أَنزَلَ ٱللَّهُ قَالُوا۟ نُؤْمِنُ بِمَآ أُنزِلَ عَلَيْنَا وَيَكْفُرُونَ بِمَا وَرَآءَهُۥ وَهُوَ ٱلْحَقُّ مُصَدِّقًۭا لِّمَا مَعَهُمْۗ قُلْ فَلِمَ تَقْتُلُونَ أَنۢبِيَآءَ ٱللَّهِ مِن قَبْلُ إِن كُنتُم مُّؤْمِنِينَ</div>
+                <div class="translation">91. Dan apabila dikatakan kepada mereka, “Berimanlah kepada apa yang diturunkan Allah,” mereka berkata, “Kami hanya beriman kepada apa yang diturunkan kepada kami.” Dan mereka mengingkari apa yang datang setelahnya, padahal itu adalah kebenaran yang membenarkan apa yang ada pada mereka. Katakanlah (Muhammad), “Mengapa kamu dahulu membunuh nabi-nabi Allah jika kamu orang-orang beriman?”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٩٢. وَلَقَدْ جَآءَكُم مُّوسَىٰ بِٱلْبَيِّنَـٰتِ ثُمَّ ٱتَّخَذْتُمُ ٱلْعِجْلَ مِنۢ بَعْدِهِۦ وَأَنتُمْ ظَـٰلِمُونَ</div>
+                <div class="translation">92. Dan sungguh, Musa telah datang kepadamu membawa bukti-bukti kebenaran, kemudian kamu jadikan anak sapi (sebagai sesembahan) setelah (kepergiannya), dan kamu adalah orang-orang yang zalim.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٩٣. وَإِذْ أَخَذْنَا مِيثَـٰقَكُمْ وَرَفَعْنَا فَوْقَكُمُ ٱلطُّورَ خُذُوا۟ مَآ ءَاتَيْنَـٰكُم بِقُوَّةٍۢ وَٱسْمَعُوا۟ۖ قَالُوا۟ سَمِعْنَا وَعَصَيْنَا وَأُشْرِبُوا۟ فِى قُلُوبِهِمُ ٱلْعِجْلَ بِكُفْرِهِمْۚ قُلْ بِئْسَمَا يَأْمُرُكُم بِهِۦٓ إِيمَـٰنُكُمْ إِن كُنتُم مُّؤْمِنِينَ</div>
+                <div class="translation">93. Dan (ingatlah) ketika Kami mengambil janji darimu dan Kami angkat (gunung) Tursina di atasmu (seraya Kami berfirman), “Peganglah teguh apa yang Kami berikan kepadamu dan dengarkanlah!” Mereka menjawab, “Kami mendengar tetapi kami tidak menaati.” Dan telah diresapkan ke dalam hati mereka (kecintaan kepada penyembahan) anak sapi itu karena kekafiran mereka. Katakanlah (Muhammad), “Sungguh, alangkah buruknya apa yang diperintahkan oleh keimananmu kepadamu jika kamu orang-orang yang beriman.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٩٤. قُلْ إِن كَانَتْ لَكُمُ ٱلدَّارُ ٱلْـَٔاخِرَةُ عِندَ ٱللَّهِ خَالِصَةًۭ مِّن دُونِ ٱلنَّاسِ فَتَمَنَّوُا۟ ٱلْمَوْتَ إِن كُنتُمْ صَـٰدِقِينَ</div>
+                <div class="translation">94. Katakanlah (Muhammad), “Jika kampung akhirat itu di sisi Allah khusus untukmu, bukan untuk orang lain, maka berharaplah untuk mati, jika kamu orang-orang yang benar.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٩٥. وَلَن يَتَمَنَّوْهُ أَبَدًۭا بِمَا قَدَّمَتْ أَيْدِيهِمْۗ وَٱللَّهُ عَلِيمٌۢ بِٱلظَّـٰلِمِينَ</div>
+                <div class="translation">95. Tetapi mereka tidak akan pernah mengharapkannya selama-lamanya karena dosa-dosa yang telah mereka perbuat dengan tangan mereka sendiri. Dan Allah Maha Mengetahui orang-orang yang zalim.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٩٦. وَلَتَجِدَنَّهُمْ أَحْرَصَ ٱلنَّاسِ عَلَىٰ حَيَوٰةٍۢ وَمِنَ ٱلَّذِينَ أَشْرَكُوا۟ۚ يَوَدُّ أَحَدُهُمْ لَوْ يُعَمَّرُ أَلْفَ سَنَةٍۢ وَمَا هُوَ بِمُزَحْزِحِهِۦ مِنَ ٱلْعَذَابِ أَن يُعَمَّرَۗ وَٱللَّهُ بَصِيرٌۢ بِمَا يَعْمَلُونَ</div>
+                <div class="translation">96. Dan sungguh, kamu dapati mereka (Bani Israil) orang-orang yang paling tamak kepada kehidupan (dunia), bahkan (lebih tamak) dari orang-orang musyrik. Masing-masing mereka ingin diberi umur seribu tahun, padahal umur panjang itu sekali-kali tidak akan menjauhkan mereka dari azab. Dan Allah Maha Melihat apa yang mereka kerjakan.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٩٧. قُلْ مَن كَانَ عَدُوًّۭا لِّجِبْرِيلَ فَإِنَّهُۥ نَزَّلَهُۥ عَلَىٰ قَلْبِكَ بِإِذْنِ ٱللَّهِ مُصَدِّقًۭا لِّمَا بَيْنَ يَدَيْهِۦ وَهُدًۭى وَبُشْرَىٰ لِلْمُؤْمِنِينَ</div>
+                <div class="translation">97. Katakanlah (Muhammad), “Barang siapa menjadi musuh Jibril, maka Jibril itu telah menurunkannya (Al-Qur'an) ke dalam hatimu dengan izin Allah; membenarkan kitab-kitab sebelumnya dan menjadi petunjuk serta berita gembira bagi orang-orang yang beriman.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٩٨. مَن كَانَ عَدُوًّۭا لِّلَّهِ وَمَلَـٰٓئِكَتِهِۦ وَرُسُلِهِۦ وَجِبْرِيلَ وَمِيكَـٰلَ فَإِنَّ ٱللَّهَ عَدُوٌّۭ لِّلْكَـٰفِرِينَ</div>
+                <div class="translation">98. Barang siapa menjadi musuh Allah, malaikat-malaikat-Nya, rasul-rasul-Nya, Jibril, dan Mikail, maka sungguh, Allah adalah musuh orang-orang kafir.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٩٩. وَلَقَدْ أَنزَلْنَآ إِلَيْكَ ءَايَـٰتٍۭ بَيِّنَـٰتٍۭ وَمَا يَكْفُرُ بِهَآ إِلَّا ٱلْفَـٰسِقُونَ</div>
+                <div class="translation">99. Dan sungguh, Kami telah menurunkan kepadamu ayat-ayat yang jelas; tetapi tidak ada yang ingkar kepadanya selain orang-orang fasik.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٠٠. أَوَكُلَّمَا عَـٰهَدُوا۟ عَهْدًۭا نَّبَذَهُۥ فَرِيقٌۭ مِّنْهُم بَلْ أَكْثَرُهُمْ لَا يُؤْمِنُونَ</div>
+                <div class="translation">100. Apakah setiap kali mereka mengikat janji, sekelompok dari mereka melemparkannya (mengingkarinya)? Bahkan sebagian besar dari mereka tidak beriman.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٠١. وَلَمَّا جَآءَهُمْ رَسُولٌۭ مِّنْ عِندِ ٱللَّهِ مُصَدِّقٌۭ لِّمَا مَعَهُمْ نَبَذَ فَرِيقٌۭ مِّنَ ٱلَّذِينَ أُوتُوا۟ ٱلْكِتَـٰبَ كِتَـٰبَ ٱللَّهِ وَرَآءَ ظُهُورِهِمْ كَأَنَّهُمْ لَا يَعْلَمُونَ</div>
+                <div class="translation">101. Dan ketika datang kepada mereka seorang rasul dari Allah yang membenarkan apa (kitab) yang ada pada mereka, sebagian dari orang-orang yang diberi Kitab melemparkan Kitab Allah ke belakang (punggung) mereka, seolah-olah mereka tidak mengetahui (bahwa itu adalah kitab Allah).</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٠٢. وَٱتَّبَعُوا۟ مَا تَتْلُوا۟ ٱلشَّيَـٰطِينُ عَلَىٰ مُلْكِ سُلَيْمَـٰنَۖ وَمَا كَفَرَ سُلَيْمَـٰنُ وَلَـٰكِنَّ ٱلشَّيَـٰطِينَ كَفَرُوا۟ يُعَلِّمُونَ ٱلنَّاسَ ٱلسِّحْرَ وَمَآ أُنزِلَ عَلَى ٱلْمَلَكَيْنِ بِبَابِلَ هَـٰرُوتَ وَمَـٰرُوتَۚ وَمَا يُعَلِّمَانِ مِنْ أَحَدٍ حَتَّىٰ يَقُولَآ إِنَّمَا نَحْنُ فِتْنَةٌۭ فَلَا تَكْفُرْۖ فَيَتَعَلَّمُونَ مِنْهُمَا مَا يُفَرِّقُونَ بِهِۦ بَيْنَ ٱلْمَرْءِ وَزَوْجِهِۦۚ وَمَا هُم بِضَآرِّينَ بِهِۦ مِنْ أَحَدٍ إِلَّا بِإِذْنِ ٱللَّهِۚ وَيَتَعَلَّمُونَ مَا يَضُرُّهُمْ وَلَا يَنفَعُهُمْۚ وَلَقَدْ عَلِمُوا۟ لَمَنِ ٱشْتَرَىٰهُ مَا لَهُۥ فِى ٱلْءَاخِرَةِ مِنْ خَلَـٰقٍۢۚ وَلَبِئْسَ مَا شَرَوْا۟ بِهِۦٓ أَنفُسَهُمْۚ لَوْ كَانُوا۟ يَعْلَمُونَ</div>
+                <div class="translation">102. Dan mereka mengikuti apa yang dibacakan oleh setan-setan pada masa kerajaan Sulaiman (dan mereka menuduh Sulaiman melakukan sihir), padahal Sulaiman tidak kafir (tidak mengerjakan sihir), tetapi setan-setan itulah yang kafir (mengerjakan sihir). Mereka mengajarkan sihir kepada manusia dan apa yang diturunkan kepada dua malaikat di negeri Babilonia, yaitu Harut dan Marut. Tetapi keduanya tidak mengajarkan (sesuatu) kepada siapa pun sebelum mengatakan, “Sesungguhnya kami hanya cobaan (bagimu), sebab itu janganlah kafir.” Namun mereka mempelajari dari keduanya (sihir) yang dengan (sihir itu) mereka dapat menceraikan antara seorang suami dan istrinya. Tetapi mereka tidak dapat mencelakakan seseorang dengan (sihir itu) kecuali dengan izin Allah. Mereka mempelajari sesuatu yang mencelakakan mereka dan tidak memberi manfaat. Sungguh, mereka telah meyakini bahwa barang siapa yang menukarnya (kitab Allah) dengan (sihir), maka tidak akan ada baginya keuntungan di akhirat. Dan sungguh, sangatlah buruk perbuatan mereka menjual dirinya dengan (sihir), sekiranya mereka mengetahui.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٠٣. وَلَوْ أَنَّهُمْ ءَامَنُوا۟ وَٱتَّقَوْا۟ لَمَثُوبَةٌۭ مِّنْ عِندِ ٱللَّهِ خَيْرٌۭۖ لَّوْ كَانُوا۟ يَعْلَمُونَ</div>
+                <div class="translation">103. Sekiranya mereka beriman dan bertakwa, pahala dari Allah pasti lebih baik, sekiranya mereka mengetahui.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٠٤. يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ لَا تَقُولُوا۟ رَٰعِنَا وَقُولُوا۟ ٱنظُرْنَا وَٱسْمَعُوا۟ۗ وَلِلْكَـٰفِرِينَ عَذَابٌ أَلِيمٌ</div>
+                <div class="translation">104. Wahai orang-orang yang beriman! Janganlah kamu katakan (kepada Nabi Muhammad), “Rā’inā,” tetapi katakanlah, “Unẓurnā,” dan dengarkanlah. Dan orang-orang kafir akan mendapat azab yang pedih.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٠٥. مَّا يَوَدُّ ٱلَّذِينَ كَفَرُوا۟ مِنْ أَهْلِ ٱلْكِتَـٰبِ وَلَا ٱلْمُشْرِكِينَ أَن يُنَزَّلَ عَلَيْكُم مِّنْ خَيْرٍۢ مِّن رَّبِّكُمْۗ وَٱللَّهُ يَخْتَصُّ بِرَحْمَتِهِۦ مَن يَشَآءُۚ وَٱللَّهُ ذُو ٱلْفَضْلِ ٱلْعَظِيمِ</div>
+                <div class="translation">105. Orang-orang yang kafir dari Ahli Kitab dan orang-orang musyrik tidak menginginkan diturunkan kepadamu suatu kebaikan dari Tuhanmu. Allah menentukan rahmat-Nya kepada siapa yang Dia kehendaki. Allah mempunyai karunia yang besar.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٠٦. مَا نَنسَخْ مِنْ ءَايَةٍ أَوْ نُنسِهَا نَأْتِ بِخَيْرٍۢ مِّنْهَآ أَوْ مِثْلِهَآۗ أَلَمْ تَعْلَمْ أَنَّ ٱللَّهَ عَلَىٰ كُلِّ شَىْءٍۢ قَدِيرٌ</div>
+                <div class="translation">106. Ayat mana saja yang Kami hapuskan atau Kami jadikan (manusia) lupa kepadanya, Kami datangkan yang lebih baik daripadanya atau yang sebanding dengannya. Tidakkah kamu mengetahui bahwa Allah Mahakuasa atas segala sesuatu?</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٠٧. أَلَمْ تَعْلَمْ أَنَّ ٱللَّهَ لَهُۥ مُلْكُ ٱلسَّمَـٰوَٰتِ وَٱلْأَرْضِۗ وَمَا لَكُم مِّن دُونِ ٱللَّهِ مِن وَلِىٍّۢ وَلَا نَصِيرٍ</div>
+                <div class="translation">107. Tidakkah kamu mengetahui bahwa kerajaan langit dan bumi adalah milik Allah? Dan tidak ada bagimu pelindung dan penolong selain Allah.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٠٨. أَمْ تُرِيدُونَ أَن تَسْـَٔلُوا۟ رَسُولَكُمْ كَمَا سُئِلَ مُوسَىٰ مِن قَبْلُۗ وَمَن يَتَبَدَّلِ ٱلْكُفْرَ بِٱلْإِيمَـٰنِ فَقَدْ ضَلَّ سَوَآءَ ٱلسَّبِيلِ</div>
+                <div class="translation">108. Ataukah kamu ingin meminta kepada Rasulmu seperti Musa dahulu pernah diminta? Barang siapa menukar keimanan dengan kekafiran, sungguh, dia telah tersesat dari jalan yang lurus.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٠٩. وَدَّ كَثِيرٌۭ مِّنْ أَهْلِ ٱلْكِتَـٰبِ لَوْ يَرُدُّونَكُم مِّنۢ بَعْدِ إِيمَـٰنِكُمْ كُفَّارًا حَسَدًا مِّنْ عِندِ أَنفُسِهِم مِّنۢ بَعْدِ مَا تَبَيَّنَ لَهُمُ ٱلْحَقُّۖ فَٱعْفُوا۟ وَٱصْفَحُوا۟ حَتَّىٰ يَأْتِىَ ٱللَّهُ بِأَمْرِهِۦٓۗ إِنَّ ٱللَّهَ عَلَىٰ كُلِّ شَىْءٍۢ قَدِيرٌ</div>
+                <div class="translation">109. Sebagian besar Ahli Kitab menginginkan agar mereka dapat mengembalikan kamu kepada kekafiran setelah kamu beriman, karena dengki dalam diri mereka, setelah kebenaran menjadi jelas bagi mereka. Maafkanlah dan berlapang dadalah, sampai Allah memberikan perintah-Nya. Sungguh, Allah Mahakuasa atas segala sesuatu.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١١٠. وَأَقِيمُوا۟ ٱلصَّلَوٰةَ وَءَاتُوا۟ ٱلزَّكَوٰةَۚ وَمَا تُقَدِّمُوا۟ لِأَنفُسِكُم مِّنْ خَيْرٍۢ تَجِدُوهُ عِندَ ٱللَّهِۗ إِنَّ ٱللَّهَ بِمَا تَعْمَلُونَ بَصِيرٌۭ</div>
+                <div class="translation">110. Dan laksanakanlah salat, tunaikanlah zakat, dan kebaikan apa saja yang kamu usahakan untuk dirimu, kamu akan mendapat (balasannya) di sisi Allah. Sungguh, Allah Maha Melihat apa yang kamu kerjakan.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١١١. وَقَالُوا۟ لَن يَدْخُلَ ٱلْجَنَّةَ إِلَّا مَن كَانَ هُودًا أَوْ نَصَـٰرَىٰۗ تِلْكَ أَمَانِيُّهُمْۗ قُلْ هَاتُوا۟ بُرْهَـٰنَكُمْ إِن كُنتُمْ صَـٰدِقِينَ</div>
+                <div class="translation">111. Dan mereka berkata, “Tidak akan masuk surga kecuali orang Yahudi atau Nasrani.” Itu hanyalah angan-angan mereka. Katakanlah, “Tunjukkan bukti kebenaranmu jika kamu adalah orang yang benar.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١١٢. بَلَىٰ مَنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ فَلَهُۥٓ أَجْرُهُۥ عِندَ رَبِّهِۦ وَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ</div>
+                <div class="translation">112. Tidak! Barang siapa berserah diri kepada Allah, sedang dia berbuat kebaikan, maka baginya pahala pada Tuhannya, dan tidak ada rasa takut pada mereka, dan mereka tidak bersedih hati.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١١٣. وَقَالَتِ ٱلْيَهُودُ لَيْسَتِ ٱلنَّصَـٰرَىٰ عَلَىٰ شَىْءٍۢ وَقَالَتِ ٱلنَّصَـٰرَىٰ لَيْسَتِ ٱلْيَهُودُ عَلَىٰ شَىْءٍۢ وَهُمْ يَتْلُونَ ٱلْكِتَـٰبَۗ كَذَٰلِكَ قَالَ ٱلَّذِينَ لَا يَعْلَمُونَ مِثْلَ قَوْلِهِمْۚ فَٱللَّهُ يَحْكُمُ بَيْنَهُمْ يَوْمَ ٱلْقِيَـٰمَةِ فِيمَا كَانُوا۟ فِيهِ يَخْتَلِفُونَ</div>
+                <div class="translation">113. Orang-orang Yahudi berkata, “Orang Nasrani itu tidak memiliki sesuatu (pegangan),” dan orang-orang Nasrani berkata, “Orang Yahudi itu tidak memiliki sesuatu (pegangan),” padahal mereka (sama-sama) membaca Kitab. Demikian pula orang-orang yang tidak mengetahui, mengatakan seperti ucapan mereka itu. Maka Allah akan mengadili mereka pada hari Kiamat terhadap apa yang mereka perselisihkan.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١١٤. وَمَنْ أَظْلَمُ مِمَّن مَّنَعَ مَسَـٰجِدَ ٱللَّهِ أَن يُذْكَرَ فِيهَا ٱسْمُهُۥ وَسَعَىٰ فِى خَرَابِهَآۚ أُو۟لَـٰٓئِكَ مَا كَانَ لَهُمْ أَن يَدْخُلُوهَآ إِلَّا خَآئِفِينَۚ لَهُمْ فِى ٱلدُّنْيَا خِزْىٌۭ وَلَهُمْ فِى ٱلْءَاخِرَةِ عَذَابٌ عَظِيمٌ</div>
+                <div class="translation">114. Dan siapakah yang lebih zalim daripada orang yang melarang nama Allah disebut dalam masjid-masjid-Nya, dan berusaha merobohkannya? Mereka itu tidak seharusnya masuk ke dalamnya kecuali dengan rasa takut. Mereka mendapat kehinaan di dunia dan di akhirat mendapat azab yang berat.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١١٥. وَلِلَّهِ ٱلْمَشْرِقُ وَٱلْمَغْرِبُۚ فَأَيْنَمَا تُوَلُّوا۟ فَثَمَّ وَجْهُ ٱللَّهِۚ إِنَّ ٱللَّهَ وَٰسِعٌ عَلِيمٌ</div>
+                <div class="translation">115. Dan milik Allah-lah timur dan barat. Ke mana pun kamu menghadap, di situlah wajah Allah. Sungguh, Allah Mahaluas, Maha Mengetahui.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١١٦. وَقَالُوا۟ ٱتَّخَذَ ٱللَّهُ وَلَدًۭاۗ سُبْحَـٰنَهُۥۖ بَل لَّهُۥ مَا فِى ٱلسَّمَـٰوَٰتِ وَٱلْأَرْضِۖ كُلٌّۭ لَّهُۥ قَـٰنِتُونَ</div>
+                <div class="translation">116. Mereka (orang-orang kafir) berkata, “Allah mempunyai anak.” Mahasuci Allah! Bahkan milik-Nya apa yang ada di langit dan di bumi; semuanya tunduk kepada-Nya.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١١٧. بَدِيعُ ٱلسَّمَـٰوَٰتِ وَٱلْأَرْضِۖ وَإِذَا قَضَىٰٓ أَمْرًۭا فَإِنَّمَا يَقُولُ لَهُۥ كُن فَيَكُونُ</div>
+                <div class="translation">117. (Allah) pencipta langit dan bumi. Apabila Dia hendak menetapkan sesuatu, Dia hanya berkata kepadanya, “Jadilah!” Maka jadilah sesuatu itu.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١١٨. وَقَالَ ٱلَّذِينَ لَا يَعْلَمُونَ لَوْلَا يُكَلِّمُنَا ٱللَّهُ أَوْ تَأْتِينَآ ءَايَةٌۭۗ كَذَٰلِكَ قَالَ ٱلَّذِينَ مِن قَبْلِهِم مِّثْلَ قَوْلِهِمْۘ تَشَـٰبَهَتْ قُلُوبُهُمْۗ قَدْ بَيَّنَّا ٱلْءَايَـٰتِ لِقَوْمٍۢ يُوقِنُونَ</div>
+                <div class="translation">118. Dan orang-orang yang tidak mengetahui berkata, “Mengapa Allah tidak berbicara dengan kami atau datang tanda (kekuasaan)-Nya kepada kami?” Demikian pula orang-orang sebelum mereka telah mengatakan seperti ucapan mereka. Hati mereka serupa. Sungguh, Kami telah menjelaskan tanda-tanda (kekuasaan Kami) kepada kaum yang yakin.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١١٩. إِنَّآ أَرْسَلْنَـٰكَ بِٱلْحَقِّ بَشِيرًۭا وَنَذِيرًۭاۖ وَلَا تُسْـَٔلُ عَنْ أَصْحَـٰبِ ٱلْجَحِيمِ</div>
+                <div class="translation">119. Sungguh, Kami telah mengutusmu dengan membawa kebenaran sebagai pembawa kabar gembira dan pemberi peringatan. Dan engkau tidak akan dimintai pertanggungjawaban tentang penghuni neraka.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٢٠. وَلَن تَرْضَىٰ عَنكَ ٱلْيَهُودُ وَلَا ٱلنَّصَـٰرَىٰ حَتَّىٰ تَتَّبِعَ مِلَّتَهُمْۗ قُلْ إِنَّ هُدَى ٱللَّهِ هُوَ ٱلْهُدَىٰۗ وَلَئِنِ ٱتَّبَعْتَ أَهْوَآءَهُم بَعْدَ ٱلَّذِى جَآءَكَ مِنَ ٱلْعِلْمِ مَا لَكَ مِنَ ٱللَّهِ مِن وَلِىٍّۢ وَلَا نَصِيرٍۢ</div>
+                <div class="translation">120. Orang-orang Yahudi dan Nasrani tidak akan rela kepadamu (Muhammad) sebelum engkau mengikuti agama mereka. Katakanlah, “Sesungguhnya petunjuk Allah itulah petunjuk (yang sebenarnya).” Dan jika engkau mengikuti keinginan mereka setelah ilmu (kebenaran) sampai kepadamu, tidak akan ada bagimu pelindung dan penolong dari Allah.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٢١. ٱلَّذِينَ ءَاتَيْنَـٰهُمُ ٱلْكِتَـٰبَ يَتْلُونَهُۥ حَقَّ تِلَاوَتِهِۦٓ أُو۟لَـٰٓئِكَ يُؤْمِنُونَ بِهِۦۗ وَمَن يَكْفُرْ بِهِۦ فَأُو۟لَـٰٓئِكَ هُمُ ٱلْخَـٰسِرُونَ</div>
+                <div class="translation">121. Orang-orang yang telah Kami beri Kitab, mereka membacanya dengan bacaan yang sebenarnya. Mereka itulah yang beriman kepadanya. Dan barang siapa ingkar kepadanya, mereka itulah orang-orang yang rugi.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٢٢. يَـٰبَنِىٓ إِسْرَٰٓءِيلَ ٱذْكُرُوا۟ نِعْمَتِىَ ٱلَّتِىٓ أَنْعَمْتُ عَلَيْكُمْ وَأَنِّى فَضَّلْتُكُمْ عَلَى ٱلْعَـٰلَمِينَ</div>
+                <div class="translation">122. Wahai Bani Israil! Ingatlah nikmat-Ku yang telah Aku berikan kepadamu, dan sesungguhnya Aku telah melebihkan kamu atas segala umat (pada masa itu).</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٢٣. وَٱتَّقُوا۟ يَوْمًۭا لَّا تَجْزِى نَفْسٌ عَن نَّفْسٍۢ شَيْـًۭٔا وَلَا يُقْبَلُ مِنْهَا شَفَـٰعَةٌۭ وَلَا يُؤْخَذُ مِنْهَا عَدْلٌۭ وَلَا هُمْ يُنصَرُونَ</div>
+                <div class="translation">123. Dan takutlah kamu pada suatu hari (ketika) seseorang tidak dapat menggantikan (dosanya) pada orang lain sedikit pun, tidak diterima tebusan darinya, tidak bermanfaat syafaat untuknya, dan mereka tidak akan ditolong.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٢٤. وَإِذِ ٱبْتَلَىٰٓ إِبْرَٰهِـۧمَ رَبُّهُۥ بِكَلِمَـٰتٍۢ فَأَتَمَّهُنَّۖ قَالَ إِنِّى جَاعِلُكَ لِلنَّاسِ إِمَامًۭاۖ قَالَ وَمِن ذُرِّيَّتِىۖ قَالَ لَا يَنَالُ عَهْدِى ٱلظَّـٰلِمِينَ</div>
+                <div class="translation">124. Dan (ingatlah) ketika Ibrahim diuji Tuhannya dengan beberapa perintah, lalu dia melaksanakannya. Allah berfirman, “Sesungguhnya Aku menjadikan engkau sebagai pemimpin bagi seluruh manusia.” Dia (Ibrahim) berkata, “Dan dari keturunanku?” Allah berfirman, “Janji-Ku tidak berlaku bagi orang-orang yang zalim.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٢٥. وَإِذْ جَعَلْنَا ٱلْبَيْتَ مَثَابَةًۭ لِّلنَّاسِ وَأَمْنًۭاۖ وَٱتَّخِذُوا۟ مِن مَّقَامِ إِبْرَٰهِـۧمَ مُصَلًّۭىۖ وَعَهِدْنَآ إِلَىٰٓ إِبْرَٰهِـۧمَ وَإِسْمَـٰعِيلَ أَنْ طَهِّرَا بَيْتِىَ لِلطَّآئِفِينَ وَٱلْعَـٰكِفِينَ وَٱلرُّكَّعِ ٱلسُّجُودِ</div>
+                <div class="translation">125. Dan (ingatlah), ketika Kami menjadikan rumah (Ka’bah) tempat berkumpul bagi manusia dan tempat yang aman. Dan jadikanlah Maqam Ibrahim itu tempat salat. Dan telah Kami perintahkan kepada Ibrahim dan Ismail, “Bersihkanlah rumah-Ku untuk orang-orang yang tawaf, orang-orang yang itikaf, orang-orang yang rukuk, dan orang-orang yang sujud!”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٢٦. وَإِذْ قَالَ إِبْرَٰهِـۧمُ رَبِّ ٱجْعَلْ هَـٰذَا بَلَدًا ءَامِنًۭا وَٱرْزُقْ أَهْلَهُۥ مِنَ ٱلثَّمَرَٰتِ مَنْ ءَامَنَ مِنْهُم بِٱللَّهِ وَٱلْيَوْمِ ٱلْءَاخِرِۖ قَالَ وَمَن كَفَرَ فَأُمَتِّعُهُۥ قَلِيلًۭا ثُمَّ أَضْطَرُّهُۥٓ إِلَىٰ عَذَابِ ٱلنَّارِۖ وَبِئْسَ ٱلْمَصِيرُ</div>
+                <div class="translation">126. Dan (ingatlah), ketika Ibrahim berdoa, “Ya Tuhanku, jadikanlah negeri ini (Mekah) negeri yang aman dan berilah rezeki dari buah-buahan kepada penduduknya yang beriman kepada Allah dan hari kemudian.” Allah berfirman, “Dan kepada orang yang kafir pun Aku beri kesenangan sementara, kemudian Aku paksa dia ke dalam azab neraka, dan itulah seburuk-buruk tempat kembali!”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٢٧. وَإِذْ يَرْفَعُ إِبْرَٰهِـۧمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَـٰعِيلُۚ رَبَّنَا تَقَبَّلْ مِنَّآۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ</div>
+                <div class="translation">127. Dan (ingatlah), ketika Ibrahim meninggikan dasar-dasar Baitullah bersama Ismail (seraya berdoa), “Ya Tuhan kami! Terimalah dari kami (amalan kami). Sungguh, Engkaulah Yang Maha Mendengar, Maha Mengetahui.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٢٨. رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآۖ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ</div>
+                <div class="translation">128. Ya Tuhan kami, jadikanlah kami berdua orang yang berserah diri kepada-Mu dan (jadikanlah) di antara anak cucu kami umat yang berserah diri kepada-Mu, dan tunjukkanlah kepada kami cara-cara melakukan ibadah kami, dan terimalah tobat kami. Sungguh, Engkaulah Yang Maha Penerima tobat, Maha Penyayang.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٢٩. رَبَّنَا وَٱبْعَثْ فِيهِمْ رَسُولًۭا مِّنْهُمْ يَتْلُوا۟ عَلَيْهِمْ ءَايَـٰتِكَ وَيُعَلِّمُهُمُ ٱلْكِتَـٰبَ وَٱلْحِكْمَةَ وَيُزَكِّيهِمْۖ إِنَّكَ أَنتَ ٱلْعَزِيزُ ٱلْحَكِيمُ</div>
+                <div class="translation">129. Ya Tuhan kami, utuslah untuk mereka seorang Rasul dari kalangan mereka yang akan membacakan kepada mereka ayat-ayat-Mu, mengajarkan kitab dan hikmah kepada mereka, dan menyucikan mereka. Sungguh, Engkaulah Yang Maha Perkasa, Maha Bijaksana.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٣٠. وَمَن يَرْغَبُ عَن مِّلَّةِ إِبْرَٰهِـۧمَ إِلَّا مَنْ سَفِهَ نَفْسَهُۥۚ وَلَقَدِ ٱصْطَفَيْنَـٰهُ فِى ٱلدُّنْيَا وَإِنَّهُۥ فِى ٱلْـَٔاخِرَةِ لَمِنَ ٱلصَّـٰلِحِينَ</div>
+                <div class="translation">130. Dan tidak ada yang benci kepada agama Ibrahim, kecuali orang yang memperbodoh dirinya sendiri. Sungguh, Kami telah memilihnya di dunia dan sesungguhnya di akhirat dia termasuk orang-orang yang saleh.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٣١. إِذْ قَالَ لَهُۥ رَبُّهُۥٓ أَسْلِمْۖ قَالَ أَسْلَمْتُ لِرَبِّ ٱلْعَـٰلَمِينَ</div>
+                <div class="translation">131. Ketika Tuhannya berfirman kepadanya, “Tunduk patuhlah!” Dia (Ibrahim) menjawab, “Aku tunduk patuh kepada Tuhan seluruh alam.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٣٢. وَوَصَّىٰ بِهَآ إِبْرَٰهِـۧمُ بَنِيهِ وَيَعْقُوبُ يَـٰبَنِىَّ إِنَّ ٱللَّهَ ٱصْطَفَىٰ لَكُمُ ٱلدِّينَ فَلَا تَمُوتُنَّ إِلَّا وَأَنتُم مُّسْلِمُونَ</div>
+                <div class="translation">132. Dan Ibrahim telah mewasiatkan ucapan itu kepada anak-anaknya, demikian pula Ya'qub. “Wahai anak-anakku! Sesungguhnya Allah telah memilih agama ini untukmu, maka janganlah kamu mati kecuali dalam keadaan Muslim.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٣٣. أَمْ كُنتُمْ شُهَدَآءَ إِذْ حَضَرَ يَعْقُوبَ ٱلْمَوْتُ إِذْ قَالَ لِبَنِيهِ مَا تَعْبُدُونَ مِنۢ بَعْدِىۖ قَالُوا۟ نَعْبُدُ إِلَـٰهَكَ وَإِلَـٰهَ ءَابَآئِكَ إِبْرَٰهِـۧمَ وَإِسْمَـٰعِيلَ وَإِسْحَـٰقَ إِلَـٰهًۭا وَٰحِدًۭا وَنَحْنُ لَهُۥ مُسْلِمُونَ</div>
+                <div class="translation">133. Apakah kamu menjadi saksi saat maut datang kepada Ya’qub, ketika dia berkata kepada anak-anaknya, “Apa yang kamu sembah sepeninggalku?” Mereka menjawab, “Kami akan menyembah Tuhanmu dan Tuhan nenek moyangmu, Ibrahim, Ismail, dan Ishaq, (yaitu) Tuhan Yang Maha Esa, dan kami hanya tunduk patuh kepada-Nya.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٣٤. تِلْكَ أُمَّةٌۭ قَدْ خَلَتْۖ لَهَا مَا كَسَبَتْ وَلَكُم مَّا كَسَبْتُمْۖ وَلَا تُسْـَٔلُونَ عَمَّا كَانُوا۟ يَعْمَلُونَ</div>
+                <div class="translation">134. Mereka itu adalah umat yang telah lalu; bagi mereka apa yang telah mereka kerjakan, dan bagimu apa yang telah kamu kerjakan. Dan kamu tidak akan dimintai pertanggungjawaban tentang apa yang telah mereka kerjakan.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٣٥. وَقَالُوا۟ كُونُوا۟ هُودًا أَوْ نَصَـٰرَىٰ تَهْتَدُوا۟ۗ قُلْ بَلْ مِلَّةَ إِبْرَٰهِـۧمَ حَنِيفًۭاۖ وَمَا كَانَ مِنَ ٱلْمُشْرِكِينَ</div>
+                <div class="translation">135. Mereka berkata, “Jadilah kamu (penganut) Yahudi atau Nasrani, niscaya kamu mendapat petunjuk.” Katakanlah, “Tidak, (kami mengikuti) agama Ibrahim yang lurus, dan dia tidak termasuk orang-orang musyrik.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٣٦. قُولُوٓا۟ ءَامَنَّا بِٱللَّهِ وَمَآ أُنزِلَ إِلَيْنَا وَمَآ أُنزِلَ إِلَىٰٓ إِبْرَٰهِـۧمَ وَإِسْمَـٰعِيلَ وَإِسْحَـٰقَ وَيَعْقُوبَ وَٱلْأَسْبَاطِ وَمَآ أُوتِىَ مُوسَىٰ وَعِيسَىٰ وَمَآ أُوتِىَ ٱلنَّبِيُّونَ مِن رَّبِّهِمْۚ لَا نُفَرِّقُ بَيْنَ أَحَدٍۢ مِّنْهُمْ وَنَحْنُ لَهُۥ مُسْلِمُونَ</div>
+                <div class="translation">136. Katakanlah (wahai orang-orang beriman), “Kami beriman kepada Allah dan kepada apa yang diturunkan kepada kami, kepada apa yang diturunkan kepada Ibrahim, Ismail, Ishaq, Ya’qub dan anak cucunya, kepada apa yang diberikan kepada Musa dan Isa, serta kepada apa yang diberikan kepada para nabi dari Tuhan mereka. Kami tidak membeda-bedakan seorang pun di antara mereka, dan kami hanya tunduk patuh kepada-Nya.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٣٧. فَإِنْ ءَامَنُوا۟ بِمِثْلِ مَآ ءَامَنتُم بِهِۦ فَقَدِ ٱهْتَدَوا۟ۖ وَإِن تَوَلَّوْا۟ فَإِنَّمَا هُمْ فِى شِقَاقٍۢۖ فَسَيَكْفِيكَهُمُ ٱللَّهُۚ وَهُوَ ٱلسَّمِيعُ ٱلْعَلِيمُ</div>
+                <div class="translation">137. Maka jika mereka beriman kepada apa yang kamu imani, sungguh, mereka telah mendapat petunjuk. Tetapi jika mereka berpaling, sesungguhnya mereka berada dalam permusuhan (dengan kamu). Maka Allah akan mencukupimu (menghadapi) mereka. Dan Dia Maha Mendengar, Maha Mengetahui.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٣٨. صِبْغَةَ ٱللَّهِۖ وَمَنْ أَحْسَنُ مِنَ ٱللَّهِ صِبْغَةًۭۖ وَنَحْنُ لَهُۥ عَـٰبِدُونَ</div>
+                <div class="translation">138. Celupan (agama) Allah. Dan siapakah yang lebih baik celupannya daripada Allah? Dan hanya kepada-Nya kami menyembah.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٣٩. قُلْ أَتُحَآجُّونَنَا فِى ٱللَّهِ وَهُوَ رَبُّنَا وَرَبُّكُمْ وَلَنَآ أَعْمَـٰلُنَا وَلَكُمْ أَعْمَـٰلُكُمْ وَنَحْنُ لَهُۥ مُخْلِصُونَ</div>
+                <div class="translation">139. Katakanlah (Muhammad), “Apakah kamu memperdebatkan kami tentang Allah, padahal Dia adalah Tuhan kami dan Tuhan kamu? Bagi kami (hasil) amalan kami, dan bagi kamu (hasil) amalan kamu. Dan hanya kepada-Nya kami mengikhlaskan hati.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٤٠. أَمْ تَقُولُونَ إِنَّ إِبْرَٰهِـۧمَ وَإِسْمَـٰعِيلَ وَإِسْحَـٰقَ وَيَعْقُوبَ وَٱلْأَسْبَاطَ كَانُوا۟ هُودًا أَوْ نَصَـٰرَىٰۗ قُلْ أَأَنتُمْ أَعْلَمُ أَمِ ٱللَّهُۗ وَمَنْ أَظْلَمُ مِمَّن كَتَمَ شَهَـٰدَةً عِندَهُۥ مِنَ ٱللَّهِۗ وَمَا ٱللَّهُ بِغَـٰفِلٍ عَمَّا تَعْمَلُونَ</div>
+                <div class="translation">140. Ataukah kamu (orang-orang Yahudi dan Nasrani) mengatakan bahwa Ibrahim, Ismail, Ishaq, Ya’qub, dan anak cucunya adalah penganut Yahudi atau Nasrani? Katakanlah, “Apakah kamu lebih mengetahui atau Allah? Dan siapakah yang lebih zalim daripada orang yang menyembunyikan kesaksian dari Allah yang ada padanya?” Dan Allah tidak lengah terhadap apa yang kamu kerjakan.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٤١. تِلْكَ أُمَّةٌۭ قَدْ خَلَتْۖ لَهَا مَا كَسَبَتْ وَلَكُم مَّا كَسَبْتُمْۖ وَلَا تُسْـَٔلُونَ عَمَّا كَانُوا۟ يَعْمَلُونَ</div>
+                <div class="translation">141. Mereka itu adalah umat yang telah lalu; bagi mereka apa yang telah mereka kerjakan, dan bagimu apa yang telah kamu kerjakan. Dan kamu tidak akan dimintai pertanggungjawaban tentang apa yang telah mereka kerjakan.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٤٢. سَيَقُولُ ٱلسُّفَهَآءُ مِنَ ٱلنَّاسِ مَا وَلَّىٰهُمْ عَن قِبْلَتِهِمُ ٱلَّتِى كَانُوا۟ عَلَيْهَاۚ قُل لِّلَّهِ ٱلْمَشْرِقُ وَٱلْمَغْرِبُۚ يَهْدِى مَن يَشَآءُ إِلَىٰ صِرَٰطٍۢ مُّسْتَقِيمٍ</div>
+                <div class="translation">142. Orang-orang yang kurang akalnya di antara manusia akan berkata, “Apakah yang memalingkan mereka (umat Islam) dari kiblat (Baitulmaqdis) yang dahulu mereka berkiblat kepadanya?” Katakanlah, “Milik Allah-lah timur dan barat; Dia memberi petunjuk kepada siapa yang Dia kehendaki ke jalan yang lurus.”</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٤٣. وَكَذَٰلِكَ جَعَلْنَـٰكُمْ أُمَّةًۭ وَسَطًۭا لِّتَكُونُوا۟ شُهَدَآءَ عَلَى ٱلنَّاسِ وَيَكُونَ ٱلرَّسُولُ عَلَيْكُمْ شَهِيدًۭاۗ وَمَا جَعَلْنَا ٱلْقِبْلَةَ ٱلَّتِى كُنتَ عَلَيْهَآ إِلَّا لِنَعْلَمَ مَن يَتَّبِعُ ٱلرَّسُولَ مِمَّن يَنقَلِبُ عَلَىٰ عَقِبَيْهِۗ وَإِن كَانَتْ لَكَبِيرَةً إِلَّا عَلَى ٱلَّذِينَ هَدَى ٱللَّهُۗ وَمَا كَانَ ٱللَّهُ لِيُضِيعَ إِيمَـٰنَكُمْۚ إِنَّ ٱللَّهَ بِٱلنَّاسِ لَرَءُوفٌۭ رَّحِيمٌ</div>
+                <div class="translation">143. Dan demikian (pula) Kami telah menjadikan kamu (umat Islam), umat yang adil dan pilihan agar kamu menjadi saksi atas (perbuatan) manusia dan agar Rasul (Muhammad) menjadi saksi atas (perbuatan) kamu. Kami tidak menetapkan kiblat yang menjadi kiblatmu (sekarang) melainkan agar Kami mengetahui siapa yang mengikuti Rasul dan siapa yang berbalik ke belakang. Dan sesungguhnya (pemindahan kiblat) itu terasa berat, kecuali bagi orang-orang yang telah diberi petunjuk oleh Allah. Dan Allah tidak akan menyia-nyiakan imanmu. Sungguh, Allah Maha Pengasih, Maha Penyayang kepada manusia.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٤٤. قَدْ نَرَىٰ تَقَلُّبَ وَجْهِكَ فِى ٱلسَّمَآءِۖ فَلَنُوَلِّيَنَّكَ قِبْلَةًۭ تَرْضَىٰهَاۚ فَوَلِّ وَجْهَكَ شَطْرَ ٱلْمَسْجِدِ ٱلْحَرَامِۚ وَحَيْثُ مَا كُنتُمْ فَوَلُّوا۟ وُجُوهَكُمْ شَطْرَهُۥۗ وَإِنَّ ٱلَّذِينَ أُوتُوا۟ ٱلْكِتَـٰبَ لَيَعْلَمُونَ أَنَّهُ ٱلْحَقُّ مِن رَّبِّهِمْۗ وَمَا ٱللَّهُ بِغَـٰفِلٍ عَمَّا يَعْمَلُونَ</div>
+                <div class="translation">144. Sungguh, Kami (sering) melihat wajahmu menengadah ke langit, maka sungguh Kami akan memalingkan kamu ke kiblat yang kamu sukai. Palingkanlah wajahmu ke arah Masjidilharam. Dan di mana saja kamu berada, palingkanlah wajahmu ke arahnya. Dan sesungguhnya orang-orang yang diberi Kitab (Taurat dan Injil) memang mengetahui, bahwa (pemindahan kiblat) itu adalah kebenaran dari Tuhan mereka; dan Allah sekali-kali tidak lengah terhadap apa yang mereka kerjakan.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٤٥. وَلَئِنْ أَتَيْتَ ٱلَّذِينَ أُوتُوا۟ ٱلْكِتَـٰبَ بِكُلِّ ءَايَةٍۢ مَّا تَبِعُوا۟ قِبْلَتَكَۖ وَمَآ أَنتَ بِتَابِعٍۢ قِبْلَتَهُمْ وَمَا بَعْضُهُم بِتَابِعٍۢ قِبْلَةَ بَعْضٍۢۗ وَلَئِنِ ٱتَّبَعْتَ أَهْوَآءَهُم مِّنۢ بَعْدِ مَا جَآءَكَ مِنَ ٱلْعِلْمِ إِنَّكَ إِذًۭا لَّمِنَ ٱلظَّـٰلِمِينَ</div>
+                <div class="translation">145. Dan sungguh jika kamu mendatangkan kepada orang-orang yang diberi Kitab (Taurat dan Injil) semua ayat (keterangan), mereka tidak akan mengikuti kiblatmu, dan kamu pun tidak akan mengikuti kiblat mereka. Dan sebagian mereka pun tidak akan mengikuti kiblat sebagian yang lain. Dan sungguh jika kamu mengikuti keinginan mereka setelah ilmu (kebenaran) sampai kepadamu, kamu pasti termasuk orang-orang zalim.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٤٦. ٱلَّذِينَ ءَاتَيْنَـٰهُمُ ٱلْكِتَـٰبَ يَعْرِفُونَهُۥ كَمَا يَعْرِفُونَ أَبْنَآءَهُمْۖ وَإِنَّ فَرِيقًۭا مِّنْهُمْ لَيَكْتُمُونَ ٱلْحَقَّ وَهُمْ يَعْلَمُونَ</div>
+                <div class="translation">146. Orang-orang yang telah Kami beri Kitab (Taurat dan Injil) mengenalnya (Muhammad) seperti mereka mengenal anak-anak mereka sendiri. Tetapi sebagian mereka menyembunyikan kebenaran, padahal mereka mengetahui.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٤٧. ٱلْحَقُّ مِن رَّبِّكَۖ فَلَا تَكُونَنَّ مِنَ ٱلْمُمْتَرِينَ</div>
+                <div class="translation">147. Kebenaran itu adalah dari Tuhanmu, sebab itu jangan sekali-kali kamu termasuk orang-orang yang ragu.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٤٨. وَلِكُلٍّۢ وِجْهَةٌ هُوَ مُوَلِّيهاۖ فَٱسْتَبِقُوا۟ ٱلْخَيْرَٰتِۚ أَيْنَ مَا تَكُونُوا۟ يَأْتِ بِكُمُ ٱللَّهُ جَمِيعًاۚ إِنَّ ٱللَّهَ عَلَىٰ كُلِّ شَىْءٍۢ قَدِيرٌۭ</div>
+                <div class="translation">148. Dan setiap umat memiliki kiblat yang ia menghadap kepadanya. Maka berlomba-lombalah dalam kebaikan. Di mana saja kamu berada, Allah akan mengumpulkan kamu semuanya. Sungguh, Allah Maha Kuasa atas segala sesuatu.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٤٩. وَمِنْ حَيْثُ خَرَجْتَ فَوَلِّ وَجْهَكَ شَطْرَ ٱلْمَسْجِدِ ٱلْحَرَامِۖ وَإِنَّهُۥ لَلْحَقُّ مِن رَّبِّكَۗ وَمَا ٱللَّهُ بِغَـٰفِلٍ عَمَّا تَعْمَلُونَ</div>
+                <div class="translation">149. Dan dari mana pun kamu keluar, hadapkanlah wajahmu ke arah Masjidilharam. Sungguh, itu adalah kebenaran dari Tuhanmu. Dan Allah tidak lengah terhadap apa yang kamu kerjakan.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٥٠. وَمِنْ حَيْثُ خَرَجْتَ فَوَلِّ وَجْهَكَ شَطْرَ ٱلْمَسْجِدِ ٱلْحَرَامِۚ وَحَيْثُ مَا كُنتُمْ فَوَلُّوا۟ وُجُوهَكُمْ شَطْرَهُۥ لِئَلَّا يَكُونَ لِلنَّاسِ عَلَيْكُمْ حُجَّةٌ إِلَّا ٱلَّذِينَ ظَلَمُوا۟ مِنْهُمْ فَلَا تَخْشَوْهُمْ وَٱخْشَوْنِى وَلِأُتِمَّ نِعْمَتِى عَلَيْكُمْ وَلَعَلَّكُمْ تَهْتَدُونَ</div>
+                <div class="translation">150. Dan dari mana pun kamu keluar, hadapkanlah wajahmu ke arah Masjidilharam, dan di mana saja kamu berada, palingkanlah wajahmu ke arahnya agar tidak ada alasan bagi manusia untuk menyalahkanmu, kecuali orang-orang yang zalim di antara mereka. Janganlah kamu takut kepada mereka, tetapi takutlah kepada-Ku. Dan agar Aku sempurnakan nikmat-Ku kepadamu dan agar kamu mendapat petunjuk.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٥١. كَمَآ أَرْسَلْنَا فِيكُمْ رَسُولًۭا مِّنكُمْ يَتْلُوا۟ عَلَيْكُمْ ءَايَـٰتِنَا وَيُزَكِّيكُمْ وَيُعَلِّمُكُمُ ٱلْكِتَـٰبَ وَٱلْحِكْمَةَ وَيُعَلِّمُكُم مَّا لَمْ تَكُونُوا۟ تَعْلَمُونَ</div>
+                <div class="translation">151. Sebagaimana (Kami telah menyempurnakan nikmat Kami kepadamu) Kami telah mengutus kepadamu seorang Rasul dari kalanganmu sendiri yang membacakan ayat-ayat Kami kepadamu, menyucikan kamu, dan mengajarkan kepadamu Kitab dan Hikmah (Sunnah), serta mengajarkan apa yang belum kamu ketahui.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٥٢. فَٱذْكُرُونِىٓ أَذْكُرْكُمْ وَٱشْكُرُوا۟ لِى وَلَا تَكْفُرُونِ</div>
+                <div class="translation">152. Maka ingatlah Aku, niscaya Aku akan ingat (pula) kepadamu. Bersyukurlah kepada-Ku, dan janganlah kamu ingkar kepada-Ku.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٥٣. يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱسْتَعِينُوا۟ بِٱلصَّبْرِ وَٱلصَّلَوٰةِۚ إِنَّ ٱللَّهَ مَعَ ٱلصَّـٰبِرِينَ</div>
+                <div class="translation">153. Wahai orang-orang yang beriman! Mohonlah pertolongan (kepada Allah) dengan sabar dan salat. Sungguh, Allah beserta orang-orang yang sabar.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٥٤. وَلَا تَقُولُوا۟ لِمَن يُقْتَلُ فِى سَبِيلِ ٱللَّهِ أَمْوَٰتٌۢۚ بَلْ أَحْيَآءٌۭ وَلَـٰكِن لَّا تَشْعُرُونَ</div>
+                <div class="translation">154. Dan janganlah kamu mengatakan terhadap orang-orang yang gugur di jalan Allah, (bahwa mereka) itu mati; sebenarnya mereka hidup, tetapi kamu tidak menyadarinya.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٥٥. وَلَنَبْلُوَنَّكُم بِشَىْءٍۢ مِّنَ ٱلْخَوْفِ وَٱلْجُوعِ وَنَقْصٍۢ مِّنَ ٱلْأَمْوَٰلِ وَٱلْأَنفُسِ وَٱلثَّمَرَٰتِۗ وَبَشِّرِ ٱلصَّـٰبِرِينَ</div>
+                <div class="translation">155. Dan sungguh, Kami akan menguji kamu dengan sedikit ketakutan, kelaparan, kekurangan harta, jiwa, dan buah-buahan. Dan sampaikanlah kabar gembira kepada orang-orang yang sabar.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٥٦. ٱلَّذِينَ إِذَآ أَصَٰبَتْهُم مُّصِيبَةٌۭ قَالُوٓا۟ إِنَّا لِلَّهِ وَإِنَّآ إِلَيْهِ رَٰجِعُونَ</div>
+                <div class="translation">156. (Yaitu) orang-orang yang apabila ditimpa musibah, mereka berkata, "Innā lillāhi wa innā ilaihi rāji‘ūn" (Sesungguhnya kami milik Allah dan kepada-Nyalah kami kembali).</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٥٧. أُو۟لَـٰٓئِكَ عَلَيْهِمْ صَلَوَٰتٌۭ مِّن رَّبِّهِمْ وَرَحْمَةٌۭۖ وَأُو۟لَـٰٓئِكَ هُمُ ٱلْمُهْتَدُونَ</div>
+                <div class="translation">157. Mereka itulah yang memperoleh ampunan dan rahmat dari Tuhannya, dan mereka itulah orang-orang yang mendapat petunjuk.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٥٨. إِنَّ ٱلصَّفَا وَٱلْمَرْوَةَ مِن شَعَآئِرِ ٱللَّهِۖ فَمَنْ حَجَّ ٱلْبَيْتَ أَوِ ٱعْتَمَرَ فَلَا جُنَاحَ عَلَيْهِ أَن يَطَّوَّفَ بِهِمَاۚ وَمَن تَطَوَّعَ خَيْرًۭا فَإِنَّ ٱللَّهَ شَاكِرٌ عَلِيمٌ</div>
+                <div class="translation">158. Sesungguhnya Safa dan Marwah adalah sebagian dari syiar Allah. Maka barang siapa melaksanakan haji ke Baitullah atau berumrah, tidak ada dosa baginya mengerjakan sa‘i di antara keduanya. Barang siapa dengan sukarela mengerjakan kebajikan, maka sesungguhnya Allah Maha Mensyukuri, Maha Mengetahui.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٥٩. إِنَّ ٱلَّذِينَ يَكْتُمُونَ مَآ أَنزَلْنَا مِنَ ٱلْبَيِّنَـٰتِ وَٱلْهُدَىٰ مِنۢ بَعْدِ مَا بَيَّنَّـٰهُ لِلنَّاسِ فِى ٱلْكِتَـٰبِۙ أُو۟لَـٰٓئِكَ يَلْعَنُهُمُ ٱللَّهُ وَيَلْعَنُهُمُ ٱللَّـٰعِنُونَ</div>
+                <div class="translation">159. Sesungguhnya orang-orang yang menyembunyikan apa yang telah Kami turunkan berupa keterangan-keterangan dan petunjuk, setelah Kami jelaskan kepada manusia dalam Kitab (Al-Qur'an), mereka itu dilaknat Allah dan dilaknat (pula) oleh mereka yang melaknat.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٦٠. إِلَّا ٱلَّذِينَ تَابُوا۟ وَأَصْلَحُوا۟ وَبَيَّنُوا۟ فَأُو۟لَـٰٓئِكَ أَتُوبُ عَلَيْهِمْۚ وَأَنَا ٱلتَّوَّابُ ٱلرَّحِيمُ</div>
+                <div class="translation">160. Kecuali mereka yang telah bertobat, memperbaiki diri, dan menjelaskan (kebenaran), maka terhadap mereka Aku menerima tobatnya, dan Akulah Yang Maha Penerima Tobat, Maha Penyayang.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٦١. إِنَّ ٱلَّذِينَ كَفَرُوا۟ وَمَاتُوا۟ وَهُمْ كُفَّارٌ أُو۟لَـٰٓئِكَ عَلَيْهِمْ لَعْنَةُ ٱللَّهِ وَٱلْمَلَـٰٓئِكَةِ وَٱلنَّاسِ أَجْمَعِينَ</div>
+                <div class="translation">161. Sesungguhnya orang-orang yang kafir dan mati dalam keadaan kafir, mereka itulah yang mendapat laknat Allah, para malaikat, dan manusia seluruhnya,</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٦٢. خَـٰلِدِينَ فِيهَا لَا يُخَفَّفُ عَنْهُمُ ٱلْعَذَابُ وَلَا هُمْ يُنظَرُونَ</div>
+                <div class="translation">162. Mereka kekal di dalamnya, tidak diringankan azabnya dan tidak pula mereka diberi penangguhan.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٦٣. وَإِلَـٰهُكُمْ إِلَـٰهٌۭ وَٟحِدٌۭ ۖ لَّآ إِلَـٰهَ إِلَّا هُوَ ٱلرَّحْمَـٰنُ ٱلرَّحِيمُ</div>
+                <div class="translation">163. Dan Tuhanmu adalah Tuhan Yang Maha Esa; tidak ada tuhan selain Dia, Yang Maha Pengasih, Maha Penyayang.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٦٤. إِنَّ فِى خَلْقِ ٱلسَّمَـٰوَٟتِ وَٱلْأَرْضِ وَٱخْتِلَـٰفِ ٱلَّيْلِ وَٱلنَّهَارِ وَٱلْفُلْكِ ٱلَّتِى تَجْرِى فِى ٱلْبَحْرِ بِمَا يَنفَعُ ٱلنَّاسَ وَمَآ أَنزَلَ ٱللَّهُ مِنَ ٱلسَّمَآءِ مِن مَّآءٍۢ فَأَحْيَا بِهِ ٱلْأَرْضَ بَعْدَ مَوْتِهَا وَبَثَّ فِيهَا مِن كُلِّ دَآبَّةٍۢ وَتَصْرِيفِ ٱلرِّيَـٰحِ وَٱلسَّحَابِ ٱلْمُسَخَّرِ بَيْنَ ٱلسَّمَآءِ وَٱلْأَرْضِ لَـَٔايَـٰتٍۢ لِّقَوْمٍۢ يَعْقِلُونَ</div>
+                <div class="translation">164. Sesungguhnya dalam penciptaan langit dan bumi, pergantian malam dan siang, kapal-kapal yang berlayar di laut membawa apa yang berguna bagi manusia, apa yang Allah turunkan dari langit berupa air, lalu dengan itu dihidupkan-Nya bumi setelah mati (kering)-nya, dan Dia sebarkan di dalamnya berbagai jenis hewan, dan pengisaran angin dan awan yang dikendalikan antara langit dan bumi, sungguh (terdapat) tanda-tanda (keesaan dan kebesaran Allah) bagi kaum yang berpikir.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٦٥. وَمِنَ ٱلنَّاسِ مَن يَتَّخِذُ مِن دُونِ ٱللَّهِ أَندَادًۭا يُحِبُّونَهُمْ كَحُبِّ ٱللَّهِ ۖ وَٱلَّذِينَ ءَامَنُوٓا۟ أَشَدُّ حُبًّۭا لِّلَّهِ ۗ وَلَوْ يَرَى ٱلَّذِينَ ظَلَمُوٓا۟ إِذْ يَرَوْنَ ٱلْعَذَابَ أَنَّ ٱلْقُوَّةَ لِلَّهِ جَمِيعًۭا وَأَنَّ ٱللَّهَ شَدِيدُ ٱلْعَذَابِ</div>
+                <div class="translation">165. Dan di antara manusia ada yang menyembah tandingan-tandingan selain Allah; mereka mencintainya seperti mencintai Allah. Adapun orang-orang yang beriman sangat besar cintanya kepada Allah. Sekiranya orang-orang yang berbuat zalim itu mengetahui ketika mereka melihat azab (pada hari kiamat), bahwa kekuatan itu semuanya milik Allah dan bahwa Allah sangat berat azab-Nya (niscaya mereka menyesal).</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٦٦. إِذْ تَبَرَّأَ ٱلَّذِينَ ٱتُّبِعُوا۟ مِنَ ٱلَّذِينَ ٱتَّبَعُوا۟ وَرَأَوُا۟ ٱلْعَذَابَ وَتَقَطَّعَتْ بِهِمُ ٱلْأَسْبَابُ</div>
+                <div class="translation">166. (Yaitu) ketika orang-orang yang diikuti itu berlepas diri dari orang-orang yang mengikuti (mereka), dan mereka melihat azab, serta terputuslah segala hubungan di antara mereka.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٦٧. وَقَالَ ٱلَّذِينَ ٱتَّبَعُوا۟ لَوْ أَنَّ لَنَا كَرَّةًۭ فَنَتَبَرَّأَ مِنْهُمْ كَمَا تَبَرَّءُوا۟ مِنَّا ۗ كَذَٰلِكَ يُرِيهِمُ ٱللَّهُ أَعْمَـٰلَهُمْ حَسَرَٰتٍ عَلَيْهِمْ ۖ وَمَا هُم بِخَـٰرِجِينَ مِنَ ٱلنَّارِ</div>
+                <div class="translation">167. Dan berkatalah orang-orang yang mengikuti, "Seandainya kami dapat kembali (ke dunia), niscaya kami akan berlepas diri dari mereka, sebagaimana mereka berlepas diri dari kami." Demikianlah Allah memperlihatkan kepada mereka amal perbuatannya menjadi penyesalan bagi mereka. Dan mereka tidak akan keluar dari api neraka.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٦٨. يَـٰٓأَيُّهَا ٱلنَّاسُ كُلُوا۟ مِمَّا فِى ٱلْأَرْضِ حَلَـٰلًۭا طَيِّبًۭا وَلَا تَتَّبِعُوا۟ خُطُوَٰتِ ٱلشَّيْطَـٰنِ ۚ إِنَّهُۥ لَكُمْ عَدُوٌّۭ مُّبِينٌ</div>
+                <div class="translation">168. Wahai manusia! Makanlah dari (makanan) yang halal dan baik yang terdapat di bumi, dan janganlah kamu mengikuti langkah-langkah setan. Sungguh, setan itu musuh yang nyata bagimu.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٦٩. إِنَّمَا يَأْمُرُكُم بِٱلسُّوٓءِ وَٱلْفَحْشَآءِ وَأَن تَقُولُوا۟ عَلَى ٱللَّهِ مَا لَا تَعْلَمُونَ</div>
+                <div class="translation">169. Sesungguhnya setan itu hanya menyuruh kamu berbuat jahat dan keji, dan mengatakan tentang Allah apa yang tidak kamu ketahui.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٧٠. وَإِذَا قِيلَ لَهُمُ ٱتَّبِعُوا۟ مَآ أَنزَلَ ٱللَّهُ قَالُوا۟ بَلْ نَتَّبِعُ مَآ أَلْفَيْنَا عَلَيْهِ ءَابَآءَنَا ۚ أَوَلَوْ كَانَ ءَابَآؤُهُمْ لَا يَعْقِلُونَ شَيْـًۭٔا وَلَا يَهْتَدُونَ</div>
+                <div class="translation">170. Dan apabila dikatakan kepada mereka, "Ikutilah apa yang telah diturunkan Allah," mereka menjawab, "(Tidak), tetapi kami (hanya) mengikuti apa yang telah kami dapati pada nenek moyang kami (melakukannya)." Padahal nenek moyang mereka itu tidak mengetahui apa-apa dan tidak mendapat petunjuk.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٧١. وَمَثَلُ ٱلَّذِينَ كَفَرُوا۟ كَمَثَلِ ٱلَّذِى يَنْعِقُ بِمَا لَا يَسْمَعُ إِلَّا دُعَآءًۭ وَنِدَآءًۭ ۚ صُمُّۢ بُكْمٌ عُمْىٌۭ فَهُمْ لَا يَعْقِلُونَ</div>
+                <div class="translation">171. Dan perumpamaan (orang yang menyeru) orang-orang kafir adalah seperti penggembala yang memanggil (hewan ternak) yang tidak mendengar selain panggilan dan seruan saja. Mereka tuli, bisu, dan buta, sehingga mereka tidak mengerti.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٧٢. يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ كُلُوا۟ مِن طَيِّبَـٰتِ مَا رَزَقْنَـٰكُمْ وَٱشْكُرُوا۟ لِلَّهِ إِن كُنتُمْ إِيَّاهُ تَعْبُدُونَ</div>
+                <div class="translation">172. Wahai orang-orang yang beriman! Makanlah dari rezeki yang baik yang Kami berikan kepadamu dan bersyukurlah kepada Allah, jika kamu hanya menyembah kepada-Nya.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٧٣. إِنَّمَا حَرَّمَ عَلَيْكُمُ ٱلْمَيْتَةَ وَٱلدَّمَ وَلَحْمَ ٱلْخِنزِيرِ وَمَآ أُهِلَّ بِهِۦ لِغَيْرِ ٱللَّهِ ۖ فَمَنِ ٱضْطُرَّ غَيْرَ بَاغٍۢ وَلَا عَادٍۢ فَلَآ إِثْمَ عَلَيْهِ ۚ إِنَّ ٱللَّهَ غَفُورٌۭ رَّحِيمٌ</div>
+                <div class="translation">173. Sesungguhnya Dia hanya mengharamkan bagimu bangkai, darah, daging babi, dan apa yang disembelih dengan (menyebut nama) selain Allah. Tetapi barang siapa dalam keadaan terpaksa (memakannya), sedang dia tidak menginginkannya dan tidak (pula) melampaui batas, maka tidak ada dosa baginya. Sungguh, Allah Maha Pengampun, Maha Penyayang.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٧٤. إِنَّ ٱلَّذِينَ يَكْتُمُونَ مَآ أَنزَلَ ٱللَّهُ مِنَ ٱلْكِتَـٰبِ وَيَشْتَرُونَ بِهِۦ ثَمَنًۭا قَلِيلًا أُو۟لَـٰٓئِكَ مَا يَأْكُلُونَ فِى بُطُونِهِمْ إِلَّا ٱلنَّارَ وَلَا يُكَلِّمُهُمُ ٱللَّهُ يَوْمَ ٱلْقِيَـٰمَةِ وَلَا يُزَكِّيهِمْ وَلَهُمْ عَذَابٌ أَلِيمٌ</div>
+                <div class="translation">174. Sesungguhnya orang-orang yang menyembunyikan apa yang telah diturunkan Allah, yaitu Kitab, dan menjualnya dengan harga murah, mereka itu sebenarnya tidak memakan ke dalam perutnya melainkan api neraka. Allah tidak akan berbicara kepada mereka pada hari kiamat dan tidak akan menyucikan mereka. Bagi mereka azab yang sangat pedih.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٧٥. أُو۟لَـٰٓئِكَ ٱلَّذِينَ ٱشْتَرَوُا۟ ٱلضَّلَـٰلَةَ بِٱلْهُدَىٰ وَٱلْعَذَابَ بِٱلْمَغْفِرَةِ فَمَآ أَصْبَرَهُمْ عَلَى ٱلنَّارِ</div>
+                <div class="translation">175. Mereka itulah orang-orang yang membeli kesesatan dengan petunjuk dan azab dengan ampunan. Betapa beraninya mereka menentang api neraka!</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">176. ذَٰلِكَ بِأَنَّ ٱللَّهَ نَزَّلَ ٱلۡكِتَٰبَ بِٱلۡحَقِّۗ وَإِنَّ ٱلَّذِينَ ٱخۡتَلَفُواْ فِي ٱلۡكِتَٰبِ لَفِي شِقَاقِۢ بَعِيدٍ</div>
+                <div class="translation">176. Itu karena Allah telah menurunkan Kitab dengan kebenaran; dan sesungguhnya orang-orang yang berselisih tentang Kitab itu benar-benar dalam penyimpangan yang jauh.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">177. لَّيۡسَ ٱلۡبِرَّ أَن تُوَلُّواْ وُجُوهَكُمۡ قِبَلَ ٱلۡمَشۡرِقِ وَٱلۡمَغۡرِبِ وَلَٰكِنَّ ٱلۡبِرَّ مَنۡ ءَامَنَ بِٱللَّهِ وَٱلۡيَوۡمِ ٱلۡأٓخِرِ وَٱلۡمَلَٰٓئِكَةِ وَٱلۡكِتَٰبِ وَٱلنَّبِيِّۦنَ وَءَاتَى ٱلۡمَالَ عَلَىٰ حُبِّهِۦ ذَوِي ٱلۡقُرۡبَىٰ وَٱلۡيَتَٰمَىٰ وَٱلۡمَسَٰكِينَ وَٱبۡنَ ٱلسَّبِيلِ وَٱلسَّآئِلِينَ وَفِي ٱلرِّقَابِ وَأَقَامَ ٱلصَّلَوٰةَ وَءَاتَى ٱلزَّكَوٰةَ وَٱلۡمُوفُونَ بِعَهۡدِهِمۡ إِذَا عَٰهَدُواْ وَٱلصَّٰبِرِينَ فِي ٱلۡبَأۡسَآءِ وَٱلضَّرَّآءِ وَحِينَ ٱلۡبَأۡسِۗ أُوْلَٰٓئِكَ ٱلَّذِينَ صَدَقُواْۖ وَأُوْلَٰٓئِكَ هُمُ ٱلۡمُتَّقُونَ</div>
+                <div class="translation">177. Kebajikan itu bukanlah menghadapkan wajahmu ke arah timur dan barat, tetapi kebajikan itu adalah beriman kepada Allah, hari akhir, malaikat-malaikat, kitab-kitab, nabi-nabi, dan memberikan harta yang dicintainya kepada kerabat, anak yatim, orang-orang miskin, musafir (yang membutuhkan), orang-orang yang meminta-minta, dan untuk memerdekakan hamba sahaya, mendirikan shalat, menunaikan zakat, orang-orang yang menepati janji apabila berjanji, dan orang-orang yang sabar dalam kesempitan, penderitaan, dan dalam peperangan. Mereka itulah orang-orang yang benar, dan mereka itulah orang-orang yang bertakwa.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">178. يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُواْ كُتِبَ عَلَيۡكُمُ ٱلۡقِصَاصُ فِي ٱلۡقَتۡلَىۖ ٱلۡحُرُّ بِٱلۡحُرِّ وَٱلۡعَبۡدُ بِٱلۡعَبۡدِ وَٱلۡأُنثَىٰ بِٱلۡأُنثَىٰۚ فَمَنۡ عُفِيَ لَهُۥ مِنۡ أَخِيهِ شَيۡءٞ فَٱتِّبَاعُۢ بِٱلۡمَعۡرُوفِ وَأَدَآءٌ إِلَيۡهِ بِإِحۡسَٰنٖۗ ذَٰلِكَ تَخۡفِيفٞ مِّن رَّبِّكُمۡ وَرَحۡمَةٞۗ فَمَنِ ٱعۡتَدَىٰ بَعۡدَ ذَٰلِكَ فَلَهُۥ عَذَابٌ أَلِيمٞ</div>
+                <div class="translation">178. Wahai orang-orang yang beriman! Diwajibkan atas kamu melaksanakan qisas berkenaan dengan orang-orang yang dibunuh: orang merdeka dengan orang merdeka, hamba sahaya dengan hamba sahaya, dan perempuan dengan perempuan. Akan tetapi, barang siapa yang mendapat pemaafan dari saudaranya, hendaklah (yang memaafkan) mengikuti dengan cara yang baik, dan (yang diberi maaf) membayar (diyat) kepadanya dengan cara yang baik (pula). Yang demikian itu adalah keringanan dan rahmat dari Tuhanmu. Barang siapa melampaui batas setelah itu, maka dia akan mendapat azab yang sangat pedih.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">179. وَلَكُمۡ فِي ٱلۡقِصَاصِ حَيَوٰةٞ يَٰٓأُوْلِي ٱلۡأَلۡبَٰبِ لَعَلَّكُمۡ تَتَّقُونَ</div>
+                <div class="translation">179. Dan dalam qisas itu ada (jaminan kelangsungan) hidup bagimu, wahai orang-orang yang berakal, agar kamu bertakwa.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">180. كُتِبَ عَلَيۡكُمۡ إِذَا حَضَرَ أَحَدَكُمُ ٱلۡمَوۡتُ إِن تَرَكَ خَيۡرًا ٱلۡوَصِيَّةُ لِلۡوَٰلِدَيۡنِ وَٱلۡأَقۡرَبِينَ بِٱلۡمَعۡرُوفِۖ حَقًّا عَلَى ٱلۡمُتَّقِينَ</div>
+                <div class="translation">180. Diwajibkan atas kamu, apabila seseorang di antara kamu kedatangan (tanda-tanda) maut, jika dia meninggalkan harta yang banyak, berwasiat untuk ibu bapak dan karib kerabatnya secara ma‘ruf, (sebagai) kewajiban atas orang-orang yang bertakwa.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">181. فَمَنۡ بَدَّلَهُۥ بَعۡدَمَا سَمِعَهُۥ فَإِنَّمَآ إِثۡمُهُۥ عَلَى ٱلَّذِينَ يُبَدِّلُونَهُۥٓۚ إِنَّ ٱللَّهَ سَمِيعٌ عَلِيمٌ</div>
+                <div class="translation">181. Barang siapa mengubah wasiat itu setelah dia mendengarnya, maka sesungguhnya dosanya (ditanggung) oleh orang-orang yang mengubahnya. Sungguh, Allah Maha Mendengar, Maha Mengetahui.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">182. فَمَنۡ خَافَ مِن مُّوصٍ۬ جَنَفًا أَوۡ إِثۡمٗا فَأَصۡلَحَ بَيۡنَهُمۡ فَلَآ إِثۡمَ عَلَيۡهِۚ إِنَّ ٱللَّهَ غَفُورٞ رَّحِيمٞ</div>
+                <div class="translation">182. Tetapi barang siapa khawatir terhadap orang yang berwasiat itu berlaku tidak adil atau berbuat dosa, lalu dia mendamaikan antara mereka, maka tidak ada dosa baginya. Sungguh, Allah Maha Pengampun, Maha Penyayang.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">183. يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُواْ كُتِبَ عَلَيۡكُمُ ٱلصِّيَامُ كَمَا كُتِبَ عَلَى ٱلَّذِينَ مِن قَبۡلِكُمۡ لَعَلَّكُمۡ تَتَّقُونَ</div>
+                <div class="translation">183. Wahai orang-orang yang beriman! Diwajibkan atas kamu berpuasa sebagaimana diwajibkan atas orang-orang sebelum kamu agar kamu bertakwa,</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">184. أَيَّامٗا مَّعۡدُودَٰتٖۚ فَمَن كَانَ مِنكُم مَّرِيضًا أَوۡ عَلَىٰ سَفَرٖ فَعِدَّةٞ مِّنۡ أَيَّامٍ أُخَرَۚ وَعَلَى ٱلَّذِينَ يُطِيقُونَهُۥ فِدۡيَةٞ طَعَامُ مِسۡكِينٖۖ فَمَن تَطَوَّعَ خَيۡرٗا فَهُوَ خَيۡرٞ لَّهُۥۖ وَأَن تَصُومُواْ خَيۡرٞ لَّكُمۡ إِن كُنتُمۡ تَعۡلَمُونَ</div>
+                <div class="translation">184. (yaitu) dalam beberapa hari tertentu. Maka barang siapa di antara kamu ada yang sakit atau dalam perjalanan (lalu dia berbuka), maka (wajib menggantinya), sebanyak hari yang ditinggalkan itu pada hari-hari yang lain. Dan bagi orang-orang yang berat menjalankannya, wajib membayar fidyah, yaitu memberi makan seorang miskin. Tetapi barang siapa dengan kerelaan hati mengerjakan kebajikan, maka itu lebih baik baginya; dan berpuasa lebih baik bagimu jika kamu mengetahui.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">185. شَهۡرُ رَمَضَانَ ٱلَّذِيٓ أُنزِلَ فِيهِ ٱلۡقُرۡءَانُ هُدٗى لِّلنَّاسِ وَبَيِّنَٰتٖ مِّنَ ٱلۡهُدَىٰ وَٱلۡفُرۡقَانِۚ فَمَن شَهِدَ مِنكُمُ ٱلشَّهۡرَ فَلۡيَصُمۡهُۖ وَمَن كَانَ مَرِيضًا أَوۡ عَلَىٰ سَفَرٖ فَعِدَّةٞ مِّنۡ أَيَّامٍ أُخَرَۗ يُرِيدُ ٱللَّهُ بِكُمُ ٱلۡيُسۡرَ وَلَا يُرِيدُ بِكُمُ ٱلۡعُسۡرَ وَلِتُكۡمِلُواْ ٱلۡعِدَّةَ وَلِتُكَبِّرُواْ ٱللَّهَ عَلَىٰ مَا هَدَىٰكُمۡ وَلَعَلَّكُمۡ تَشۡكُرُونَ</div>
+                <div class="translation">185. Bulan Ramadan adalah (bulan) yang di dalamnya diturunkan Al-Qur’an, sebagai petunjuk bagi manusia dan penjelasan-penjelasan mengenai petunjuk itu dan pembeda (antara yang benar dan yang batil). Karena itu, barang siapa di antara kamu ada di bulan itu, maka berpuasalah. Tetapi barang siapa sakit atau dalam perjalanan (lalu dia berbuka), maka (wajib menggantinya), sebanyak hari yang ditinggalkan itu, pada hari-hari yang lain. Allah menghendaki kemudahan bagimu, dan tidak menghendaki kesukaran bagimu. Hendaklah kamu mencukupkan bilangannya dan mengagungkan Allah atas petunjuk-Nya yang diberikan kepadamu, agar kamu bersyukur.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">186. وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌۖ أُجِيبُ دَعۡوَةَ ٱلدَّاعِ إِذَا دَعَانِۖ فَلۡيَسۡتَجِيبُواْ لِي وَلۡيُؤۡمِنُواْ بِي لَعَلَّهُمۡ يَرۡشُدُونَ</div>
+                <div class="translation">186. Dan apabila hamba-hamba-Ku bertanya kepadamu tentang Aku, maka sesungguhnya Aku dekat. Aku kabulkan permohonan orang yang berdoa apabila dia berdoa kepada-Ku. Hendaklah mereka itu memenuhi (perintah)-Ku dan beriman kepada-Ku, agar mereka memperoleh kebenaran.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">187. أُحِلَّ لَكُمۡ لَيۡلَةَ ٱلصِّيَامِ ٱلرَّفَثُ إِلَىٰ نِسَآئِكُمۡۚ هُنَّ لِبَاسٞ لَّكُمۡ وَأَنتُمۡ لِبَاسٞ لَّهُنَّۗ عَلِمَ ٱللَّهُ أَنَّكُمۡ كُنتُمۡ تَخۡتَانُونَ أَنفُسَكُمۡ فَتَابَ عَلَيۡكُمۡ وَعَفَا عَنكُمۡۖ فَٱلۡـَٔۡنَ بَٰشِرُوهُنَّ وَٱبۡتَغُواْ مَا كَتَبَ ٱللَّهُ لَكُمۡۚ وَكُلُواْ وَٱشۡرَبُواْ حَتَّىٰ يَتَبَيَّنَ لَكُمُ ٱلۡخَيۡطُ ٱلۡأَبۡيَضُ مِنَ ٱلۡخَيۡطِ ٱلۡأَسۡوَدِ مِنَ ٱلۡفَجۡرِ ثُمَّ أَتِمُّواْ ٱلصِّيَامَ إِلَى ٱلَّيۡلِۚ وَلَا تُبَٰشِرُوهُنَّ وَأَنتُمۡ عَٰكِفُونَ فِي ٱلۡمَسَٰجِدِۗ تِلۡكَ حُدُودُ ٱللَّهِ فَلَا تَقۡرَبُوهَاۗ كَذَٰلِكَ يُبَيِّنُ ٱللَّهُ ءَايَٰتِهِۦ لِلنَّاسِ لَعَلَّهُمۡ يَتَّقُونَ</div>
+                <div class="translation">187. Dihalalkan bagi kamu pada malam hari bulan puasa bercampur dengan istri-istri kamu; mereka adalah pakaian bagimu, dan kamu pun adalah pakaian bagi mereka. Allah mengetahui bahwa kamu tidak dapat menahan nafsumu, karena itu Dia mengampuni kamu dan memaafkanmu. Maka sekarang campurilah mereka dan carilah apa yang telah ditetapkan Allah untukmu; dan makan dan minumlah hingga terang bagimu benang putih dari benang hitam, yaitu fajar. Kemudian sempurnakanlah puasa itu sampai (datang) malam (Maghrib). Tetapi janganlah kamu campuri mereka, sedang kamu beri’tikaf dalam masjid. Itulah larangan Allah, maka janganlah kamu mendekatinya. Demikianlah Allah menerangkan ayat-ayat-Nya kepada manusia, agar mereka bertakwa.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٨٨. وَلَا تَأْكُلُوا أَمْوَٰلَكُم بَيْنَكُم بِٱلْبَٰطِلِ وَتُدْلُوا بِهَآ إِلَى ٱلْحُكَّامِ لِتَأْكُلُوا فَرِيقًا مِّنْ أَمْوَٰلِ ٱلنَّاسِ بِٱلْإِثْمِ وَأَنتُمْ تَعْلَمُونَ</div>
+                <div class="translation">188. Dan janganlah kamu memakan harta sesamamu dengan jalan yang batil dan (janganlah) kamu membawa (urusan) harta itu kepada hakim, agar kamu dapat memakan sebagian dari harta benda orang lain itu dengan (jalan) dosa, padahal kamu mengetahui.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">١٨٩. يَسْـَٔلُونَكَ عَنِ ٱلْأَهِلَّةِ قُلْ هِىَ مَوَٰقِيتُ لِلنَّاسِ وَٱلْحَجِّ وَلَيْسَ ٱلْبِرُّ بِأَن تَأْتُواْ ٱلْبُيُوتَ مِن ظُهُورِهَا وَلَٰكِنَّ ٱلْبِرَّ مَنِ ٱتَّقَىٰ وَأْتُواْ ٱلْبُيُوتَ مِنْ أَبْوَٰبِهَا وَٱتَّقُواْ ٱللَّهَ لَعَلَّكُمْ تُفْلِحُونَ</div>
+                <div class="translation">189. Mereka bertanya kepadamu tentang bulan sabit. Katakanlah, "Itu adalah penunjuk waktu bagi manusia dan (ibadah) haji." Dan bukanlah kebajikan memasuki rumah-rumah dari belakangnya, tetapi kebajikan itu adalah (kebajikan) orang yang bertakwa. Masukilah rumah-rumah itu dari pintu-pintunya dan bertakwalah kepada Allah agar kamu beruntung.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">١٩٠. وَقَٰتِلُواْ فِى سَبِيلِ ٱللَّهِ ٱلَّذِينَ يُقَٰتِلُونَكُمْ وَلَا تَعْتَدُوٓاْ إِنَّ ٱللَّهَ لَا يُحِبُّ ٱلْمُعْتَدِينَ</div>
+                <div class="translation">190. Dan perangilah di jalan Allah orang-orang yang memerangi kamu, tetapi janganlah kamu melampaui batas. Sungguh, Allah tidak menyukai orang-orang yang melampaui batas.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">١٩١. وَٱقْتُلُوهُمْ حَيْثُ ثَقِفْتُمُوهُمْ وَأَخْرِجُوهُم مِّنْ حَيْثُ أَخْرَجُوكُمْ وَٱلْفِتْنَةُ أَشَدُّ مِنَ ٱلْقَتْلِ وَلَا تُقَٰتِلُوهُمْ عِندَ ٱلْمَسْجِدِ ٱلْحَرَامِ حَتَّىٰ يُقَٰتِلُوكُمْ فِيهِ فَإِن قَٰتَلُوكُمْ فَٱقْتُلُوهُمْ كَذَٰلِكَ جَزَآءُ ٱلْكَٰفِرِينَ</div>
+                <div class="translation">191. Dan bunuhlah mereka di mana saja kamu temui mereka, dan usirlah mereka dari tempat mereka telah mengusirmu. Karena fitnah itu lebih kejam daripada pembunuhan. Tetapi janganlah kamu memerangi mereka di dekat Masjidil Haram, kecuali jika mereka memerangi kamu di tempat itu. Jika mereka memerangi kamu, maka bunuhlah mereka. Demikianlah balasan bagi orang-orang kafir.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">١٩٢. فَإِنِ ٱنتَهَوْاْ فَإِنَّ ٱللَّهَ غَفُورٌ رَّحِيمٌ</div>
+                <div class="translation">192. Jika mereka berhenti (dari memusuhi kamu), maka sungguh, Allah Maha Pengampun, Maha Penyayang.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">١٩٣. وَقَٰتِلُوهُمْ حَتَّىٰ لَا تَكُونَ فِتْنَةٌ وَيَكُونَ ٱلدِّينُ لِلَّهِ فَإِنِ ٱنتَهَوْاْ فَلَا عُدْوَٰنَ إِلَّا عَلَى ٱلظَّٰلِمِينَ</div>
+                <div class="translation">193. Dan perangilah mereka sampai tidak ada lagi fitnah, dan agama hanya bagi Allah. Tetapi jika mereka berhenti, maka tidak ada permusuhan (lagi), kecuali terhadap orang-orang zalim.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">١٩٤. ٱلشَّهْرُ ٱلْحَرَامُ بِٱلشَّهْرِ ٱلْحَرَامِ وَٱلْحُرُمَٰتُ قِصَاصٌۭ فَمَنِ ٱعْتَدَىٰ عَلَيْكُمْ فَٱعْتَدُواْ عَلَيْهِ بِمِثْلِ مَا ٱعْتَدَىٰ عَلَيْكُمْ وَٱتَّقُواْ ٱللَّهَ وَٱعْلَمُوٓاْ أَنَّ ٱللَّهَ مَعَ ٱلْمُتَّقِينَ</div>
+                <div class="translation">194. Bulan haram dengan bulan haram, dan pada sesuatu yang disucikan berlaku hukum qisas. Oleh karena itu, barang siapa menyerang kamu, maka seranglah dia seimbang dengan serangannya terhadapmu. Bertakwalah kepada Allah dan ketahuilah bahwa Allah beserta orang-orang yang bertakwa.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">١٩٥. وَأَنفِقُواْ فِى سَبِيلِ ٱللَّهِ وَلَا تُلْقُواْ بِأَيْدِيكُمْ إِلَى ٱلتَّهْلُكَةِ وَأَحْسِنُوٓاْ إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُحْسِنِينَ</div>
+                <div class="translation">195. Dan infakkanlah (hartamu) di jalan Allah, dan janganlah kamu jatuhkan (dirimu sendiri) ke dalam kebinasaan, dan berbuat baiklah. Sungguh, Allah menyukai orang-orang yang berbuat baik.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">١٩٦. وَأَتِمُّواْ ٱلْحَجَّ وَٱلْعُمْرَةَ لِلَّهِ فَإِنْ أُحْصِرْتُمْ فَمَا ٱسْتَيْسَرَ مِنَ ٱلْهَدْىِ وَلَا تَحْلِقُواْ رُءُوسَكُمْ حَتَّىٰ يَبْلُغَ ٱلْهَدْىُ مَحِلَّهُ فَمَن كَانَ مِنكُم مَّرِيضًا أَوْ بِهِۦٓ أَذًى مِّن رَّأْسِهِۦ فَفِدْيَةٌۭ مِّن صِيَامٍ أَوْ صَدَقَةٍ أَوْ نُسُكٍۢ فَإِذَآ أَمِنتُمْ فَمَن تَمَتَّعَ بِٱلْعُمْرَةِ إِلَى ٱلْحَجِّ فَمَا ٱسْتَيْسَرَ مِنَ ٱلْهَدْىِ فَمَن لَّمْ يَجِدْ فَصِيَامُ ثَلَٰثَةِ أَيَّامٍۢ فِى ٱلْحَجِّ وَسَبْعَةٍ إِذَا رَجَعْتُمْ تِلْكَ عَشَرَةٌۭ كَامِلَةٌۭ ذَٰلِكَ لِمَن لَّمْ يَكُنْ أَهْلُهُۥ حَاضِرِى ٱلْمَسْجِدِ ٱلْحَرَامِ وَٱتَّقُواْ ٱللَّهَ وَٱعْلَمُوٓاْ أَنَّ ٱللَّهَ شَدِيدُ ٱلْعِقَابِ</div>
+                <div class="translation">196. Dan sempurnakanlah ibadah haji dan umrah karena Allah. Jika kamu terkepung (terhalang), maka sembelihlah hewan kurban yang mudah didapat, dan jangan mencukur kepalamu sebelum kurban sampai di tempat penyembelihannya...</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">١٩٧. ٱلْحَجُّ أَشْهُرٌۭ مَّعْلُومَٰتٌۭ فَمَن فَرَضَ فِيهِنَّ ٱلْحَجَّ فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ فِى ٱلْحَجِّ وَمَا تَفْعَلُواْ مِنْ خَيْرٍۢ يَعْلَمْهُ ٱللَّهُ ۗ وَتَزَوَّدُواْ فَإِنَّ خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ ۚ وَٱتَّقُونِ يَٰٓأُو۟لِى ٱلْأَلْبَٰبِ</div>
+                <div class="translation">197. (Musim) haji adalah beberapa bulan yang telah diketahui. Barang siapa melaksanakan (ibadah) haji pada bulan itu, maka janganlah ia berkata tidak senonoh, berbuat fasik, dan bertengkar dalam (masa melaksanakan) haji. Apa pun kebaikan yang kamu kerjakan, Allah mengetahuinya. Berbekallah, dan sungguh, sebaik-baik bekal adalah takwa. Bertakwalah kepada-Ku wahai orang-orang yang mempunyai akal sehat!</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">١٩٨. لَيْسَ عَلَيْكُمْ جُنَاحٌ أَن تَبْتَغُواْ فَضْلًۭا مِّن رَّبِّكُمْ ۚ فَإِذَآ أَفَضْتُم مِّنْ عَرَفَٰتٍۢ فَٱذْكُرُواْ ٱللَّهَ عِندَ ٱلْمَشْعَرِ ٱلْحَرَامِ ۚ وَٱذْكُرُوهُ كَمَا هَدَىٰكُمْ وَإِن كُنتُم مِّن قَبْلِهِۦ لَمِنَ ٱلضَّآلِّينَ</div>
+                <div class="translation">198. Tidak ada dosa bagimu untuk mencari karunia (rezeki hasil perniagaan) dari Tuhanmu. Maka apabila kamu telah bertolak dari Arafah, berzikirlah kepada Allah di Masy’aril Haram. Berzikirlah kepada-Nya sebagaimana Dia telah memberi petunjuk kepadamu. Dan sesungguhnya sebelum itu kamu benar-benar termasuk orang-orang yang sesat.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">١٩٩. ثُمَّ أَفِيضُواْ مِنْ حَيْثُ أَفَاضَ ٱلنَّاسُ وَٱسْتَغْفِرُواْ ٱللَّهَ ۚ إِنَّ ٱللَّهَ غَفُورٌۭ رَّحِيمٌ</div>
+                <div class="translation">199. Kemudian bertolaklah kamu dari tempat bertolaknya orang-orang (Arafah) dan mohonlah ampunan kepada Allah. Sungguh, Allah Maha Pengampun, Maha Penyayang.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٠٠. فَإِذَا قَضَيْتُم مَّنَٰسِكَكُمْ فَٱذْكُرُواْ ٱللَّهَ كَذِكْرِكُمْ ءَابَآءَكُمْ أَوْ أَشَدَّ ذِكْرًۭا ۗ فَمِنَ ٱلنَّاسِ مَن يَقُولُ رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا وَمَا لَهُۥ فِى ٱلْءَاخِرَةِ مِنْ خَلَٰقٍۢ</div>
+                <div class="translation">200. Apabila kamu telah menyelesaikan manasik (haji)mu, maka berzikirlah kepada Allah seperti kamu menyebut-nyebut nenek moyangmu, atau bahkan lebih dari itu. Di antara manusia ada yang berdoa, "Ya Tuhan kami, berilah kami (kebaikan) di dunia," tetapi dia tidak memperoleh bagian di akhirat.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٢٠١. وَمِنْهُم مَّن يَقُولُ رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا حَسَنَةًۭ وَفِى ٱلْءَاخِرَةِ حَسَنَةًۭ وَقِنَا عَذَابَ ٱلنَّارِ</div>
+                <div class="translation">201. Dan di antara mereka ada yang berdoa, "Ya Tuhan kami, berilah kami kebaikan di dunia dan kebaikan di akhirat, dan lindungilah kami dari azab neraka."</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٠٢. أُو۟لَـٰٓئِكَ لَهُمْ نَصِيبٌۭ مِّمَّا كَسَبُواْ ۚ وَٱللَّهُ سَرِيعُ ٱلْحِسَابِ</div>
+                <div class="translation">202. Mereka itulah yang memperoleh bagian dari apa yang telah mereka kerjakan, dan Allah Maha Cepat perhitungan-Nya.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٠٣. وَٱذْكُرُواْ ٱللَّهَ فِىٓ أَيَّامٍۢ مَّعْدُودَٰتٍۢ ۚ فَمَن تَعَجَّلَ فِى يَوْمَيْنِ فَلَآ إِثْمَ عَلَيْهِ وَمَن تَأَخَّرَ فَلَآ إِثْمَ عَلَيْهِ لِمَنِ ٱتَّقَىٰ ۗ وَٱتَّقُواْ ٱللَّهَ وَٱعْلَمُوٓاْ أَنَّكُمْ إِلَيْهِ تُحْشَرُونَ</div>
+                <div class="translation">203. Dan berzikirlah kepada Allah pada hari-hari yang ditentukan. Barang siapa mempercepat (meninggalkan Mina) setelah dua hari, maka tidak ada dosa baginya. Dan barang siapa mengakhirkannya, maka tidak ada dosa baginya, bagi orang yang bertakwa. Bertakwalah kepada Allah dan ketahuilah bahwa kamu akan dikumpulkan kepada-Nya.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٠٤. وَمِنَ ٱلنَّاسِ مَن يُعْجِبُكَ قَوْلُهُۥ فِى ٱلْحَيَوٰةِ ٱلدُّنْيَا وَيُشْهِدُ ٱللَّهَ عَلَىٰ مَا فِى قَلْبِهِۦ وَهُوَ أَلَدُّ ٱلْخِصَامِ</div>
+                <div class="translation">204. Dan di antara manusia ada yang ucapannya tentang kehidupan dunia menarik hatimu, dan dia bersaksi kepada Allah (atas kebenaran) isi hatinya, padahal dia adalah penentang yang paling keras.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٠٥. وَإِذَا تَوَلَّىٰ سَعَىٰ فِى ٱلْأَرْضِ لِيُفْسِدَ فِيهَا وَيُهْلِكَ ٱلْحَرْثَ وَٱلنَّسْلَ ۗ وَٱللَّهُ لَا يُحِبُّ ٱلْفَسَادَ</div>
+                <div class="translation">205. Dan apabila dia berpaling (dari kamu), dia berusaha di bumi untuk membuat kerusakan padanya, merusak tanaman-tanaman dan hewan-hewan ternak, dan Allah tidak menyukai kerusakan.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٠٦. وَإِذَا قِيلَ لَهُ ٱتَّقِ ٱللَّهَ أَخَذَتْهُ ٱلْعِزَّةُ بِٱلْإِثْمِ ۚ فَحَسْبُهُۥ جَهَنَّمُ ۚ وَلَبِئْسَ ٱلْمِهَادُ</div>
+                <div class="translation">206. Dan apabila dikatakan kepadanya, "Bertakwalah kepada Allah," dia malah semakin sombong untuk berbuat dosa. Maka cukuplah (balasannya) neraka Jahannam, dan itulah seburuk-buruk tempat tinggal.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٠٧. وَمِنَ ٱلنَّاسِ مَن يَشْرِى نَفْسَهُ ٱبْتِغَآءَ مَرْضَاتِ ٱللَّهِ ۗ وَٱللَّهُ رَءُوفٌۢ بِٱلْعِبَادِ</div>
+                <div class="translation">207. Dan di antara manusia ada yang mengorbankan dirinya untuk mencari keridaan Allah. Dan Allah Maha Penyantun kepada hamba-hamba-Nya.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٠٨. يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُواْ ٱدْخُلُواْ فِى ٱلسِّلْمِ كَآفَّةًۭ وَلَا تَتَّبِعُواْ خُطُوَٰتِ ٱلشَّيْطَٰنِ ۚ إِنَّهُۥ لَكُمْ عَدُوٌّۭ مُّبِينٌۭ</div>
+                <div class="translation">208. Wahai orang-orang yang beriman! Masuklah ke dalam Islam secara keseluruhan, dan janganlah kamu mengikuti langkah-langkah setan. Sungguh, dia musuh yang nyata bagimu.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٠٩. فَإِن زَلَلْتُم مِّنۢ بَعْدِ مَا جَآءَتْكُمُ ٱلْبَيِّنَٰتُ فَٱعْلَمُوٓاْ أَنَّ ٱللَّهَ عَزِيزٌ حَكِيمٌ</div>
+                <div class="translation">209. Tetapi jika kamu menyimpang setelah bukti-bukti kebenaran itu datang kepadamu, maka ketahuilah bahwa Allah Maha Perkasa, Maha Bijaksana.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢١٠. هَلْ يَنظُرُونَ إِلَّآ أَن يَأْتِيَهُمُ ٱللَّهُ فِى ظُلَلٍۢ مِّنَ ٱلْغَمَامِ وَٱلْمَلَـٰٓئِكَةُ وَقُضِىَ ٱلْأَمْرُ ۚ وَإِلَى ٱللَّهِ تُرْجَعُ ٱلْأُمُورُ</div>
+                <div class="translation">210. Tidaklah mereka menunggu kecuali kedatangan Allah dan malaikat dalam naungan awan, dan perkara telah diputuskan. Dan hanya kepada Allah segala urusan dikembalikan.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٢١١. سَلْ بَنِىٓ إِسْرَٰٓءِيلَ كَمْ ءَاتَيْنَـٰهُم مِّنْ ءَايَةٍۢ بَيِّنَةٍۢ ۗ وَمَن يُبَدِّلْ نِعْمَةَ ٱللَّهِ مِنۢ بَعْدِ مَا جَآءَتْهُ فَإِنَّ ٱللَّهَ شَدِيدُ ٱلْعِقَابِ</div>
+                <div class="translation">211. Tanyakanlah kepada Bani Israil, berapa banyak tanda-tanda (kebesaran) yang nyata telah Kami berikan kepada mereka. Tetapi barang siapa menukar nikmat Allah setelah nikmat itu datang kepadanya, maka sungguh, Allah sangat keras hukuman-Nya.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢١٢. زُيِّنَ لِلَّذِينَ كَفَرُواْ ٱلْحَيَوٰةُ ٱلدُّنْيَا وَيَسْخَرُونَ مِنَ ٱلَّذِينَ ءَامَنُواْ ۘ وَٱلَّذِينَ ٱتَّقَوْاْ فَوْقَهُمْ يَوْمَ ٱلْقِيَـٰمَةِ ۗ وَٱللَّهُ يَرْزُقُ مَن يَشَآءُ بِغَيْرِ حِسَابٍۢ</div>
+                <div class="translation">212. Kehidupan dunia dijadikan terasa indah bagi orang-orang yang kafir, dan mereka memperolok-olok orang-orang yang beriman. Padahal orang-orang yang bertakwa akan berada di atas mereka pada hari Kiamat. Dan Allah memberi rezeki kepada siapa yang Dia kehendaki tanpa perhitungan.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢١٣. كَانَ ٱلنَّاسُ أُمَّةًۭ وَٰحِدَةًۭ فَبَعَثَ ٱللَّهُ ٱلنَّبِيِّۦنَ مُبَشِّرِينَ وَمُنذِرِينَ وَأَنزَلَ مَعَهُمُ ٱلْكِتَـٰبَ بِٱلْحَقِّ لِيَحْكُمَ بَيْنَ ٱلنَّاسِ فِيمَا ٱخْتَلَفُواْ فِيهِ ۚ وَمَا ٱخْتَلَفَ فِيهِ إِلَّا ٱلَّذِينَ أُوتُوهُ مِنۢ بَعْدِ مَا جَآءَتْهُمُ ٱلْبَيِّنَـٰتُ بَغْيًۢا بَيْنَهُمْ ۖ فَهَدَى ٱللَّهُ ٱلَّذِينَ ءَامَنُواْ لِمَا ٱخْتَلَفُواْ فِيهِ مِنَ ٱلْحَقِّ بِإِذْنِهِۦ ۗ وَٱللَّهُ يَهْدِى مَن يَشَآءُ إِلَىٰ صِرَٰطٍۢ مُّسْتَقِيمٍ</div>
+                <div class="translation">213. Manusia itu (dahulunya) satu umat, kemudian Allah mengutus para nabi sebagai pembawa berita gembira dan pemberi peringatan, dan Dia menurunkan bersama mereka Kitab dengan kebenaran untuk memberi keputusan di antara manusia tentang perkara yang mereka perselisihkan. Tetapi hanya orang-orang yang diberi Kitab itu yang berselisih tentang isi kitab, setelah bukti-bukti yang jelas sampai kepada mereka, karena kedengkian di antara mereka. Maka Allah memberi petunjuk kepada orang-orang yang beriman kepada kebenaran yang mereka perselisihkan dengan izin-Nya. Dan Allah memberi petunjuk kepada siapa yang Dia kehendaki ke jalan yang lurus.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢١٤. أَمْ حَسِبْتُمْ أَن تَدْخُلُواْ ٱلْجَنَّةَ وَلَمَّا يَأْتِكُم مَّثَلُ ٱلَّذِينَ خَلَوْا۟ مِن قَبْلِكُم ۖ مَّسَّتْهُمُ ٱلْبَأْسَآءُ وَٱلضَّرَّآءُ وَزُلْزِلُواْ حَتَّىٰ يَقُولَ ٱلرَّسُولُ وَٱلَّذِينَ ءَامَنُواْ مَعَهُۥ مَتَىٰ نَصْرُ ٱللَّهِ ۗ أَلَآ إِنَّ نَصْرَ ٱللَّهِ قَرِيبٌۭ</div>
+                <div class="translation">214. Ataukah kamu mengira bahwa kamu akan masuk surga, padahal belum datang kepadamu (cobaan) seperti yang dialami orang-orang terdahulu sebelum kamu? Mereka ditimpa kesusahan dan penderitaan serta diguncang (dengan berbagai cobaan), sehingga rasul dan orang-orang yang beriman bersamanya berkata, "Kapankah pertolongan Allah akan datang?" Ingatlah, sesungguhnya pertolongan Allah itu dekat.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢١٥. يَسْـَٔلُونَكَ مَاذَا يُنفِقُونَ ۖ قُلْ مَآ أَنفَقْتُم مِّنْ خَيْرٍۢ فَلِلْوَٰلِدَيْنِ وَٱلْأَقْرَبِينَ وَٱلْيَتَـٰمَىٰ وَٱلْمَسَـٰكِينِ وَٱبْنِ ٱلسَّبِيلِ ۗ وَمَا تَفْعَلُواْ مِنْ خَيْرٍۢ فَإِنَّ ٱللَّهَ بِهِۦ عَلِيمٌ</div>
+                <div class="translation">215. Mereka bertanya kepadamu tentang apa yang mereka nafkahkan. Katakanlah, "Apa saja harta yang kamu nafkahkan, hendaklah diberikan kepada kedua orang tua, kaum kerabat, anak-anak yatim, orang-orang miskin, dan orang-orang yang dalam perjalanan." Dan kebaikan apa saja yang kamu kerjakan, maka sesungguhnya Allah Maha Mengetahui.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٢١٦. كُتِبَ عَلَيْكُمُ ٱلْقِتَالُ وَهُوَ كُرْهٌۭ لَّكُمْ ۖ وَعَسَىٰٓ أَن تَكْرَهُواْ شَيْـًۭٔا وَهُوَ خَيْرٌۭ لَّكُمْ ۖ وَعَسَىٰٓ أَن تُحِبُّواْ شَيْـًۭٔا وَهُوَ شَرٌّۭ لَّكُمْ ۗ وَٱللَّهُ يَعْلَمُ وَأَنتُمْ لَا تَعْلَمُونَ</div>
+                <div class="translation">216. Diwajibkan atas kamu berperang, padahal itu tidak menyenangkan bagimu. Tetapi boleh jadi kamu tidak menyukai sesuatu, padahal itu baik bagimu, dan boleh jadi kamu menyukai sesuatu, padahal itu tidak baik bagimu. Allah mengetahui, sedangkan kamu tidak mengetahui.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢١٧. يَسْـَٔلُونَكَ عَنِ ٱلشَّهْرِ ٱلْحَرَامِ قِتَالٍۢ فِيهِ ۖ قُلْ قِتَالٌۭ فِيهِ كَبِيرٌۭ وَصَدٌّ عَن سَبِيلِ ٱللَّهِ وَكُفْرٌۢ بِهِۦ وَٱلْمَسْجِدِ ٱلْحَرَامِ وَإِخْرَاجُ أَهْلِهِۦ مِنْهُ أَكْبَرُ عِندَ ٱللَّهِ ۚ وَٱلْفِتْنَةُ أَكْبَرُ مِنَ ٱلْقَتْلِ ۗ وَلَا يَزَالُونَ يُقَٰتِلُونَكُمْ حَتَّىٰ يَرُدُّوكُمْ عَن دِينِكُمْ إِنِ ٱسْتَطَٰعُواْ ۚ وَمَن يَرْتَدِدْ مِنكُمْ عَن دِينِهِۦ فَيَمُتْ وَهُوَ كَافِرٌۭ فَأُو۟لَـٰٓئِكَ حَبِطَتْ أَعْمَـٰلُهُمْ فِى ٱلدُّنْيَا وَٱلْءَاخِرَةِ ۖ وَأُو۟لَـٰٓئِكَ أَصْحَـٰبُ ٱلنَّارِ ۖ هُمْ فِيهَا خَـٰلِدُونَ</div>
+                <div class="translation">217. Mereka bertanya kepadamu tentang berperang pada bulan haram. Katakanlah, "Berperang pada bulan itu adalah dosa besar. Tetapi menghalangi (manusia) dari jalan Allah, kafir kepada-Nya, (menghalangi masuk ke) Masjidil Haram, dan mengusir penduduknya dari sekitarnya, lebih besar dosanya di sisi Allah. Dan fitnah itu lebih besar bahayanya daripada pembunuhan." Mereka tidak henti-hentinya memerangi kamu sampai mereka (dapat) mengembalikan kamu dari agamamu (kepada kekafiran), jika mereka sanggup. Barang siapa murtad di antara kamu dari agamanya, lalu dia mati dalam kekafiran, maka mereka itulah yang sia-sia amalannya di dunia dan di akhirat, dan mereka itulah penghuni neraka, mereka kekal di dalamnya.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢١٨. إِنَّ ٱلَّذِينَ ءَامَنُواْ وَٱلَّذِينَ هَاجَرُواْ وَجَٰهَدُواْ فِى سَبِيلِ ٱللَّهِ أُو۟لَـٰٓئِكَ يَرْجُونَ رَحْمَتَ ٱللَّهِ ۚ وَٱللَّهُ غَفُورٌۭ رَّحِيمٌ</div>
+                <div class="translation">218. Sesungguhnya orang-orang yang beriman, orang-orang yang berhijrah, dan berjihad di jalan Allah, mereka itulah yang mengharapkan rahmat Allah. Allah Maha Pengampun, Maha Penyayang.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢١٩. يَسْـَٔلُونَكَ عَنِ ٱلْخَمْرِ وَٱلْمَيْسِرِ ۖ قُلْ فِيهِمَآ إِثْمٌۭ كَبِيرٌۭ وَمَنَـٰفِعُ لِلنَّاسِ وَإِثْمُهُمَآ أَكْبَرُ مِن نَّفْعِهِمَا ۗ وَيَسْـَٔلُونَكَ مَاذَا يُنفِقُونَ ۖ قُلِ ٱلْعَفْوَ ۗ كَذَٰلِكَ يُبَيِّنُ ٱللَّهُ لَكُمُ ٱلْءَايَـٰتِ لَعَلَّكُمْ تَتَفَكَّرُونَ</div>
+                <div class="translation">219. Mereka bertanya kepadamu tentang khamar dan judi. Katakanlah, "Pada keduanya terdapat dosa besar dan beberapa manfaat bagi manusia, tetapi dosanya lebih besar daripada manfaatnya." Dan mereka bertanya kepadamu apa yang (harus) mereka infakkan. Katakanlah, "Kelebihan (dari apa yang diperlukan)." Demikianlah Allah menerangkan ayat-ayat-Nya kepadamu agar kamu berpikir,</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٢٠. فِى ٱلدُّنْيَا وَٱلْءَاخِرَةِ ۗ وَيَسْـَٔلُونَكَ عَنِ ٱلْيَتَـٰمَىٰ ۖ قُلْ إِصْلَـٰحٌۭ لَّهُمْ خَيْرٌۭ ۖ وَإِن تُخَالِطُوهُمْ فَإِخْوَٰنُكُمْ ۚ وَٱللَّهُ يَعْلَمُ ٱلْمُفْسِدَ مِنَ ٱلْمُصْلِحِ ۚ وَلَوْ شَآءَ ٱللَّهُ لَأَعْنَتَكُمْ ۚ إِنَّ ٱللَّهَ عَزِيزٌ حَكِيمٌۭ</div>
+                <div class="translation">220. tentang dunia dan akhirat. Dan mereka bertanya kepadamu tentang anak yatim. Katakanlah, "Mengurus mereka secara patut adalah baik." Dan jika kamu bergaul dengan mereka, maka mereka adalah saudaramu. Allah mengetahui siapa yang membuat kerusakan dari yang mengadakan perbaikan. Jika Allah menghendaki, niscaya Dia dapat mendatangkan kesulitan kepadamu. Sungguh, Allah Maha Perkasa, Maha Bijaksana.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٢١. وَلَا تَنكِحُواْ ٱلْمُشْرِكَـٰتِ حَتَّىٰ يُؤْمِنَّ ۚ وَلَأَمَةٌۭ مُّؤْمِنَةٌ خَيْرٌۭ مِّن مُّشْرِكَةٍۢ وَلَوْ أَعْجَبَتْكُمْ ۗ وَلَا تُنكِحُواْ ٱلْمُشْرِكِينَ حَتَّىٰ يُؤْمِنُواْ ۗ وَلَعَبْدٌۭ مُّؤْمِنٌ خَيْرٌۭ مِّن مُّشْرِكٍۢ وَلَوْ أَعْجَبَكُمْ ۗ أُو۟لَـٰٓئِكَ يَدْعُونَ إِلَى ٱلنَّارِ ۖ وَٱللَّهُ يَدْعُوٓاْ إِلَى ٱلْجَنَّةِ وَٱلْمَغْفِرَةِ بِإِذْنِهِۦ ۖ وَيُبَيِّنُ ءَايَـٰتِهِۦ لِلنَّاسِ لَعَلَّهُمْ يَتَذَكَّرُونَ</div>
+                <div class="translation">221. Dan janganlah kamu menikahi perempuan musyrik, sebelum mereka beriman. Dan sungguh, seorang hamba perempuan yang beriman lebih baik daripada perempuan musyrik, meskipun dia menarik hatimu. Dan janganlah kamu menikahkan orang musyrik (dengan perempuan mukmin), sebelum mereka beriman. Dan sungguh, seorang hamba laki-laki yang beriman lebih baik daripada laki-laki musyrik, meskipun dia menarik hatimu. Mereka mengajak ke neraka, tetapi Allah mengajak ke surga dan ampunan dengan izin-Nya. Allah menerangkan ayat-ayat-Nya kepada manusia agar mereka mengambil pelajaran.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٢٢. وَيَسْـَٔلُونَكَ عَنِ ٱلْمَحِيضِ ۖ قُلْ هُوَ أَذًۭى فَٱعْتَزِلُواْ ٱلنِّسَآءَ فِى ٱلْمَحِيضِ وَلَا تَقْرَبُوهُنَّ حَتَّىٰ يَطْهُرْنَ ۖ فَإِذَا تَطَهَّرْنَ فَأْتُوهُنَّ مِنْ حَيْثُ أَمَرَكُمُ ٱللَّهُ ۚ إِنَّ ٱللَّهَ يُحِبُّ ٱلتَّوَّـٰبِينَ وَيُحِبُّ ٱلْمُتَطَهِّرِينَ</div>
+                <div class="translation">222. Mereka bertanya kepadamu tentang haid. Katakanlah, "Itu adalah suatu kotoran." Maka jauhilah istri pada waktu haid dan janganlah kamu mendekati mereka sebelum mereka suci. Apabila mereka telah suci, campurilah mereka sesuai dengan yang diperintahkan Allah kepadamu. Sesungguhnya Allah menyukai orang-orang yang tobat dan menyukai orang-orang yang menyucikan diri.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٢٢٣. نِسَآؤُكُمْ حَرْثٌۭ لَّكُمْ فَأْتُواْ حَرْثَكُمْ أَنَّىٰ شِئْتُمْ ۖ وَقَدِّمُواْ لِأَنفُسِكُمْ ۚ وَٱتَّقُواْ ٱللَّهَ وَٱعْلَمُوٓاْ أَنَّكُم مُّلَـٰقُوهُ ۗ وَبَشِّرِ ٱلْمُؤْمِنِينَ</div>
+                <div class="translation">223. Istri-istrimu adalah (seperti) ladang bagimu, maka datangilah ladangmu kapan saja dengan cara yang kamu sukai, dan berbuatlah (yang baik) untuk dirimu. Bertakwalah kepada Allah dan ketahuilah bahwa kamu kelak akan menemui-Nya. Dan sampaikanlah kabar gembira kepada orang-orang yang beriman.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٢٤. وَلَا تَجْعَلُواْ ٱللَّهَ عُرْضَةًۭ لِّأَيْمَـٰنِكُمْ أَن تَبَرُّواْ وَتَتَّقُواْ وَتُصْلِحُواْ بَيْنَ ٱلنَّاسِ ۗ وَٱللَّهُ سَمِيعٌ عَلِيمٌ</div>
+                <div class="translation">224. Dan janganlah kamu jadikan (nama) Allah dalam sumpahmu sebagai penghalang untuk berbuat kebajikan, bertakwa, dan mendamaikan manusia. Dan Allah Maha Mendengar, Maha Mengetahui.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٢٥. لَا يُؤَاخِذُكُمُ ٱللَّهُ بِٱللَّغْوِ فِىٓ أَيْمَـٰنِكُمْ وَلَـٰكِن يُؤَاخِذُكُم بِمَا كَسَبَتْ قُلُوبُكُمْ ۗ وَٱللَّهُ غَفُورٌ حَلِيمٌ</div>
+                <div class="translation">225. Allah tidak menghukum kamu karena sumpah-sumpahmu yang tidak dimaksud (untuk bersumpah), tetapi Dia menghukum kamu karena niat yang terkandung dalam hatimu. Allah Maha Pengampun, Maha Penyantun.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٢٢٦. لِّلَّذِينَ يُؤْلُونَ مِن نِّسَآئِهِمْ تَرَبُّصُ أَرْبَعَةِ أَشْهُرٍۢ ۖ فَإِن فَآءُو فَإِنَّ ٱللَّهَ غَفُورٌۭ رَّحِيمٌ</div>
+                <div class="translation">226. Bagi orang-orang yang bersumpah tidak akan menggauli istrinya, mereka diberi waktu tunggu selama empat bulan. Kemudian jika mereka kembali (kepada istrinya), maka sungguh, Allah Maha Pengampun, Maha Penyayang.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٢٧. وَإِنْ عَزَمُواْ ٱلطَّلَـٰقَ فَإِنَّ ٱللَّهَ سَمِيعٌ عَلِيمٌ</div>
+                <div class="translation">227. Dan jika mereka bertekad untuk bercerai, maka sungguh, Allah Maha Mendengar, Maha Mengetahui.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٢٨. وَٱلْمُطَلَّقَـٰتُ يَتَرَبَّصْنَ بِأَنفُسِهِنَّ ثَلَـٰثَةَ قُرُوٓءٍۢ ۚ وَلَا يَحِلُّ لَهُنَّ أَن يَكْتُمْنَ مَا خَلَقَ ٱللَّهُ فِىٓ أَرْحَامِهِنَّ إِن كُنَّ يُؤْمِنَّ بِٱللَّهِ وَٱلْيَوْمِ ٱلْءَاخِرِ ۚ وَبُعُولَتُهُنَّ أَحَقُّ بِرَدِّهِنَّ فِى ذَٰلِكَ إِنْ أَرَادُوٓاْ إِصْلَـٰحًۭا ۚ وَلَهُنَّ مِثْلُ ٱلَّذِى عَلَيْهِنَّ بِٱلْمَعْرُوفِ ۚ وَلِلرِّجَالِ عَلَيْهِنَّ دَرَجَةٌۭ ۗ وَٱللَّهُ عَزِيزٌ حَكِيمٌۭ</div>
+                <div class="translation">228. Dan para perempuan yang ditalak hendaklah menahan diri (menunggu) tiga kali quru’. Tidak boleh mereka menyembunyikan apa yang diciptakan Allah dalam rahimnya, jika mereka beriman kepada Allah dan hari akhir. Dan suami-suami mereka berhak merujukinya dalam masa menunggu itu, jika mereka menghendaki islah. Mereka (para perempuan) mempunyai hak yang seimbang dengan kewajibannya menurut cara yang makruf. Akan tetapi, para suami mempunyai satu tingkatan kelebihan daripada istrinya. Allah Maha Perkasa, Maha Bijaksana.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٢٩. ٱلطَّلَـٰقُ مَرَّتَانِ ۖ فَإِمْسَاكٌۢ بِمَعْرُوفٍ أَوْ تَسْرِيحٌۢ بِإِحْسَـٰنٍۢ ۗ وَلَا يَحِلُّ لَكُمْ أَن تَأْخُذُواْ مِمَّآ ءَاتَيْتُمُوهُنَّ شَيْـًٔا إِلَّآ أَن يَخَافَآ أَلَّا يُقِيمَا حُدُودَ ٱللَّهِ ۖ فَإِنْ خِفْتُمْ أَلَّا يُقِيمَا حُدُودَ ٱللَّهِ فَلَا جُنَاحَ عَلَيْهِمَا فِيمَا ٱفْتَدَتْ بِهِۦ ۗ تِلْكَ حُدُودُ ٱللَّهِ فَلَا تَعْتَدُوهَا ۚ وَمَن يَتَعَدَّ حُدُودَ ٱللَّهِ فَأُو۟لَـٰٓئِكَ هُمُ ٱلظَّـٰلِمُونَ</div>
+                <div class="translation">229. Talak (yang dapat dirujuki) itu dua kali. Setelah itu boleh rujuk dengan cara yang makruf atau menceraikan dengan cara yang baik. Tidak halal bagi kamu mengambil kembali sesuatu yang telah kamu berikan kepada mereka, kecuali apabila keduanya khawatir tidak dapat menjalankan hukum-hukum Allah. Jika kamu khawatir keduanya tidak dapat menjalankan hukum-hukum Allah, maka tidak ada dosa atas keduanya mengenai bayaran yang diberikan oleh istri untuk menebus dirinya. Itulah hukum-hukum Allah, maka janganlah kamu melanggarnya. Barang siapa melanggar hukum-hukum Allah, mereka itulah orang-orang zalim.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٣٠. فَإِن طَلَّقَهَا فَلَا تَحِلُّ لَهُۥ مِنۢ بَعْدُ حَتَّىٰ تَنكِحَ زَوْجًا غَيْرَهُۥ ۗ فَإِن طَلَّقَهَا فَلَا جُنَاحَ عَلَيْهِمَآ أَن يَتَرَاجَعَآ إِن ظَنَّآ أَن يُقِيمَا حُدُودَ ٱللَّهِ ۗ وَتِلْكَ حُدُودُ ٱللَّهِ يُبَيِّنُهَا لِقَوْمٍۢ يَعْلَمُونَ</div>
+                <div class="translation">230. Kemudian jika dia menceraikannya (sesudah talak yang kedua), maka perempuan itu tidak halal baginya hingga dia menikah dengan suami yang lain. Kemudian jika suami yang lain itu menceraikannya, maka tidak ada dosa bagi keduanya (mantan suami pertama dan istri) untuk menikah kembali, jika keduanya yakin dapat menjalankan hukum-hukum Allah. Itulah hukum-hukum Allah, yang diterangkan-Nya kepada orang-orang yang mengetahui.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٣١. وَإِذَا طَلَّقْتُمُ ٱلنِّسَآءَ فَبَلَغْنَ أَجَلَهُنَّ فَأَمْسِكُوهُنَّ بِمَعْرُوفٍ أَوْ سَرِّحُوهُنَّ بِمَعْرُوفٍۢ ۚ وَلَا تُمْسِكُوهُنَّ ضِرَارًۢا لِّتَعْتَدُوا۟ ۚ وَمَن يَفْعَلْ ذَٰلِكَ فَقَدْ ظَلَمَ نَفْسَهُۥ ۚ وَلَا تَتَّخِذُوٓاْ ءَايَـٰتِ ٱللَّهِ هُزُوًا ۚ وَٱذْكُرُواْ نِعْمَتَ ٱللَّهِ عَلَيْكُمْ وَمَآ أَنزَلَ عَلَيْكُم مِّنَ ٱلْكِتَـٰبِ وَٱلْحِكْمَةِ يَعِظُكُم بِهِۦ ۚ وَٱتَّقُواْ ٱللَّهَ وَٱعْلَمُوٓاْ أَنَّ ٱللَّهَ بِكُلِّ شَىْءٍ عَلِيمٌ</div>
+                <div class="translation">231. Apabila kamu menceraikan istri-istrimu, lalu mereka mendekati akhir idahnya, maka rujuklah mereka dengan cara yang makruf atau ceraikanlah mereka dengan cara yang makruf (pula). Janganlah kamu rujuk mereka untuk memberi kemudaratan, karena dengan demikian kamu melampaui batas. Barang siapa berbuat demikian, maka sungguh dia telah menzalimi dirinya sendiri. Janganlah kamu jadikan ayat-ayat Allah sebagai bahan ejekan, dan ingatlah nikmat Allah kepadamu serta apa yang telah diturunkan Allah kepadamu, yaitu Al-Kitab (Al-Qur’an) dan hikmah (sunnah), untuk memberi pengajaran kepadamu. Dan bertakwalah kepada Allah serta ketahuilah bahwa Allah Maha Mengetahui segala sesuatu.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٢٣٢. وَإِذَا طَلَّقْتُمُ ٱلنِّسَآءَ فَبَلَغْنَ أَجَلَهُنَّ فَلَا تَعْضُلُوهُنَّ أَن يَنكِحْنَ أَزْوَٰجَهُنَّ إِذَا تَرَاضَوْا۟ بَيْنَهُم بِٱلْمَعْرُوفِ ۗ ذَٰلِكَ يُوعَظُ بِهِۦ مَن كَانَ مِنكُم يُؤْمِنُ بِٱللَّهِ وَٱلْيَوْمِ ٱلْءَاخِرِ ۗ ذَٰلِكُمْ أَزْكَىٰ لَكُمْ وَأَطْهَرُ ۗ وَٱللَّهُ يَعْلَمُ وَأَنتُمْ لَا تَعْلَمُونَ</div>
+                <div class="translation">232. Apabila kamu menceraikan istri-istrimu, lalu mereka telah sampai pada akhir idahnya, maka janganlah kamu (para wali) menghalangi mereka menikah lagi dengan mantan suaminya apabila telah terdapat kerelaan di antara mereka dengan cara yang makruf. Itulah yang dinasihatkan kepada orang yang beriman kepada Allah dan hari akhir. Itu lebih baik bagimu dan lebih suci. Allah mengetahui, sedangkan kamu tidak mengetahui.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٣٣. وَٱلْوَٰلِدَٰتُ يُرْضِعْنَ أَوْلَـٰدَهُنَّ حَوْلَيْنِ كَامِلَيْنِ ۖ لِمَنْ أَرَادَ أَن يُتِمَّ ٱلرَّضَاعَةَ ۚ وَعَلَى ٱلْمَوْلُودِ لَهُۥ رِزْقُهُنَّ وَكِسْوَتُهُنَّ بِٱلْمَعْرُوفِ ۚ لَا تُكَلَّفُ نَفْسٌ إِلَّا وُسْعَهَا ۚ لَا تُضَآرَّ وَٰلِدَةٌۢ بِوَلَدِهَا وَلَا مَوْلُودٌۢ لَّهُۥ بِوَلَدِهِۦ ۚ وَعَلَى ٱلْوَارِثِ مِثْلُ ذَٰلِكَ ۗ فَإِنْ أَرَادَا فِصَالًۭا عَن تَرَاضٍۢ مِّنْهُمَا وَتَشَاوُرٍۢ فَلَا جُنَاحَ عَلَيْهِمَا ۗ وَإِنْ أَرَدتُّمْ أَن تَسْتَرْضِعُوٓاْ أَوْلَـٰدَكُمْ فَلَا جُنَاحَ عَلَيْكُمْ إِذَا سَلَّمْتُم مَّآ ءَاتَيْتُم بِٱلْمَعْرُوفِ ۗ وَٱتَّقُواْ ٱللَّهَ وَٱعْلَمُوٓاْ أَنَّ ٱللَّهَ بِمَا تَعْمَلُونَ بَصِيرٌۭ</div>
+                <div class="translation">233. Para ibu hendaklah menyusui anak-anaknya selama dua tahun penuh, yaitu bagi yang ingin menyempurnakan penyusuan. Kewajiban ayah adalah memberi makan dan pakaian kepada para ibu dengan cara yang makruf. Seseorang tidak dibebani melainkan sesuai dengan kadar kesanggupannya. Janganlah seorang ibu menderita karena anaknya dan seorang ayah karena anaknya. Warisannya pun demikian. Apabila keduanya ingin menyapih (anak) dengan kerelaan dan permusyawaratan di antara mereka, maka tidak ada dosa atas mereka. Jika kamu ingin anak-anakmu disusukan oleh orang lain, maka tidak ada dosa bagimu apabila kamu memberikan upah menurut yang patut. Bertakwalah kepada Allah dan ketahuilah bahwa Allah Maha Melihat apa yang kamu kerjakan.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٣٤. وَٱلَّذِينَ يُتَوَفَّوْنَ مِنكُمْ وَيَذَرُونَ أَزْوَٰجًۭا يَتَرَبَّصْنَ بِأَنفُسِهِنَّ أَرْبَعَةَ أَشْهُرٍۢ وَعَشْرًۭا ۖ فَإِذَا بَلَغْنَ أَجَلَهُنَّ فَلَا جُنَاحَ عَلَيْكُمْ فِيمَا فَعَلْنَ فِىٓ أَنفُسِهِنَّ بِٱلْمَعْرُوفِ ۗ وَٱللَّهُ بِمَا تَعْمَلُونَ خَبِيرٌۭ</div>
+                <div class="translation">234. Orang-orang yang wafat di antara kamu dan meninggalkan istri, hendaklah para istri menunggu (masa idah) selama empat bulan sepuluh hari. Kemudian apabila telah habis masa idahnya, maka tidak ada dosa bagi kamu (para wali) mengenai apa yang mereka lakukan terhadap diri mereka dengan cara yang makruf. Allah Maha Mengetahui apa yang kamu kerjakan.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٣٥. وَلَا جُنَاحَ عَلَيْكُمْ فِيمَا عَرَّضْتُم بِهِۦ مِنْ خِطْبَةِ ٱلنِّسَآءِ أَوْ أَكْنَنتُمْ فِىٓ أَنفُسِكُمْ ۚ عَلِمَ ٱللَّهُ أَنَّكُمْ سَتَذْكُرُونَهُنَّ وَلَـٰكِن لَّا تُوَاعِدُوهُنَّ سِرًّا إِلَّآ أَن تَقُولُواْ قَوْلًۭا مَّعْرُوفًۭا ۚ وَلَا تَعْزِمُواْ عُقْدَةَ ٱلنِّكَاحِ حَتَّىٰ يَبْلُغَ ٱلْكِتَـٰبُ أَجَلَهُۥ ۚ وَٱعْلَمُوٓاْ أَنَّ ٱللَّهَ يَعْلَمُ مَا فِىٓ أَنفُسِكُمْ فَٱحْذَرُوهُ ۚ وَٱعْلَمُوٓاْ أَنَّ ٱللَّهَ غَفُورٌ حَلِيمٌۭ</div>
+                <div class="translation">235. Dan tidak ada dosa bagimu meminang wanita-wanita itu dengan sindiran atau kamu menyimpan (keinginan mengawini mereka) dalam hatimu. Allah mengetahui bahwa kamu akan menyebut-nyebut mereka, tetapi janganlah kamu membuat janji dengan mereka secara rahasia, kecuali sekadar mengucapkan (kata-kata) yang patut. Janganlah kamu bertekad untuk melangsungkan pernikahan sebelum habis masa idahnya. Ketahuilah bahwa Allah mengetahui apa yang ada dalam hatimu, maka waspadalah kepada-Nya, dan ketahuilah bahwa Allah Maha Pengampun, Maha Penyantun.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٢٣٦. لَّا جُنَاحَ عَلَيْكُمْ إِن طَلَّقْتُمُ ٱلنِّسَآءَ مَا لَمْ تَمَسُّوهُنَّ أَوْ تَفْرِضُوا۟ لَهُنَّ فَرِيضَةًۭ ۚ وَمَتِّعُوهُنَّ عَلَى ٱلْمُوسِعِ قَدَرُهُۥ وَعَلَى ٱلْمُقْتِرِ قَدَرُهُۥ ۚ مَتَـٰعًۭا بِٱلْمَعْرُوفِ ۖ حَقًّا عَلَى ٱلْمُحْسِنِينَ</div>
+                <div class="translation">236. Tidak ada dosa bagimu jika kamu menceraikan istri-istrimu selama kamu belum mencampuri mereka atau belum menentukan maharnya. Namun, berilah mereka mut'ah (pemberian secukupnya). Orang yang mampu menurut kemampuannya, dan orang yang tidak mampu menurut kemampuannya pula, pemberian itu dengan cara yang makruf, sebagai kewajiban bagi orang-orang yang berbuat kebaikan.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٣٧. وَإِن طَلَّقْتُمُوهُنَّ مِن قَبْلِ أَن تَمَسُّوهُنَّ وَقَدْ فَرَضْتُمْ لَهُنَّ فَرِيضَةًۭ فَنِصْفُ مَا فَرَضْتُمْ إِلَّآ أَن يَعْفُونَ أَوْ يَعْفُوَا۟ ٱلَّذِى بِيَدِهِۦ عُقْدَةُ ٱلنِّكَاحِ ۗ وَأَن تَعْفُوٓاْ أَقْرَبُ لِلتَّقْوَىٰ ۚ وَلَا تَنسَوُاْ ٱلْفَضْلَ بَيْنَكُمْ ۚ إِنَّ ٱللَّهَ بِمَا تَعْمَلُونَ بَصِيرٌۭ</div>
+                <div class="translation">237. Jika kamu menceraikan mereka sebelum kamu mencampuri mereka, padahal kamu sudah menentukan maharnya, maka bayarlah separuh dari mahar yang telah kamu tentukan, kecuali jika mereka (istri) memaafkan atau yang memegang akad nikah itu memaafkan. Memberi maaf itu lebih dekat kepada takwa. Janganlah lupa untuk berbuat baik di antara kamu. Sungguh, Allah Maha Melihat apa yang kamu kerjakan.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٣٨. حَـٰفِظُوا۟ عَلَى ٱلصَّلَوَٰتِ وَٱلصَّلَوٰةِ ٱلْوُسْطَىٰ وَقُومُوا۟ لِلَّهِ قَـٰنِتِينَ</div>
+                <div class="translation">238. Peliharalah segala salatmu, dan (peliharalah) salat wustha. Berdirilah untuk Allah (dalam salatmu) dengan khusyuk.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٣٩. فَإِنْ خِفْتُمْ فَرِجَالًا أَوْ رُكْبَانًا فَإِذَآ أَمِنتُمْ فَٱذْكُرُواْ ٱللَّهَ كَمَا عَلَّمَكُم مَّا لَمْ تَكُونُوا۟ تَعْلَمُونَ</div>
+                <div class="translation">239. Jika kamu dalam keadaan takut (bahaya), salatlah sambil berjalan atau berkendaraan. Kemudian apabila kamu telah aman, maka ingatlah Allah, sebagaimana Dia telah mengajarkan kepada kamu apa yang belum kamu ketahui.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٤٠. وَٱلَّذِينَ يُتَوَفَّوْنَ مِنكُمْ وَيَذَرُونَ أَزْوَٰجًا وَصِيَّةًۭ لِّأَزْوَٰجِهِم مَّتَـٰعًا إِلَى ٱلْحَوْلِ غَيْرَ إِخْرَاجٍۢ ۚ فَإِنْ خَرَجْنَ فَلَا جُنَاحَ عَلَيْكُمْ فِيمَا فَعَلْنَ فِىٓ أَنفُسِهِنَّ مِن مَّعْرُوفٍۢ ۗ وَٱللَّهُ عَزِيزٌ حَكِيمٌۭ</div>
+                <div class="translation">240. Orang-orang yang meninggal dunia di antara kamu dengan meninggalkan istri-istri, hendaklah membuat wasiat untuk istri-istri mereka, yaitu diberi nafkah sampai setahun tanpa disuruh keluar dari rumah. Tetapi jika mereka keluar (dengan kemauan sendiri), maka tidak ada dosa bagimu (para wali) atas apa yang mereka lakukan terhadap diri mereka dengan cara yang makruf. Allah Maha Perkasa, Maha Bijaksana.</div>
+            </div>
+            <div class="ayah">
+                <div class="arabic">٢٤١. وَلِلْمُطَلَّقَـٰتِ مَتَـٰعٌۭ بِٱلْمَعْرُوفِ ۖ حَقًّۭا عَلَى ٱلْمُتَّقِينَ</div>
+                <div class="translation">241. Kepada para wanita yang diceraikan (berhak diberi) mut'ah menurut yang makruf, sebagai kewajiban bagi orang-orang yang bertakwa.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٤٢. كَذَٰلِكَ يُبَيِّنُ ٱللَّهُ لَكُمْ ءَايَـٰتِهِۦ لَعَلَّكُمْ تَعْقِلُونَ</div>
+                <div class="translation">242. Demikianlah Allah menerangkan ayat-ayat-Nya kepadamu agar kamu mengerti.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٤٣. أَلَمْ تَرَ إِلَى ٱلَّذِينَ خَرَجُوا۟ مِن دِيَـٰرِهِمْ وَهُمْ أُلُوفٌ حَذَرَ ٱلْمَوْتِ فَقَالَ لَهُمُ ٱللَّهُ مُوتُوا۟ ثُمَّ أَحْيَـٰهُمْ ۚ إِنَّ ٱللَّهَ لَذُو فَضْلٍ عَلَى ٱلنَّاسِ وَلَـٰكِنَّ أَكْثَرَ ٱلنَّاسِ لَا يَشْكُرُونَ</div>
+                <div class="translation">243. Tidakkah kamu memperhatikan orang-orang yang keluar dari kampung halaman mereka, sedangkan mereka beribu-ribu (jumlahnya), karena takut mati; lalu Allah berfirman kepada mereka, "Matilah kamu," kemudian Allah menghidupkan mereka. Sungguh, Allah memberikan karunia kepada manusia, tetapi kebanyakan manusia tidak bersyukur.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٤٤. وَقَـٰتِلُوا۟ فِى سَبِيلِ ٱللَّهِ وَٱعْلَمُوٓا۟ أَنَّ ٱللَّهَ سَمِيعٌ عَلِيمٌ</div>
+                <div class="translation">244. Dan berperanglah kamu di jalan Allah, dan ketahuilah bahwa Allah Maha Mendengar, Maha Mengetahui.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٤٥. مَّن ذَا ٱلَّذِى يُقْرِضُ ٱللَّهَ قَرْضًا حَسَنًۭا فَيُضَـٰعِفَهُۥ لَهُۥٓ أَضْعَافًا كَثِيرَةًۭ ۚ وَٱللَّهُ يَقْبِضُ وَيَبْسُطُ ۖ وَإِلَيْهِ تُرْجَعُونَ</div>
+                <div class="translation">245. Siapakah yang mau memberi pinjaman kepada Allah, pinjaman yang baik (menafkahkan hartanya di jalan Allah), maka Allah akan melipatgandakan (balasan) pinjaman itu untuknya dengan banyak. Allah menyempitkan dan melapangkan (rezeki), dan kepada-Nya kamu dikembalikan.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٤٦. أَلَمْ تَرَ إِلَى ٱلْمَلَإِ مِنۢ بَنِىٓ إِسْرَٰٓءِيلَ مِنۢ بَعْدِ مُوسَىٰٓ إِذْ قَالُوا۟ لِنَبِىٍّۢ لَّهُمُ ٱبْعَثْ لَنَا مَلِكًۭا نُّقَـٰتِلْ فِى سَبِيلِ ٱللَّهِ ۖ قَالَ هَلْ عَسَيْتُمْ إِن كُتِبَ عَلَيْكُمُ ٱلْقِتَالُ أَلَّا تُقَـٰتِلُوا۟ ۖ قَالُوا۟ وَمَا لَنَآ أَلَّا نُقَـٰتِلَ فِى سَبِيلِ ٱللَّهِ وَقَدْ أُخْرِجْنَا مِن دِيَـٰرِنَا وَأَبْنَآئِنَا ۖ فَلَمَّا كُتِبَ عَلَيْهِمُ ٱلْقِتَالُ تَوَلَّوْا۟ إِلَّا قَلِيلًۭا مِّنْهُمْ ۗ وَٱللَّهُ عَلِيمٌۢ بِٱلظَّـٰلِمِينَ</div>
+                <div class="translation">246. Tidakkah kamu memperhatikan para pemuka Bani Israil setelah Nabi Musa, ketika mereka berkata kepada seorang nabi mereka, "Angkatlah untuk kami seorang raja, niscaya kami akan berperang di jalan Allah." Nabi mereka berkata, "Mungkinkah jika kamu nanti diwajibkan berperang, kamu tidak akan berperang?" Mereka menjawab, "Mengapa kami tidak mau berperang di jalan Allah, padahal kami telah terusir dari kampung halaman kami dan anak-anak kami?" Tetapi ketika perang itu diwajibkan atas mereka, mereka berpaling, kecuali sebagian kecil dari mereka. Allah Maha Mengetahui orang-orang yang zalim.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٤٧. وَقَالَ لَهُمْ نَبِيُّهُمْ إِنَّ ٱللَّهَ قَدْ بَعَثَ لَكُمْ طَالُوتَ مَلِكًۭا ۚ قَالُوٓا۟ أَنَّىٰ يَكُونُ لَهُ ٱلْمُلْكُ عَلَيْنَا وَنَحْنُ أَحَقُّ بِٱلْمُلْكِ مِنْهُ وَلَمْ يُؤْتَ سَعَةًۭ مِّنَ ٱلْمَالِ ۚ قَالَ إِنَّ ٱللَّهَ ٱصْطَفَىٰهُ عَلَيْكُمْ وَزَادَهُۥ بَسْطَةًۭ فِى ٱلْعِلْمِ وَٱلْجِسْمِ ۖ وَٱللَّهُ يُؤْتِى مُلْكَهُۥ مَن يَشَآءُ ۚ وَٱللَّهُ وَٰسِعٌ عَلِيمٌۭ</div>
+                <div class="translation">247. Nabi mereka mengatakan kepada mereka, "Sungguh, Allah telah mengangkat Talut menjadi rajamu." Mereka menjawab, "Bagaimana Talut memperoleh kerajaan atas kami, padahal kami lebih berhak atas kerajaan itu daripadanya, sedangkan dia tidak diberi kekayaan yang cukup banyak?" Nabi mereka berkata, "Sungguh, Allah telah memilihnya (menjadi raja) atas kamu dan menganugerahkan ilmu dan tubuh yang perkasa." Allah memberikan kerajaan-Nya kepada siapa yang Dia kehendaki. Allah Mahaluas, Maha Mengetahui.</div>
+            </div>
+            
+            <div class="ayah">
+                <div class="arabic">٢٤٨. وَقَالَ لَهُمْ نَبِيُّهُمْ إِنَّ ءَايَةَ مُلْكِهِۦٓ أَن يَأْتِيَكُمُ ٱلتَّابُوتُ فِيهِ سَكِينَةٌۭ مِّن رَّبِّكُمْ وَبَقِيَّةٌۭ مِّمَّا تَرَكَ ءَالُ مُوسَىٰ وَءَالُ هَـٰرُونَ تَحْمِلُهُ ٱلْمَلَـٰٓئِكَةُ ۚ إِنَّ فِى ذَٰلِكَ لَءَايَةًۭ لَّكُمْ إِن كُنتُم مُّؤْمِنِينَ</div>
+                <div class="translation">248. Nabi mereka mengatakan kepada mereka, "Sungguh, tanda ia akan menjadi raja ialah datangnya tabut kepadamu, yang di dalamnya terdapat ketenangan dari Tuhanmu dan sisa dari peninggalan keluarga Musa dan keluarga Harun; tabut itu dibawa oleh malaikat. Sungguh, pada yang demikian itu terdapat tanda bagimu jika kamu orang yang beriman."</div>
+            </div>
+<div class="ayah">
+    <div class="arabic">٢٤٩. فَلَمَّا فَصَلَ طَالُوتُ بِٱلْجُنُودِ قَالَ إِنَّ ٱللَّهَ مُبْتَلِيكُم بِنَهَرٍۢ ۖ فَمَن شَرِبَ مِنْهُ فَلَيْسَ مِنِّى وَمَن لَّمْ يَطْعَمْهُ فَإِنَّهُۥ مِنِّىٓ إِلَّا مَنِ ٱغْتَرَفَ غُرْفَةًۭ بِيَدِهِۦ ۚ فَشَرِبُوا۟ مِنْهُ إِلَّا قَلِيلًۭا مِّنْهُمْ ۚ فَلَمَّا جَاوَزَهُۥ هُوَ وَٱلَّذِينَ ءَامَنُوا۟ مَعَهُۥ قَالُوا۟ لَا طَاقَةَ لَنَا ٱلْيَوْمَ بِجَالُوتَ وَجُنُودِهِۦ ۚ قَالَ ٱلَّذِينَ يَظُنُّونَ أَنَّهُم مُّلَـٰقُوا۟ ٱللَّهِ كَم مِّن فِئَةٍۢ قَلِيلَةٍ غَلَبَتْ فِئَةًۭ كَثِيرَةًۢ بِإِذْنِ ٱللَّهِ ۗ وَٱللَّهُ مَعَ ٱلصَّـٰبِرِينَ</div>
+    <div class="translation">249. Maka ketika Talut membawa pasukannya, dia berkata, "Sungguh, Allah akan menguji kamu dengan sebuah sungai. Barang siapa meminum airnya, maka dia bukan pengikutku. Barang siapa tidak meminumnya, kecuali hanya mencedok secedok dengan tangan, maka dia adalah pengikutku." Tetapi mereka semua meminumnya kecuali beberapa orang di antara mereka. Ketika Talut dan orang-orang yang beriman bersamanya telah menyeberangi sungai itu, mereka berkata, "Kami tidak kuat pada hari ini melawan Jalut dan bala tentaranya." Namun, orang-orang yang yakin bahwa mereka akan menemui Allah berkata, "Betapa banyak kelompok kecil mengalahkan kelompok besar dengan izin Allah. Allah bersama orang-orang yang sabar."</div>
+</div>
+
+<div class="ayah">
+    <div class="arabic">٢٥٠. وَلَمَّا بَرَزُوا۟ لِجَالُوتَ وَجُنُودِهِۦ قَالُوا۟ رَبَّنَآ أَفْرِغْ عَلَيْنَا صَبْرًۭا وَثَبِّتْ أَقْدَامَنَا وَٱنصُرْنَا عَلَى ٱلْقَوْمِ ٱلْكَـٰفِرِينَ</div>
+    <div class="translation">250. Ketika mereka maju melawan Jalut dan bala tentaranya, mereka berdoa, "Ya Tuhan kami, limpahkanlah kesabaran kepada kami, kokohkanlah pendirian kami, dan tolonglah kami menghadapi orang-orang kafir."</div>
+</div>
+
+<div class="ayah">
+    <div class="arabic">٢٥١. فَهَزَمُوهُم بِإِذْنِ ٱللَّهِ وَقَتَلَ دَاوُۥدُ جَالُوتَ وَءَاتَىٰهُ ٱللَّهُ ٱلْمُلْكَ وَٱلْحِكْمَةَ وَعَلَّمَهُۥ مِمَّا يَشَآءُ ۗ وَلَوْلَا دَفْعُ ٱللَّهِ ٱلنَّاسَ بَعْضَهُم بِبَعْضٍۢ لَّفَسَدَتِ ٱلْأَرْضُ وَلَـٰكِنَّ ٱللَّهَ ذُو فَضْلٍ عَلَى ٱلْعَـٰلَمِينَ</div>
+    <div class="translation">251. Maka mereka mengalahkannya dengan izin Allah, dan Daud membunuh Jalut, lalu Allah memberinya (Daud) kerajaan dan hikmah (kenabian), serta mengajarinya apa yang Dia kehendaki. Sekiranya Allah tidak menolak sebagian manusia dengan sebagian yang lain, pasti rusaklah bumi ini. Tetapi Allah mempunyai karunia terhadap seluruh alam.</div>
+</div>
+
+<div class="ayah">
+    <div class="arabic">٢٥٢. تِلْكَ ءَايَـٰتُ ٱللَّهِ نَتْلُوهَا عَلَيْكَ بِٱلْحَقِّ ۚ وَإِنَّكَ لَمِنَ ٱلْمُرْسَلِينَ</div>
+    <div class="translation">252. Itulah ayat-ayat Allah, Kami membacakannya kepadamu dengan benar. Dan sungguh, engkau (Muhammad) adalah salah seorang dari rasul-rasul.</div>
+</div>
+
+<div class="ayah">
+    <div class="arabic">٢٥٣. تِلْكَ ٱلرُّسُلُ فَضَّلْنَا بَعْضَهُمْ عَلَىٰ بَعْضٍۢ ۘ مِّنْهُم مَّن كَلَّمَ ٱللَّهُ وَرَفَعَ بَعْضَهُمْ دَرَجَـٰتٍۢ ۚ وَءَاتَيْنَا عِيسَى ٱبْنَ مَرْيَمَ ٱلْبَيِّنَـٰتِ وَأَيَّدْنَـٰهُ بِرُوحِ ٱلْقُدُسِ ۗ وَلَوْ شَآءَ ٱللَّهُ مَا ٱقْتَتَلَ ٱلَّذِينَ مِنۢ بَعْدِهِم مِّنۢ بَعْدِ مَا جَآءَتْهُمُ ٱلْبَيِّنَـٰتُ وَلَـٰكِنِ ٱخْتَلَفُوا۟ فَمِنْهُم مَّنْ ءَامَنَ وَمِنْهُم مَّن كَفَرَ ۚ وَلَوْ شَآءَ ٱللَّهُ مَا ٱقْتَتَلُوا۟ وَلَـٰكِنَّ ٱللَّهَ يَفْعَلُ مَا يُرِيدُ</div>
+    <div class="translation">253. Rasul-rasul itu Kami lebihkan sebagian mereka atas sebagian yang lain. Di antara mereka ada yang Allah berbicara langsung dengannya dan sebagian lagi Allah meninggikannya beberapa derajat. Dan Kami berikan kepada Isa putra Maryam beberapa mukjizat serta Kami perkuat dia dengan Ruhul Qudus. Sekiranya Allah menghendaki, niscaya orang-orang yang datang setelah mereka tidak akan saling berperang setelah datangnya bukti-bukti nyata kepada mereka. Tetapi mereka berselisih, maka di antara mereka ada yang beriman dan ada (pula) yang kafir. Sekiranya Allah menghendaki, niscaya mereka tidak akan saling berperang. Tetapi Allah berbuat apa yang Dia kehendaki.</div>
+</div>
+
+<div class="ayah">
+    <div class="arabic">٢٥٤. يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ أَنفِقُوا۟ مِمَّا رَزَقْنَـٰكُم مِّن قَبْلِ أَن يَأْتِىَ يَوْمٌۭ لَّا بَيْعٌۭ فِيهِ وَلَا خُلَّةٌۭ وَلَا شَفَـٰعَةٌۭ ۗ وَٱلْكَـٰفِرُونَ هُمُ ٱلظَّـٰلِمُونَ</div>
+    <div class="translation">254. Wahai orang-orang yang beriman! Infakkanlah sebagian dari apa yang telah Kami rezekikan kepadamu sebelum datang hari yang pada hari itu tidak ada jual beli, tidak ada persahabatan, dan tidak ada syafaat. Dan orang-orang kafir itulah orang-orang yang zalim.</div>
+</div>
+
+<div class="ayah">
+    <div class="arabic">٢٥٥. ٱللَّهُ لَآ إِلَـٰهَ إِلَّا هُوَ ٱلْحَىُّ ٱلْقَيُّومُ ۚ لَا تَأْخُذُهُۥ سِنَةٌۭ وَلَا نَوْمٌۭ ۚ لَّهُۥ مَا فِى ٱلسَّمَـٰوَٰتِ وَمَا فِى ٱلْأَرْضِ ۗ مَن ذَا ٱلَّذِى يَشْفَعُ عِندَهُۥٓ إِلَّا بِإِذْنِهِۦ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَىْءٍۢ مِّنْ عِلْمِهِۦٓ إِلَّا بِمَا شَآءَ ۚ وَسِعَ كُرْسِيُّهُ ٱلسَّمَـٰوَٰتِ وَٱلْأَرْضَ ۖ وَلَا يَـُٔودُهُۥ حِفْظُهُمَا ۚ وَهُوَ ٱلْعَلِىُّ ٱلْعَظِيمُ</div>
+    <div class="translation">255. Allah, tidak ada tuhan (yang berhak disembah) melainkan Dia, Yang Maha Hidup, Yang terus-menerus mengurus (makhluk-Nya). Tidak mengantuk dan tidak tidur. Milik-Nya apa yang ada di langit dan di bumi. Tidak ada yang dapat memberi syafaat di sisi-Nya tanpa izin-Nya. Dia mengetahui apa yang di hadapan mereka dan apa yang di belakang mereka, dan mereka tidak mengetahui apa pun tentang ilmu-Nya melainkan apa yang Dia kehendaki. Kursi-Nya meliputi langit dan bumi. Dia tidak merasa berat memelihara keduanya. Dan Dia Maha Tinggi, Maha Besar.</div>
+</div>
+
+<div class="ayah">
+    <div class="arabic">٢٥٦. لَآ إِكْرَاهَ فِى ٱلدِّينِ ۖ قَد تَّبَيَّنَ ٱلرُّشْدُ مِنَ ٱلْغَىِّ ۚ فَمَن يَكْفُرْ بِٱلطَّـٰغُوتِ وَيُؤْمِنۢ بِٱللَّهِ فَقَدِ ٱسْتَمْسَكَ بِٱلْعُرْوَةِ ٱلْوُثْقَىٰ لَا ٱنفِصَامَ لَهَا ۗ وَٱللَّهُ سَمِيعٌ عَلِيمٌ</div>
+    <div class="translation">256. Tidak ada paksaan dalam (menganut) agama (Islam). Sungguh, telah jelas (perbedaan) antara jalan yang benar dan jalan yang sesat. Karena itu, barang siapa ingkar kepada tagut dan beriman kepada Allah, maka sungguh, dia telah berpegang teguh pada tali yang sangat kuat yang tidak akan putus. Allah Maha Mendengar, Maha Mengetahui.</div>
+</div>
+                                                                                                                                                                                                              
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        function filterSurahs() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const surahList = document.getElementById('surahList');
+            const surahs = surahList.getElementsByTagName('li');
+
+            for (let i = 0; i < surahs.length; i++) {
+                const txtValue = surahs[i].textContent || surahs[i].innerText;
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                    surahs[i].style.display = "";
+                } else {
+                    surahs[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
