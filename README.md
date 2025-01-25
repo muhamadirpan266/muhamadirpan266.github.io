@@ -1,204 +1,349 @@
-<?php
-// Koneksi ke database
-$host = 'sql312.infinityfree.com';
-$db_name = 'if0_38062988_user_management';
-$username = 'if0_38062988';  // Sesuaikan dengan username MySQL Anda
-$password = 'lQVflq0XmLrgY';
-
-try {
-    $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Connection failed: " . $e->getMessage());
-}
-
-// Proses login
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $role = $_POST['role'];
-
-    try {
-        // Query untuk memeriksa pengguna berdasarkan username dan role
-        $stmt = $conn->prepare("SELECT * FROM users WHERE username = :username AND role = :role");
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':role', $role);
-        $stmt->execute();
-
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($user && hash('sha256', $password) === $user['password']) {
-            // Login berhasil
-            session_start();
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['role'] = $user['role'];
-
-            if ($user['role'] === 'admin') {
-                header('Location: admin_dashboard.php');
-            } else {
-                header('Location: user_dashboard.php');
-            }
-            exit();
-        } else {
-            // Login gagal
-            $error = "Invalid username, password, or role.";
-        }
-    } catch (PDOException $e) {
-        $error = "Error: " . $e->getMessage();
-    }
-}
-?>
-
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="x-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XII TKJ 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="bb.css" />
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-        }
-
-        .login-container {
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            padding: 40px;
-            width: 100%;
-            max-width: 400px;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        .login-container h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus {
-            border-color: #2575fc;
-            outline: none;
-            box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
-        }
-
-        .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .form-group select:focus {
-            border-color: #2575fc;
-            outline: none;
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 10px;
-            background: #2575fc;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .login-btn:hover {
-            background: #1e63d6;
-        }
-
-        .register-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .register-link a {
-            color: #2575fc;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        .register-link a:hover {
-            color: #1e63d6;
-        }
-
-        .error-message {
-            color: red;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+      .w3-row-padding img {
+        margin-bottom: 12px;
+      }
     </style>
-</head>
-<body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <?php if (!empty($error)): ?>
-            <p class="error-message"><?= htmlspecialchars($error) ?></p>
-        <?php endif; ?>
-        <form method="POST" action="">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            </div>
-            <div class="form-group">
-                <label for="role">Login As</label>
-                <select id="role" name="role" required>
-                    <option value="">-- Select Role --</option>
-                    <option value="admin">Administrator</option>
-                    <option value="user">User</option>
-                </select>
-            </div>
-            <button type="submit" class="login-btn">Login</button>
-        </form>
-        <div class="register-link">
-            <p>Don't have an account? <a href="register.php">Create one here</a></p>
+    <!--feather icons-->
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="#" class="navbar-logo">XII T<span>KJ 1.</span></a>
+
+      <div class="navbar-nav">
+        <a href="#Home">Home</a>
+        <a href="jadwal pelajaran.html">Jadwal Pelajaran</a>
+        <a href="jadwal piket.html">Jadwal Piket</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="#Contact">Contact</a>
+      </div>
+
+      <div class="navbar-extra">
+        <a id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+    </nav>
+    <!--about section start-->
+    <section class="section12">
+    <section id="Home" class="about">
+      <h2><span>XII T</span>KJ1</h2>
+      <div class="row">
+        <div class="about-img">
+          <img
+            src="IMG_20230914_200212_20230916_154140_0000.jpg"
+            alt="Tentang kami"
+          />
         </div>
+        <p class="about-p">
+          Hallo selamat datang di dunia virtual kelas
+          <strong> XII TKJ 1</strong>. Tujuan kami membuat web ini adalah untuk
+          mengabadikan kenangan yang terjadi selama masa sekolah. Terima kasih
+          sudah berkunjung.
+        </p>
+      </div>
+    </section>
+
+    <header class="header">
+        <h1><b>Anggota <span>Kelas</span></b></h1>
+    </header>
+
+    <section class="products">
+     <div class="product">
+            <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+            <h2>nazwa</h2>
+            <a
+            href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+            id="search"><i data-feather="instagram"></i
+          ></a>
+          <a
+          href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+          id="search"
+          ><i data-feather="twitter"></i
+          ></a>
+        </div>
+        <div class="product">
+          <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+          <h2>tiwi</h2>
+          <a
+          href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+          id="search"><i data-feather="instagram"></i
+        ></a>
+        <a
+        href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+        id="search"
+        ><i data-feather="twitter"></i
+        ></a>
+      </div>
+      <div class="product">
+        <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+        <h2>astri</h2>
+        <a
+        href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+        id="search"><i data-feather="instagram"></i
+      ></a>
+      <a
+      href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+      id="search"
+      ><i data-feather="twitter"></i
+      ></a>
     </div>
-</body>
+    <div class="product">
+      <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+      <h2>yuningsih</h2>
+      <a
+      href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+      id="search"><i data-feather="instagram"></i
+    ></a>
+    <a
+    href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+    id="search"
+    ><i data-feather="twitter"></i
+    ></a>
+  </div>
+  <div class="product">
+    <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+    <h2>asep</h2>
+    <a
+    href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+    id="search"><i data-feather="instagram"></i
+  ></a>
+  <a
+  href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+  id="search"
+  ><i data-feather="twitter"></i
+  ></a>
+</div>
+<div class="product">
+  <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+  <h2>suci</h2>
+  <a
+  href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+  id="search"><i data-feather="instagram"></i
+></a>
+<a
+href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+id="search"
+><i data-feather="twitter"></i
+></a>
+</div>
+<div class="product">
+  <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+  <h2>reva</h2>
+  <a
+  href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+  id="search"><i data-feather="instagram"></i
+></a>
+<a
+href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+id="search"
+><i data-feather="twitter"></i
+></a>
+</div>
+<div class="product">
+  <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+  <h2>Maryam</h2>
+  <a
+  href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+  id="search"><i data-feather="instagram"></i
+></a>
+<a
+href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+id="search"
+><i data-feather="twitter"></i
+></a>
+</div>
+<div class="product">
+  <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+  <h2>aulia</h2>
+  <a
+  href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+  id="search"><i data-feather="instagram"></i
+></a>
+<a
+href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+id="search"
+><i data-feather="twitter"></i
+></a>
+</div>
+<div class="product">
+  <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+  <h2>rifki</h2>
+  <a
+  href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+  id="search"><i data-feather="instagram"></i
+></a>
+<a
+href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+id="search"
+><i data-feather="twitter"></i
+></a>
+</div>
+<div class="product">
+  <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+            <h2>afin</h2>
+            <a
+            href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+            id="search"><i data-feather="instagram"></i
+          ></a>
+          <a
+          href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+          id="search"
+          ><i data-feather="twitter"></i
+          ></a>
+        </div>
+                <div class="product">
+            <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+            <h2>tusan</h2>
+            <a
+            href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+            id="search"><i data-feather="instagram"></i
+          ></a>
+          <a
+          href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+          id="search"
+          ><i data-feather="twitter"></i
+          ></a>
+        </div>
+        <div class="product">
+            <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+            <h2>ilham</h2>
+            <a
+            href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+            id="search"><i data-feather="instagram"></i
+          ></a>
+          <a
+          href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+          id="search"
+          ><i data-feather="twitter"></i
+          ></a>
+        </div>        
+<div class="product">
+            <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+            <h2>fakhri</h2>
+            <a
+            href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+            id="search"><i data-feather="instagram"></i
+          ></a>
+          <a
+          href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+          id="search"
+          ><i data-feather="twitter"></i
+          ></a>
+        </div>        
+<div class="product">
+            <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+            <h2>aidil</h2>
+            <a
+            href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+            id="search"><i data-feather="instagram"></i
+          ></a>
+          <a
+          href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+          id="search"
+          ><i data-feather="twitter"></i
+          ></a>
+        </div>
+        <div class="product">
+            <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+            <h2>kunaon</h2>
+            <a
+            href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+            id="search"><i data-feather="instagram"></i
+          ></a>
+          <a
+          href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+          id="search"
+          ><i data-feather="twitter"></i
+          ></a>
+        </div>
+                <div class="product">
+            <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+            <h2>naisya</h2>
+            <a
+            href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+            id="search"><i data-feather="instagram"></i
+          ></a>
+          <a
+          href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+          id="search"
+          ><i data-feather="twitter"></i
+          ></a>
+        </div>       
+        <div class="product">
+            <img src="WhatsApp Image 2025-01-25 at 17.11.33.jpeg" alt="Produk 2" class="img2">
+            <h2>nita</h2>
+            <a
+            href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+            id="search"><i data-feather="instagram"></i
+          ></a>
+          <a
+          href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+          id="search"
+          ><i data-feather="twitter"></i
+          ></a>
+        </div>
+    </section>
+    <section id="Contact" class="contact">
+      <h2><span>Kontak</span> kami</h2>
+
+      <div class="co">
+        <p><i data-feather="map-pin"></i> Jalan Neglasari No. 07</p>
+        <p><i data-feather="phone"></i> Phone: 085798376030</p>
+        <p><i data-feather="mail"></i> Email: mrdono260726@gmail.com</p>
+      </div>
+      <br />
+    </section>
+    <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+      <div class="socials">
+        <a
+          href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+          id="search"
+          ><i data-feather="instagram"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+          id="search"
+          ><i data-feather="facebook"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/lassjeone?igsh=ODA1NTc5OTg5Nw=="
+          id="search"
+          ><i data-feather="twitter"></i
+        ></a>
+      </div>
+
+      <div class="links">
+        <a href="#Home"><i data-feather="home"></i></a>
+        <a href="#Jadwal"><i data-feather="book-open"></i></a>
+        <a href="#Galeri"><i data-feather="image"></i></a>
+        <a href="#Contact"><i data-feather="phone"></i></a>
+      </div>
+
+      <div class="credit">
+        <p>Created by <a href="#home">Sayap_kebebasan</a>. | &copy; 2025.</p>
+      </div>
+    </footer>
+
+    <!--footer end-->
+
+    <script>
+      feather.replace();
+    </script>
+
+    <script src="aa.js"></script>
+  </section>
+  </body>
 </html>
